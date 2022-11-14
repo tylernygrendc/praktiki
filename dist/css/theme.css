@@ -1,0 +1,62 @@
+:root {
+    --primary-10: hsl(205, 85%, 90%);
+    --primary-20: hsl(205, 75%, 80%);
+    --primary-30: hsl(205, 65%, 70%);
+    --primary-40: hsl(205, 55%, 60%);
+    --primary-50: hsl(205, 45%, 50%);
+    --primary-60: hsl(205, 35%, 40%);
+    --primary-70: hsl(205, 35%, 30%);
+    --primary-80: hsl(205, 25%, 20%);
+    --primary-90: hsl(205, 15%, 10%);
+    --secondary-10: hsl(90, 5%, 90%);
+    --secondary-20: hsl(90, 5%, 80%);
+    --secondary-30: hsl(90, 5%, 70%);
+    --secondary-40: hsl(90, 5%, 60%);
+    --secondary-50: hsl(90, 5%, 50%);
+    --secondary-60: hsl(90, 5%, 40%);
+    --secondary-70: hsl(90, 5%, 30%);
+    --secondary-80: hsl(90, 5%, 20%);
+    --secondary-90: hsl(90, 5%, 10%);
+    --default-10: hsl(0, 0%, 90%);
+    --default-20: hsl(0, 0%, 80%);
+    --default-30: hsl(0, 0%, 70%);
+    --default-40: hsl(0, 0%, 60%);
+    --default-50: hsl(0, 0%, 50%);
+    --default-60: hsl(0, 0%, 40%);
+    --default-70: hsl(0, 0%, 30%);
+    --default-80: hsl(0, 0%, 20%);
+    --default-90: hsl(0, 0%, 10%);
+    --shadow-10: 1px 1px 2px rgba(0,0,0,0.5); 
+    --shadow-20: 2px 2px 4px rgba(0,0,0,0.5); 
+    --shadow-30: 3px 3px 8px rgba(0,0,0,0.5); 
+    --shadow-40: 4px 4px 16px rgba(0,0,0,0.5); 
+    --shadow-50: 5px 5px 32px rgba(0,0,0,0.5);
+    --border-radius-10: 2px;
+    --border-radius-20: 4px;
+    --border-radius-30: 6px;
+    --border-radius-40: 8px;
+    --border-radius-50: 50%;
+    --border-10: solid 1px;
+    --border-20: solid 2px;
+    --border-30: solid 3px;
+    --border-40: solid 4px;
+    --border-50: solid 5px;
+    --font-1: "Open Sans", sans-serif;
+    --font-2: "Open Sans", sans-serif;
+    --font-3: "Open Sans", sans-serif;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    letter-spacing: 0;
+    line-height: 1.5;
+    src: url(../font/open_sans_variable.ttf);
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
