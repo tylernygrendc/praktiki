@@ -9,7 +9,6 @@ Chiropractic is a licensed healthcare profession specializing in the treatment o
 5. Patient management
 6. Invoicing and receipts
 7. Claim generation and submission
-8. Business reporting
 
 ## 1. Electronic Health Record Management (eHR)
 
@@ -137,20 +136,13 @@ Receipts must be available in both 8.500 and 3.125 inch widths for printing. Com
 * Insurance Claims Submission and Tracking
 * Insurer Payments Estimation and Verification
 
-## 8. Business Reporting
-
-Business owners are primarily concerned with tracking:
-
-* Patient encounters and services performed
-* Daily, monthly, and annual earnings
-* Earnings per practitioner, if applicable
-* Sales tax and other tax considerations for filing
 
 # Approach
 
+Praktiki is a dynamic, multi-page application. It will be built with standard javascript bundled with webpack. Styles will be implemented with css, utilizing the @import rule for modular construction. The login/product page will consist of static html (for performance), while all other pages will be generated dynamically with pug and express running on Cloud Functions. Authentication will be managed with Firebase Auth. Data will be managed with Firestore and Cloud Storage.
+
 ## 1. Task List
 
-* Determine Cloud Firestore data structure
 * Create forms listed under [common documentation practices](#c-common-documentation-practices)
   * Define form styles and behavior
     * Input[type=text] and input[type=number]
@@ -189,8 +181,28 @@ Business owners are primarily concerned with tracking:
     * Notification of changes/confirmation
   * Full day and week view of the current schedule
   * System for check-in and checkout
+* Integrate Stripe payment processing
+  * Create methods for pos, cash, check, online invoice, on-file payments, manual entry...
 
+## 2. Timeline
 
+An early version including only core product features may be completed as soon as June 2023, although the rule of π is likely to extend this development period into 2024. The addition of claims processing features adds considerable complexity to the project and will delay subsequent releases by several months. The second major release will target the third quarter of 2024.
+
+|Month|Task|Status|
+|:---|:---|:---:|
+|Dec 2022|Form Templates||
+|Jan 2023|Form Editor & Viewer||
+|Feb 2023|Scheduling System||
+|Mar 2023|Point-of-Sale System||
+|Apr 2023|Patient Management||
+|May 2023|Refinement||
+|Jun 2023|Product Sales and Marketing||
+|Jul 2023|Claims Processing and Billing||
+|Aug 2023|Claims Processing and Billing||
+|Sep 2023|Claims Processing and Billing||
+|Oct 2023|Refinement|
+|Nov 2023|Marketing Features||
+|Dec 2023|Practice Resources||
 
 ___
 

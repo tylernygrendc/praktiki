@@ -1,102 +1,89 @@
+import * as error from "./error.js";
+
 class PageElement {
-    constructor(tag="div", id=uniqueID(1), classList=[], attrList={}, text="") {
-        this.tag = tag,
-        this.id = id,
-        this.classList = classList,
-        this.attrList = attrList,
+    constructor(tag="", id="", classArray=[], attrObject={}, text=""){
+        this.tag= tag,
+        this.id = id==="" ? uniqueString() : id;
+        this.classArray = classArray,
+        this.attrObject = attrObject,
         this.text = text
     }
-    addTo(parent=document.body, removeChildren=false) {
-
-        let element = document.createElement(this.tag),
-            node = document.createTextNode(this.text);
-
-        element[id] = this.id;
-        element.classList.add(...this.classList);
-        for([key, val] in Object.entries(this.attrList)) element.setAttribute(key, val);
-        element.appendChild(node);
-
-        while(removeChildren && parent.firstChild) parent.removeChild(parent.firstChild)
-
-        parent.appendChild();
-    }
 }
 
-class multipleChoice {
-    constructor(name="", options=[], allowsMultiple=false, legend="", classList=[]) {
-        this.id = uniqueID(1),
-        this.name = name,
-        this.legend = legend === "" ? name : legend,
-        this.classList = classList,
-        this.options = options,
-        this.allowsMultiple = allowsMultiple
-    }
-    addTo(parent=document.body, removeChildren=false) {
-        let element = document.createElement("fieldset");
-
-        element[id] = this.id;
-        element.classList.add(...this.classList);
-
-        let inputID = uniqueID(this.options.length);
-        this.options.forEach((option, i) => {
-            let input = new PageElement("input"),
-                label = new PageElement("label");
-
-            if(this.allowMultiple) {
-                input.setAttribute("id", inputID[i]);
-                input.setAttribute("type", "checkbox");
-                input.setAttribute("name", option);
-            } else {
-                input.setAttribute("id", inputID[i]);
-                input.setAttribute("type", "radio");
-                input.setAttribute("name", this.name)
-                input.setAttribute("value", option);
+function createNew(tag="div", options={}){
+    try{
+        let el = document.createElement(tag);
+        for([key, val] in Object.entries(options)){
+            switch(key){
+                case "id":
+                    el.setAttribute("id", val);
+                    break;
+                case "classArray":
+                    val.forEach(str => {
+                        el.classList.add(str);
+                    });
+                    break;
+                case "attrObject":
+                    for([k,v] in val){
+                        el.setAttribute(k, v);
+                    }
+                    break;
+                case "text":
+                    el.innerHTML(val);
+                    break;
             }
-
-            label.setAttribute("for", inputID[i]);
-            label.innerHTML(option);
-
-            element.append([input, label]);
-        });
-
-        while(removeChildren && parent.firstChild) parent.removeChild(parent.firstChild)
-
-        parent.appendChild();
+        }
+        if(typeof el.id === "undefined") el.setAttribute("id", uniqueString());
+        return el;
+    }
+    catch (err){
+        error.handle(err);
     }
 }
 
-class Dropdown {
-    constructor(name="", options=[], classList=[], label="") {
-        this.id = uniqueID(1),
-        this.name = name,
-        this.label = label === "" ? name : label,
-        this.classList = classList,
-        this.options = options
+function uniqueString(checkAgainstExisting=false){
+    try{
+        let unique = false;
+        while(!unique){
+            unique = window.crypto.getRandomValues(new Uint32Array(1))[0];
+            if(checkAgainstExisting){
+                document.querySelectorAll("*[id]").forEach(id => {
+                    if(id === unique) unique = false;
+                });
+            }
+        }
+        return unique;
     }
-    addTo(parent=document.body, removeChildren=false) {
-        let element = document.createElement("select");
-
-        element[id] = this.id;
-        element.classList.add(...this.classList);
-        input.setAttribute("name", this.name);
-
-        this.options.forEach(option => {
-            let input = new PageElement("option");
-            input.setAttribute("value", option);
-            input.setAttribute("aria-label", option);
-            label.innerHTML(option);
-
-            element.append([input, label]);
-        });
-
-        while(removeChildren && parent.firstChild) parent.removeChild(parent.firstChild)
-
-        parent.appendChild();
+    catch (err){
+        error.handle(err);
     }
 }
 
-function uniqueID(quantity = 1){
-    const array = new Uint32Array(quantity);
-    const values = window.crypto.getRandomValues(array).toString(16);
-    return quantity === 1 ? values[0] : values;
+function uniqueArray(quantity=10, checkAgainstExisting=false){
+    try{
+        let unique=false;
+        while(!unique){
+            unique = window.crypto.getRandomValues(new Uint32Array(1));
+            if(typeof quantity === "number"){
+                unique = window.crypto.getRandomValues(new Uint32Array(quantity));
+            } else {
+                throw new Error("Error: The quantity parameter for function uniqueArray() is either undefined or invalid. Set to typeof number to specify output length or use function unqiueString() instead.")
+            }
+            if(checkAgainstExisting){
+                document.querySelectorAll("*[id]").forEach(id => {
+                    unique.forEach(str => {
+                        if(id === str) unique = false;
+                    });
+                });
+            }
+        }
+        return unique;
+    }
+    catch (err){
+        error.handle(err);
+    }
 }
+
+export const createNew = createNew();
+export const uniqueString = uniqueString();
+export const uniqueArray = uniqueArray();

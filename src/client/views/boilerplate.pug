@@ -3,6 +3,8 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Document
-        meta(name="description", content="")
-    body 
+        title #{title}
+        meta(name="description", content="#{description}")
+        link(rel="stylesheet", href="./css/#{page}.css")
+        script(defer src="./js/#{page}.js") 
+    body: block body
