@@ -1,0 +1,72 @@
+
+@use "type";
+@use "theme";
+
+.menubar{
+
+    z-index: 10;
+    position: fixed;
+    inset: 0 0 auto 0;
+    padding: 0.25em 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    background-color: theme.$default;
+    color: theme.contrast(theme.$default) !important;
+
+    > :first-child{
+        margin: 0.25em auto 0.25em 0;
+        font-size: 1.25em;
+    }
+
+    a{
+        border-radius: 6px;
+        color: inherit !important;
+        &:hover,
+        &:focus-visible{
+            outline: solid 2px theme.$accent;
+            color: theme.$accent !important;
+        }
+    }
+
+    nav{
+        position: relative;
+        height: 100%;
+        width: auto;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 0.5em;
+    }
+
+    ul{
+        z-index: -1;
+        position: absolute;
+        inset: 0 0.5em auto auto;
+        width: 350px;
+        max-width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 4.25em 0.5em 0.5em 2em;
+        border-radius: 0 0 6px 6px;
+        background-color: theme.vary(theme.contrast(theme.$accent));
+        color: inherit;
+
+        li {
+            margin: 0;
+            padding: 0;
+            text-align: right;
+            list-style: none;
+        }
+    }
+    
+
+    :is(a, summary){
+        padding: 0.25em 0.5em;
+        list-style: none;
+        @include type.text(1em);
+    }
+
+}

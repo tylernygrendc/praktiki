@@ -8,9 +8,25 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/auth**",
         "function": "routes"
+      },
+      {
+        "source":"**",
+        "destination":"/about.html"
       }
     ]
-  }
+  },
+  "functions": [
+    {
+      "source": "src",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log"
+      ]
+    }
+  ]
 }

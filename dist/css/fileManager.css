@@ -1,0 +1,534 @@
+html {
+  scroll-behavior: smooth;
+  background-color: #222;
+  color: #FFF;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+*:focus {
+  outline: 2px solid hsl(45deg, 75%, 55%);
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+img, svg, video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+}
+
+details summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+details summary :last-child {
+  position: relative;
+  right: 0.25em;
+}
+details[open] summary :last-child {
+  position: relative;
+  right: 0.25em;
+  transform: rotate(180deg);
+}
+
+.primary {
+  background-color: hsl(160deg, 30%, 25%);
+  color: #FFF;
+}
+
+.accent {
+  background-color: hsl(45deg, 75%, 55%);
+  color: #222;
+}
+
+.vary {
+  background-color: #2d2d2d;
+  color: #FFF;
+}
+.vary--primary {
+  background-color: #335f51;
+  color: #FFF;
+}
+.vary--accent {
+  background-color: #e1b32a;
+  color: #222;
+}
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/open-sans.ttf);
+}
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/material-icons.ttf);
+}
+@media screen and (max-width: 800px) {
+  body {
+    display: block;
+    margin: 0.5em 0;
+    font-family: "Open Sans";
+    font-size: 1rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    line-height: 1.75;
+    direction: ltr;
+  }
+}
+@media screen and (min-width: 800px) {
+  body {
+    display: block;
+    margin: 0.5em 0;
+    font-family: "Open Sans";
+    font-size: 1.15rem;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    line-height: 1.75;
+    direction: ltr;
+  }
+}
+p {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h1 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 2.25em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h2 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 2.15em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h3 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 2.05em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h4 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1.95em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h5 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1.85em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+h5 {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1.75em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+.caption {
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+.icon {
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.justify {
+  text-align: justify;
+}
+
+.button, .button--text:hover, .button--text:focus-visible, .button--text, .button--raised:hover, .button--raised:focus-visible, .button--raised {
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.button--raised {
+  margin: 0;
+  padding: 0.5em 1em;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  text-decoration: none !important;
+  background-color: hsl(160deg, 30%, 25%);
+  color: #FFF;
+}
+.button--raised:hover, .button--raised:focus-visible {
+  outline: solid 2px hsl(45deg, 75%, 55%);
+  background-color: #335f51;
+}
+.button--text {
+  padding: 0.25em;
+  box-shadow: none;
+  background-color: transparent;
+  color: inherit;
+}
+.button--text:hover, .button--text:focus-visible {
+  outline: solid 2px hsl(45deg, 75%, 55%);
+  color: hsl(45deg, 75%, 55%);
+}
+
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5em 0;
+  gap: 1em;
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+.input :is(input, select, textarea) {
+  padding: 0.5em 0.75em;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: 0;
+  background-color: #2d2d2d;
+  color: #FFF;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-items: stretch;
+}
+fieldset .item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: flex-start;
+}
+fieldset input[type=checkbox],
+fieldset input[type=radio] {
+  height: 24px;
+  width: 24px;
+}
+
+table {
+  display: block;
+  background-color: inherit;
+  color: inherit;
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+  text-align: center;
+}
+table :nth-child(odd) {
+  background-color: #2d2d2d;
+}
+table tr {
+  width: 100%;
+}
+table tr:hover {
+  transition: 250ms;
+  transform: scale(1.025);
+}
+table tr :first-child {
+  text-align: left;
+}
+
+.spotlight {
+  position: relative;
+  width: 100%;
+}
+.spotlight .overlay {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.spotlight .text {
+  z-index: 1;
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 80%;
+  min-width: 350px;
+}
+.spotlight .text p {
+  max-width: 60ch;
+}
+.spotlight .text .action {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1em 0;
+  gap: 1em;
+}
+.spotlight img {
+  z-index: -1;
+  width: 100%;
+  max-height: 100vh;
+}
+
+.menubar {
+  z-index: 10;
+  position: fixed;
+  inset: 0 0 auto 0;
+  padding: 0.25em 1em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  background-color: #222;
+  color: #FFF !important;
+}
+.menubar > :first-child {
+  margin: 0.25em auto 0.25em 0;
+  font-size: 1.25em;
+}
+.menubar a {
+  border-radius: 6px;
+  color: inherit !important;
+}
+.menubar a:hover, .menubar a:focus-visible {
+  outline: solid 2px hsl(45deg, 75%, 55%);
+  color: hsl(45deg, 75%, 55%) !important;
+}
+.menubar nav {
+  position: relative;
+  height: 100%;
+  width: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.5em;
+}
+.menubar ul {
+  z-index: -1;
+  position: absolute;
+  inset: 0 0.5em auto auto;
+  width: 350px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 4.25em 0.5em 0.5em 2em;
+  border-radius: 0 0 6px 6px;
+  background-color: #2d2d2d;
+  color: inherit;
+}
+.menubar ul li {
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  list-style: none;
+}
+.menubar :is(a, summary) {
+  padding: 0.25em 0.5em;
+  list-style: none;
+  display: block;
+  margin: 0.5em 0;
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.75;
+  direction: ltr;
+}
+
+.columns {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-items: stretch;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+.columns > * {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  gap: 1em;
+  flex-grow: 1;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.profile section {
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-start;
+  align-items: center;
+}
+
+/*# sourceMappingURL=fileManager.css.map */

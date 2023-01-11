@@ -1,0 +1,38 @@
+$border: 1px solid vary($default);
+
+.feed {
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .item{
+        height: auto;
+        padding: 0.5em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: $border;
+
+        img{
+            width: 30%;
+            max-width: 250px;
+            aspect-ratio: 1/1;
+        }
+
+        .text {
+            width: auto;
+            max-width: 60ch;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5em;
+            :first-child{
+                font-size: 1.15em;
+            }
+
+        }
+
+    }
+    
+}

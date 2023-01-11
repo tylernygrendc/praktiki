@@ -1,0 +1,98 @@
+
+@use "sass:color";
+
+$primary: hsl(160, 30%, 25%);
+$accent: hsl(45, 75%, 55%);
+$default: #222;
+
+@function contrast($color){
+    @if (lightness($color) > 50) {
+        @return #222;
+    } @else {
+        @return #FFF;
+    } 
+}
+
+@function vary($color) {
+    @if (lightness($color) > 50) {
+        @return color.scale($color, $lightness: -5%);
+    } @else {
+        @return color.scale($color, $lightness: 5%);
+    } 
+}
+
+@mixin background($color){
+    background-color: $color;
+    color: contrast($color);
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: $default;
+    color: contrast($default);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+*:focus{
+    outline: 2px solid $accent;
+}
+
+body {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+img, svg, video  {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+}
+
+details {
+    summary {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        :last-child {
+            position: relative;
+            right: 0.25em;
+        }
+    }
+    &[open]{
+        summary :last-child{
+            position: relative;
+            right: 0.25em;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.primary {
+    background-color: $primary;
+    color: contrast($primary);
+}
+
+.accent {
+    background-color: $accent;
+    color: contrast($accent);
+}
+
+.vary{
+    background-color: vary($default);
+    color: contrast(vary($default));
+    &--primary {
+        background-color: vary($primary);
+        color: contrast(vary($primary));
+    }
+    &--accent {
+        background-color: vary($accent);
+        color: contrast(vary($accent));
+    }
+}

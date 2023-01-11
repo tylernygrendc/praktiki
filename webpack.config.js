@@ -1,18 +1,17 @@
 import path from 'path';
+import * as fs from 'node:fs';
 import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const pages = [
-    "index"
-]
+const scripts = fs.readdirSync(path.join(__dirname, "./src/scripts"));
 
 const config = {
   mode: 'development',
   watch: true,
-  entry: pages.reduce((acc, page) => {
-    acc[page] = `./src/client/scripts/${page}.js`;
+  entry: scripts.reduce((acc, script) => {
+    acc[script] = `./src/scripts/${script}`;
     return acc;
   }, {}),
   output: {

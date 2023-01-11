@@ -1,0 +1,28 @@
+.visible {
+    transition: 250ms;
+    opacity: 0;
+    visibility: visible;
+}
+
+.hidden {
+    transition: 250ms;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.margin {
+
+    margin: 0 auto;
+    
+    &--right{
+        margin-right: auto;
+    }
+
+    &--left{
+        margin-left: auto;
+    }
+}
+
+.spacer {
+    flex-grow: 1;
+}

@@ -4,15 +4,15 @@ import functions from "firebase-functions";
 
 env.config();
 
-const router = express(),
-    port = 3000;
+const router = express();
 
-router.get('/', (req, res) => {
-    //   res.render(default, {});
-});
+router.set('view engine', 'pug');
 
-router.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+router.get('/auth/', (req, res) => {
+    res.render("exam", {
+        title: "exam",
+        page: "exam"
+    });
 });
 
 export const routes = functions.https.onRequest(router);
