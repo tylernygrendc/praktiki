@@ -8,12 +8,28 @@
     ],
     "rewrites": [
       {
-        "source": "/auth**",
-        "function": "routes"
+        "source":"/",
+        "destination":"/about.html"
       },
       {
-        "source":"**",
+        "source":"/about",
         "destination":"/about.html"
+      },
+      {
+        "source":"/features",
+        "destination":"/about.html#features"
+      },
+      {
+        "source":"/pricing",
+        "destination":"/about.html#features"
+      },
+      {
+        "source": "/auth",
+        "function": "/auth.html"
+      },
+      {
+        "source": "/auth/**",
+        "function": "routes"
       }
     ]
   },

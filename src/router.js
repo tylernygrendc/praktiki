@@ -8,11 +8,13 @@ const router = express();
 
 router.set('view engine', 'pug');
 
-router.get('/auth/', (req, res) => {
-    res.render("exam", {
-        title: "exam",
-        page: "exam"
-    });
+router.get('/auth/files', (req, res) => {
+    res.status(200)
+        .render("files", {
+            title: "Files",
+            asset: "files",
+            description: ""
+        });
 });
 
 export const routes = functions.https.onRequest(router);
