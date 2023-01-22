@@ -25,7 +25,7 @@
       },
       {
         "source": "/auth",
-        "function": "/auth.html"
+        "destination": "/auth.html"
       },
       {
         "source": "/auth/**",

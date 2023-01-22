@@ -1,8 +1,8 @@
 
 @use "sass:color";
 
-$primary: hsl(160, 30%, 25%);
-$accent: hsl(45, 75%, 55%);
+$primary: #2d5345;
+$accent: #e2b736;
 $default: #222;
 
 @function contrast($color){
@@ -53,6 +53,7 @@ img, svg, video  {
     object-fit: cover;
     object-position: center;
     max-width: 100%;
+    background-color: vary($default);
 }
 
 details {

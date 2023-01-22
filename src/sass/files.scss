@@ -1,9 +1,53 @@
 @use "theme";
 @use "type";
+@use "block";
 @use "button";
 @use "input";
 @use "table";
-@use "spotlight";
-@use "menubar";
-@use "columns";
 @use "profile";
+@use "columns";
+
+:root{
+    --drawerWidth: 300px;
+    --sidebarWidth: 300px;
+}
+
+#fileTree {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: var(--drawerWidth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+
+    > * {
+        width: 100%;
+    }
+}
+
+main {
+    position: fixed;
+    inset: 0 var(--sidebarWidth) 0 var(--drawerWidth);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-y: scroll;
+}
+
+
+aside {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: var(--sidebarWidth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em;
+
+    > * {
+        width: 100%;
+    }
+}

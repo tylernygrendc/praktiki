@@ -3,6 +3,35 @@
 @use "theme";
 
 
+.ariaButton{
+    @extend .button;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.25em 0.5em;
+    box-shadow: none;
+    background-color: transparent;
+    color: inherit;
+    font-size: 0.75rem;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        @extend .button;
+        outline: solid 1px theme.$accent;
+        color: theme.$accent;
+    }
+
+    i{
+        margin-left: auto;
+    }
+
+    .icon{
+        font-size: 0.6rem;
+    }
+}
+
 .button {
 
     border: 0;
@@ -17,11 +46,18 @@
         text-decoration: none !important;
         @include theme.background(theme.$primary);
 
-        &:hover,
         &:focus-visible {
             @extend .button;
             outline: solid 2px theme.$accent;
             background-color: color.scale(theme.$primary, $lightness: 5%);
+        }
+
+        &:hover {
+            @extend .button;
+            transition: 250ms;
+            transform: scale(1.05);
+            background-color: color.scale(theme.$primary, $lightness: 5%);
+
         }
     }
 
@@ -33,10 +69,60 @@
         color: inherit;
 
         &:hover,
-        &:focus-visible {
+        &:focus {
             @extend .button;
             outline: solid 2px theme.$accent;
             color: theme.$accent;
         }
     }
+}
+
+button.icon {
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0.25em;
+    box-shadow: none;
+    background-color: theme.$default;
+    color: theme.contrast(theme.$default);
+    
+    &:focus {
+        @extend .button;
+        outline: solid 2px theme.$accent;
+        color: theme.$accent;
+    }
+
+    &:hover {
+        @extend .button;
+        transition: 250ms;
+        background-color: theme.vary(theme.$default);
+        color: theme.$accent;
+    }
+}
+
+*[role=tablist]{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.20rem;
+
+    .tab{
+        border: 0;
+        cursor: pointer;
+        padding: 0.25em 0.5em;
+        box-shadow: none;
+        background-color: theme.vary(theme.$default);
+        color: theme.contrast(theme.$default);
+        &[aria-selected=true]{
+            @extend .tab;
+            background-color: theme.$default;
+            color: theme.contrast(theme.$default);
+        }
+    }
+}
+
+*[role=tabpanel]{
+    position: absolute;
+    inset: 0 0 auto 0;
+    padding: 2em 1em 1em 1em;
 }

@@ -1,10 +1,24 @@
-extends default
+extends _default
 
 append meta
     
 block body
-    nav(aria-label="file tree navigation")
-        button Skip to document navigation
-    header: nav(aria-label="article navigation")
-        button Skip to article
-    article
+    nav#fileTree(aria-label="file tree navigation")
+        a.ariaButton(tabindex="0") Skip to note <i><span class="icon">keyboard_command_key</span>+F</i>
+        div.profile
+            .image
+                img(src="../assets/male.svg")
+            .text
+                h2.heading John Doe
+                ul.details
+                    li DOB: 01/01/1970
+                    li CC: Low Back Pain
+        ul.files
+    main
+        include _exam
+    aside
+        header(role="tablist")
+            button.tab(role="tab", aria-selected="true") Alerts
+            button.tab(role="tab") Shortcuts
+        article(role="tabpanel")
+        article(role="tabpanel")

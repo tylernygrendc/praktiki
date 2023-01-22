@@ -1,20 +1,17 @@
 .columns {
-    
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    justify-items: stretch;
-    flex-wrap: wrap;
-    gap: 1em;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
 
-    > *{
-        width: auto;
+    > * {
+        flex-grow: 1;
+        flex-wrap: wrap;
+        max-width: 500px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 1em;
-        gap: 1em;
-        flex-grow: 1;
+        gap: 1rem;
     }
-
 }

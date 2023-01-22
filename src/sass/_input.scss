@@ -6,8 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0.5em 0;
-    gap: 1em;
+    gap: 0.25em;
     @include type.text(1em);
 
     :is(input, select, textarea){
@@ -16,6 +15,18 @@
         border-radius: 6px;
         box-shadow: 0;
         @include theme.background(theme.vary(theme.$default));
+    }
+}
+
+.formAction {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.5em 0;
+    >*{
+        flex-grow: 1;
     }
 }
 

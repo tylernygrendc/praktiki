@@ -1,0 +1,54 @@
+header(role="tablist")
+    button.tab(role="tab", aria-selected="true") Subjective
+    button.tab(role="tab") Objective
+    button.tab(role="tab") Assessment
+    button.tab(role="tab") Plan
+article
+    section(role="tabpanel")
+        .heading
+            h2.normal History of Present Illness 
+            button.icon edit
+        .input
+            label Onset
+            textarea(name="onset")
+        .input
+            label Site, Severity, and Quality
+            textarea(name="quality")
+        .input
+            label Palliative and Provocative Factors
+            textarea(name="palliative")
+        .input
+            label Associated Symptoms
+            textarea(name="radiation")
+article
+    section.hidden(role="tabpanel")
+        h2 Physical Examination
+        section
+            h3 Vital Signs
+        section
+            h3 Visual and Palpatory Findings
+        section
+            h3 Ranges of Motion
+        section
+            h3 Special Tests
+article
+    section.hidden(role="tabpanel")
+        h2 Assessment
+        section
+            h3 Diagnosis
+        section
+            h3 Goals
+        section
+            h3 Prognosis
+article
+    section.hidden(role="tabpanel")
+        h2 Plan
+        section
+            h3 Treatment
+        section
+            h3 At-home Care
+        section
+            h3 Lifestyle Modification
+        section
+            h3 Ergonomic Considerations
+    section
