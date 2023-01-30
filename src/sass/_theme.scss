@@ -43,9 +43,37 @@ html {
     outline: 2px solid $accent;
 }
 
+::-webkit-scrollbar{
+    width: 16px;
+    height: 16px;
+
+    &-track {
+        background-color: vary($default);
+    }
+
+    &-thumb{
+        background-color: contrast($default);
+        border: vary($default) solid 4px;
+        border-radius: 8px;
+    }
+
+    &-button{
+        display: none;
+    }
+
+    &-corner {
+        background-color: vary($default);
+    }
+}
+
 body {
     width: 100vw;
     min-height: 100vh;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: $default, vary(contrast($default));
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 img, svg, video  {

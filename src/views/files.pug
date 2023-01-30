@@ -6,14 +6,30 @@ block body
     nav#fileTree(aria-label="file tree navigation")
         a.ariaButton(tabindex="0") Skip to note <i><span class="icon">keyboard_command_key</span>+F</i>
         div.profile
-            .image
-                img(src="../assets/male.svg")
-            .text
-                h2.heading John Doe
-                ul.details
-                    li DOB: 01/01/1970
-                    li CC: Low Back Pain
+            img(src="../assets/male.svg")
+            ul
+                li John Doe (age 53)
+                li Sanitation Engineer
+                li Acute Low Back Pain
+                li Recovery Phase (4/9)
         ul.files
+            li: button
+                .icon article
+                span Treatment 02-14-2022
+                .icon lock_open
+            li: button
+                .icon article
+                span Treatment 02-14-2022
+                .icon lock
+            li: button
+                .icon article
+                span Treatment 02-14-2022
+                .icon lock
+            li: details
+                summary 
+                    .icon folder
+                    span Evaluation 02-14-2022
+                    .icon keyboard_arrow_down
     main
         include _exam
     aside
