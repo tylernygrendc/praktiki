@@ -638,11 +638,31 @@ table tr :first-child {
 #fileTree .profile ul li {
   list-style: none;
 }
-#fileTree .files {
+#fileTree ul.files {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  list-style: none;
 }
-#fileTree .files li > button,
-#fileTree .files li > details summary {
+#fileTree ul.files li {
+  width: 100%;
+  background-color: #222;
+  color: #FFF;
+}
+#fileTree ul.files li:hover,
+#fileTree ul.files li details[open] {
+  background-color: #2d2d2d;
+}
+#fileTree ul.files li :is(ul, li, details, summary, button) {
+  background-color: inherit;
+  color: inherit;
+  border: 0;
+  border-radius: 0 1.25em 1.25em 0;
+}
+#fileTree ul.files li > button,
+#fileTree ul.files li > details summary {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -651,20 +671,42 @@ table tr :first-child {
   width: 100%;
   margin: 0;
   padding: 0.25em 0.5em;
-  background-color: #222;
-  color: #FFF;
-  border: 0;
-  border-radius: 0 1.25em 1.25em 0;
-  list-style: none;
+  cursor: pointer;
 }
-#fileTree .files li > button .icon,
-#fileTree .files li > details summary .icon {
+#fileTree ul.files li > button .icon,
+#fileTree ul.files li > details summary .icon {
   font-size: 1.5em;
   width: 1em;
 }
-#fileTree .files li > button :nth-child(3),
-#fileTree .files li > details summary :nth-child(3) {
+#fileTree ul.files li > button :last-child,
+#fileTree ul.files li > details summary :last-child {
+  position: relative;
   margin-left: auto;
+  right: 0;
+}
+#fileTree ul.files li ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 4px;
+  gap: 2px;
+  background-color: inherit;
+  color: inherit;
+  border: 0;
+  list-style: none;
+}
+#fileTree ul.files li ul li {
+  border-radius: 0 1.25em 1.25em 0;
+  background-color: #2d2d2d;
+  color: #FFF;
+}
+#fileTree ul.files li ul li:hover {
+  background-color: #222;
+  color: #FFF;
+}
+#fileTree ul.files li ul li button {
+  padding-left: 16px;
 }
 
 main {

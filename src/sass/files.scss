@@ -56,11 +56,33 @@
         }
     }
 
-    .files {
+    ul.files {
 
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        list-style: none;
 
         li {
+
+            width: 100%;
+            background-color: theme.$default;
+            color: theme.contrast(theme.$default);
+            
+            &:hover,
+            details[open] {
+                background-color: theme.vary(theme.$default);
+            }
+
+            :is(ul, li, details, summary, button){
+                background-color: inherit;
+                color: inherit;
+                border: 0;
+                border-radius: 0 1.25em 1.25em 0;
+            }
+
             > button,
             > details summary {
                 position: relative;
@@ -71,19 +93,45 @@
                 width: 100%;
                 margin: 0;
                 padding: 0.25em 0.5em;
-                background-color: theme.$default;
-                color: theme.contrast(theme.$default);
-                border: 0;
-                border-radius: 0 1.25em 1.25em 0;
-                list-style: none;
+                cursor: pointer;
         
                 .icon {
                     font-size: 1.5em;
                     width: 1em;
                 }
 
-                :nth-child(3){
+                :last-child {
+                    position: relative;
                     margin-left: auto;
+                    right: 0;
+                }
+            }
+
+            ul {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 4px;
+                gap: 2px;
+                background-color: inherit;
+                color: inherit;
+                border: 0;
+                list-style: none;
+
+                li {
+                    border-radius: 0 1.25em 1.25em 0;
+                    background-color: theme.vary(theme.$default);
+                    color: theme.contrast(theme.$default);
+                    
+                    &:hover{
+                        background-color: theme.$default;
+                        color: theme.contrast(theme.$default);
+                    }
+
+                    button {
+                        padding-left: 16px;
+                    }
                 }
             }
         }
