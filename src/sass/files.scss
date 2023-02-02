@@ -70,31 +70,33 @@
             width: 100%;
             background-color: theme.$default;
             color: theme.contrast(theme.$default);
-            
-            &:hover,
-            details[open] {
-                background-color: theme.vary(theme.$default);
-            }
 
-            :is(ul, li, details, summary, button){
-                background-color: inherit;
-                color: inherit;
-                border: 0;
-                border-radius: 0 1.25em 1.25em 0;
-            }
-
-            > button,
-            > details summary {
+            button,
+            details summary {
                 position: relative;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                gap: 0.5em;
-                width: 100%;
-                margin: 0;
                 padding: 0.25em 0.5em;
+                gap: 0.5em;
+            }
+
+            details, 
+            details summary, 
+            button {
+                width: 100%;
                 cursor: pointer;
-        
+                background-color: inherit;
+                color: inherit;
+                border: 0;
+                border-radius: 0 1.25em 1.25em 0;
+                overflow: hidden;
+
+                &:hover{
+                    background-color: theme.vary(theme.$default);
+                    color: theme.contrast(theme.$default);   
+                }
+
                 .icon {
                     font-size: 1.5em;
                     width: 1em;
@@ -107,30 +109,36 @@
                 }
             }
 
-            ul {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 4px;
-                gap: 2px;
-                background-color: inherit;
-                color: inherit;
-                border: 0;
-                list-style: none;
+            details[open] {
+                padding: 4px 4px 4px 0px;
+                background-color: theme.vary(theme.$default);
+                color: theme.contrast(theme.$default);
 
-                li {
-                    border-radius: 0 1.25em 1.25em 0;
-                    background-color: theme.vary(theme.$default);
-                    color: theme.contrast(theme.$default);
-                    
-                    &:hover{
-                        background-color: theme.$default;
-                        color: theme.contrast(theme.$default);
-                    }
+                ul {
 
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 2px;
+                    background-color: inherit;
+                    color: inherit;
+
+                    li, 
                     button {
-                        padding-left: 16px;
+                        width: 100%;
+                        background-color: inherit;
+                        color: inherit;
+                        border: 0;
+                        border-radius: 0 1.25em 1.25em 0;
+                        overflow: hidden;
+                        cursor: pointer;
+                        
+                        &:hover,
+                        &:hover button, 
+                        button:hover {
+                            background-color: theme.$default;
+                            color: theme.contrast(theme.$default);
+                        }
                     }
                 }
             }

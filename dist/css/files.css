@@ -651,62 +651,75 @@ table tr :first-child {
   background-color: #222;
   color: #FFF;
 }
-#fileTree ul.files li:hover,
-#fileTree ul.files li details[open] {
-  background-color: #2d2d2d;
-}
-#fileTree ul.files li :is(ul, li, details, summary, button) {
-  background-color: inherit;
-  color: inherit;
-  border: 0;
-  border-radius: 0 1.25em 1.25em 0;
-}
-#fileTree ul.files li > button,
-#fileTree ul.files li > details summary {
+#fileTree ul.files li button,
+#fileTree ul.files li details summary {
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5em;
-  width: 100%;
-  margin: 0;
   padding: 0.25em 0.5em;
-  cursor: pointer;
+  gap: 0.5em;
 }
-#fileTree ul.files li > button .icon,
-#fileTree ul.files li > details summary .icon {
+#fileTree ul.files li details,
+#fileTree ul.files li details summary,
+#fileTree ul.files li button {
+  width: 100%;
+  cursor: pointer;
+  background-color: inherit;
+  color: inherit;
+  border: 0;
+  border-radius: 0 1.25em 1.25em 0;
+  overflow: hidden;
+}
+#fileTree ul.files li details:hover,
+#fileTree ul.files li details summary:hover,
+#fileTree ul.files li button:hover {
+  background-color: #2d2d2d;
+  color: #FFF;
+}
+#fileTree ul.files li details .icon,
+#fileTree ul.files li details summary .icon,
+#fileTree ul.files li button .icon {
   font-size: 1.5em;
   width: 1em;
 }
-#fileTree ul.files li > button :last-child,
-#fileTree ul.files li > details summary :last-child {
+#fileTree ul.files li details :last-child,
+#fileTree ul.files li details summary :last-child,
+#fileTree ul.files li button :last-child {
   position: relative;
   margin-left: auto;
   right: 0;
 }
-#fileTree ul.files li ul {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 4px;
-  gap: 2px;
-  background-color: inherit;
-  color: inherit;
-  border: 0;
-  list-style: none;
-}
-#fileTree ul.files li ul li {
-  border-radius: 0 1.25em 1.25em 0;
+#fileTree ul.files li details[open] {
+  padding: 4px 4px 4px 0px;
   background-color: #2d2d2d;
   color: #FFF;
 }
-#fileTree ul.files li ul li:hover {
+#fileTree ul.files li details[open] ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background-color: inherit;
+  color: inherit;
+}
+#fileTree ul.files li details[open] ul li,
+#fileTree ul.files li details[open] ul button {
+  width: 100%;
+  background-color: inherit;
+  color: inherit;
+  border: 0;
+  border-radius: 0 1.25em 1.25em 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+#fileTree ul.files li details[open] ul li:hover, #fileTree ul.files li details[open] ul li:hover button,
+#fileTree ul.files li details[open] ul li button:hover,
+#fileTree ul.files li details[open] ul button:hover,
+#fileTree ul.files li details[open] ul button:hover button,
+#fileTree ul.files li details[open] ul button button:hover {
   background-color: #222;
   color: #FFF;
-}
-#fileTree ul.files li ul li button {
-  padding-left: 16px;
 }
 
 main {
