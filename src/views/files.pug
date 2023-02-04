@@ -47,11 +47,30 @@ block body
                         .icon article
                         span Background 02-06-2022
                         .icon lock
-    main
+    main.tabs
         include _exam
-    aside
+    aside.tabs
         header(role="tablist")
             button.tab(role="tab", aria-selected="true") Alerts
             button.tab(role="tab") Shortcuts
         article(role="tabpanel")
+            section: ul
+                li: details
+                    summary 
+                        .icon warning
+                        span Cervical Block
+                        .icon keyboard_arrow_down
+                li: details
+                    summary
+                        .icon info
+                        span Update Care Plan
+                        .icon keyboard_arrow_down
+                li: details
+                    summary
+                        .icon sticky_note_2
+                        span Modify Technique
+                        .icon keyboard_arrow_down
+                li: button
+                    span Add Alert
+                    .icon add_circle
         article(role="tabpanel")

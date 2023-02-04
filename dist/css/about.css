@@ -458,13 +458,23 @@ button.icon:hover {
   color: #e2b736;
 }
 
+.tabs {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 48px 1fr;
+  align-items: baseline;
+}
+
 *[role=tablist] {
+  grid-row: 1/2;
+  align-self: stretch;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0.2em;
 }
 *[role=tablist] .tab, *[role=tablist] .tab[aria-selected=true] {
+  align-self: stretch;
   border: 0;
   cursor: pointer;
   padding: 0.25em 0.5em;
@@ -478,9 +488,8 @@ button.icon:hover {
 }
 
 *[role=tabpanel] {
-  position: absolute;
-  inset: 0 0 auto 0;
-  padding: 2em 1em 1em 1em;
+  grid-row: 2/3;
+  padding: 0.5em 1em;
 }
 
 .input {

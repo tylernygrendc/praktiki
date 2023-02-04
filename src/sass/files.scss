@@ -8,7 +8,7 @@
 
 :root{
     --drawerWidth: 300px;
-    --sidebarWidth: 300px;
+    --sidebarWidth: 35ch;
 }
 
 #fileTree {
@@ -153,6 +153,7 @@ main {
     flex-direction: column;
     align-items: stretch;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 
@@ -160,13 +161,62 @@ aside {
     position: fixed;
     inset: 0 0 0 auto;
     width: var(--sidebarWidth);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5em;
-    padding: 0.5em;
 
     > * {
         width: 100%;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        list-style: none;
+
+        *{
+            cursor: pointer;
+        }
+
+        li {
+            border-radius: 8px;
+            background-color: theme.vary(theme.$default);
+            color: theme.contrast(theme.$default);
+
+            details {
+                border-radius: 8px;
+                background-color: inherit;
+                color: inherit;
+
+                summary {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 0.25em 0.5em;
+                    gap: 8px;
+                    border-radius: 8px;
+                    font-size: 0.9em;
+
+                    .icon {
+                        font-size: 1.5em;
+                    }
+
+                    :last-child{
+                        position: relative;
+                        margin-left: auto;
+                        right: 0;
+                    }
+                }
+            }
+
+            details[open]{
+                min-height: 92px;
+            }
+
+            button {
+                background-color: inherit;
+                color: inherit;
+                border: none;
+            }
+        }
     }
 }

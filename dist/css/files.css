@@ -458,13 +458,23 @@ button.icon:hover {
   color: #e2b736;
 }
 
+.tabs {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 48px 1fr;
+  align-items: baseline;
+}
+
 *[role=tablist] {
+  grid-row: 1/2;
+  align-self: stretch;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 0.2rem;
+  align-items: flex-start;
+  gap: 0.2em;
 }
 *[role=tablist] .tab, *[role=tablist] .tab[aria-selected=true] {
+  align-self: stretch;
   border: 0;
   cursor: pointer;
   padding: 0.25em 0.5em;
@@ -478,9 +488,8 @@ button.icon:hover {
 }
 
 *[role=tabpanel] {
-  position: absolute;
-  inset: 0 0 auto 0;
-  padding: 2em 1em 1em 1em;
+  grid-row: 2/3;
+  padding: 0.5em 1em;
 }
 
 .input {
@@ -594,7 +603,7 @@ table tr :first-child {
 
 :root {
   --drawerWidth: 300px;
-  --sidebarWidth: 300px;
+  --sidebarWidth: 35ch;
 }
 
 #fileTree {
@@ -729,20 +738,61 @@ main {
   flex-direction: column;
   align-items: stretch;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 aside {
   position: fixed;
   inset: 0 0 0 auto;
   width: var(--sidebarWidth);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5em;
-  padding: 0.5em;
 }
 aside > * {
   width: 100%;
+}
+aside ul {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  list-style: none;
+}
+aside ul * {
+  cursor: pointer;
+}
+aside ul li {
+  border-radius: 8px;
+  background-color: #2d2d2d;
+  color: #FFF;
+}
+aside ul li details {
+  border-radius: 8px;
+  background-color: inherit;
+  color: inherit;
+}
+aside ul li details summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.25em 0.5em;
+  gap: 8px;
+  border-radius: 8px;
+  font-size: 0.9em;
+}
+aside ul li details summary .icon {
+  font-size: 1.5em;
+}
+aside ul li details summary :last-child {
+  position: relative;
+  margin-left: auto;
+  right: 0;
+}
+aside ul li details[open] {
+  min-height: 92px;
+}
+aside ul li button {
+  background-color: inherit;
+  color: inherit;
+  border: none;
 }
 
 /*# sourceMappingURL=files.css.map */
