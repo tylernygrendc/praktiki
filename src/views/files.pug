@@ -4,7 +4,10 @@ append meta
     
 block body
     nav#fileTree(aria-label="file tree navigation")
-        a.ariaButton(tabindex="0") Skip to note <i><span class="icon">keyboard_command_key</span>+F</i>
+        a.ariaButton(tabindex="0")
+            span Go to current note
+            .icon keyboard_command_key
+            span +N
         div.profile
             img(src="../assets/male.svg")
             ul
@@ -54,7 +57,11 @@ block body
             button.tab(role="tab", aria-selected="true") Alerts
             button.tab(role="tab") Shortcuts
         article(role="tabpanel")
-            section: ul
+            a.ariaButton(tabindex="0")
+                span Create new alert
+                .icon keyboard_command_key
+                span +A
+            ul
                 li: details
                     summary 
                         .icon warning
@@ -70,7 +77,4 @@ block body
                         .icon sticky_note_2
                         span Modify Technique
                         .icon keyboard_arrow_down
-                li: button
-                    span Add Alert
-                    .icon add_circle
         article(role="tabpanel")

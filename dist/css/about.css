@@ -399,10 +399,8 @@ h6 {
   outline: solid 1px #e2b736;
   color: #e2b736;
 }
-.ariaButton i {
-  margin-left: auto;
-}
 .ariaButton .icon {
+  margin-left: auto;
   font-size: 0.6rem;
 }
 

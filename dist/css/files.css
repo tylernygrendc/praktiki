@@ -399,10 +399,8 @@ h6 {
   outline: solid 1px #e2b736;
   color: #e2b736;
 }
-.ariaButton i {
-  margin-left: auto;
-}
 .ariaButton .icon {
+  margin-left: auto;
   font-size: 0.6rem;
 }
 
@@ -749,6 +747,12 @@ aside {
 aside > * {
   width: 100%;
 }
+aside article {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+}
 aside ul {
   display: flex;
   flex-direction: column;
@@ -788,11 +792,6 @@ aside ul li details summary :last-child {
 }
 aside ul li details[open] {
   min-height: 92px;
-}
-aside ul li button {
-  background-color: inherit;
-  color: inherit;
-  border: none;
 }
 
 /*# sourceMappingURL=files.css.map */

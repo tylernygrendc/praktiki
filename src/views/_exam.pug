@@ -20,15 +20,21 @@ article(role="tabpanel")
             label Associated Symptoms
             textarea(name="radiation")
 article.hidden(role="tabpanel")
-        h2 Physical Examination
-        section
-            h3 Vital Signs
-        section
-            h3 Visual and Palpatory Findings
-        section
-            h3 Ranges of Motion
-        section
-            h3 Special Tests
+        .heading
+            h2.normal Physical Examination
+            button.icon edit
+        .input
+            label Vital Signs
+            textarea(name="vitals")
+        .input
+            label Visual and Palpatory Findings
+            textarea(name="inspection")
+        .input
+            label Ranges of Motion
+            textarea(name="rom")
+        .input
+            label Special Tests
+            textarea(name="tests")
 article.hidden(role="tabpanel")
         h2 Assessment
         section
@@ -37,6 +43,39 @@ article.hidden(role="tabpanel")
             h3 Goals
         section
             h3 Prognosis
+        .heading
+            h2.normal Assessment
+            button.icon edit
+        .input
+            label Diagnosis
+            ul
+                li: input(type="text")
+                li: input(type="text")
+                li: input(type="text")
+        .input
+            label Goals
+            ul
+                li: input(type="text")
+                li: input(type="text")
+                li: input(type="text")
+        .input
+            label Prognosis
+            fieldset
+                div 
+                    input(type="radio", name="excellent")
+                    label Excellent (90%)
+                div
+                    input(type="radio", name="good")
+                    label Good (75%)
+                div
+                    input(type="radio", name="fair")
+                    label Fair (50%)
+                div
+                    input(type="radio", name="poor")
+                    label Poor (25%)
+                div
+                    input(type="radio", name="guarded")
+                    label Guarded (10%)
 article.hidden(role="tabpanel")
         h2 Plan
         section
