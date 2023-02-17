@@ -68,17 +68,23 @@ class Note {
             fname: String,
             lname: String
         },
-        problem: []
+        patient: {},
+        problem: [],
+        procedure: [],
+        exam: [],
+        progress: String,
+        charge: []
     }){
         created = new Date().toDateString(),
-        provider = {
-            id: provider.id,
-            name: {
-                fname: String,
-                lname: String
-            }
-        }
-    }    
+        provider = provider,
+        patient = patient,
+        problem = problem,
+        procedure = procedure,
+        progress = progress,
+        charge = charge
+    }
+
+    sign()
 }
 
 class Problem {
@@ -100,23 +106,33 @@ class Problem {
         worsensWith = [],
         refersTo = [],
         trend = String,
-        differential = [],
         diagnosis = [],
         treatment = [],
         prognosis = String,
         freeform = String
-    )
+    ){
+        site = site,
+        severity = severity,
+        frequency = frequency,
+        quality = quality,
+        onset = onset,
+        priorOccurrence = priorOccurrence,
+        mechanism = mechanism,
+        improvesWith = improvesWith,
+        worsensWith = refersTo,
+        trend = trent,
+        diagnosis = diagnosis,
+        treatment = treatment,
+        prognosis = prognosis,
+        freeform = freeform;
+    }
 }
 
 class Exam {
     constructor(
         subjective = {
-            onset: String,
-            worsensWith: String,
-            improvesWith: String,
-            quality: [],
-            refersTo: [],
-            trend: String
+            problem: [],
+            freeform: String
         }, 
         objective = {
             vitals: [],
@@ -126,30 +142,70 @@ class Exam {
             freeform: String
         }, 
         assessment = {
-            listings: [],
             diagnosis: [],
+            listings: [],
             phaseOfCare: String,
-            progress: String,
             freeform: String
         }, 
         plan = {
-            goals: [],
-            procedures: [],
-            methods: [],
             freeform: String
         }
-    )
+    ){
+        subjective = subjective,
+        objective = objective,
+        assessment = assessment,
+        plan = plan;
+    }
 }
 
 class Plan {
-
+    constructor(
+        reliefPhase = {
+            treatment: {
+                frequency: String,
+                duration: String,
+                procedures: []
+            },
+            stretches: [],
+            exercises: [],
+            cam: [],
+            goals: []
+        },
+        stabilizationPhase = {
+            treatment: {
+                frequency: String,
+                duration: String,
+                procedures: []
+            },
+            stretches: [],
+            exercises: [],
+            cam: [],
+            goals: []
+        },
+        freeform = String
+    ){
+        reliefPhase = reliefPhase,
+        stabilizationPhase = stabilizationPhase,
+        freeform= freeform;
+    }
 }
 
-class Treatment {
-
-}
-
-function area() {
-    new Patient();
-    new Note()
+class Procedure {
+    constructor(
+        cpt = String,
+        description = String,
+        duration = String,
+        goals = [],
+        technique = String,
+        methods = [],
+        freeform = String
+    ){
+        cpt = String,
+        description = String,
+        duration = String,
+        goals = [],
+        technique = String,
+        methods = [],
+        freeform = String;
+    }
 }
