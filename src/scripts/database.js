@@ -2,17 +2,22 @@
 import { app } from "./firebase";
 import { getFirestore } from "firebase/firestore";
 import { collection, query, where } from "firebase/firestore";
-import { doc, setDoc } from "firebase/firestore"; 
-import { getDocs, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, setDocs } from "firebase/firestore";
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
+
+export function read(collection){
+
+}
+
+function write(){
+
+}
 
 // Add a new document in collection "cities"
 await setDoc(doc(db, "cities", "LA"), {
 
 });
-
-import { collection, query, where, getDocs } from "firebase/firestore";
 
 const q = query(collection(db, "cities"), where("capital", "==", true));
 
@@ -21,8 +26,6 @@ querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   console.log(doc.id, " => ", doc.data());
 });
-
-import { doc, getDoc } from "firebase/firestore";
 
 const docRef = doc(db, "cities", "SF");
 const docSnap = await getDoc(docRef);

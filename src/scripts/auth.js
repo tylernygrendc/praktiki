@@ -7,7 +7,7 @@ import { reauthenticateWithCredential } from "firebase/auth";
 import { sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 import { updateProfile, updateEmail, updatePassword, deleteUser } from "firebase/auth";
 
-const auth = getAuth();
+export const auth = getAuth();
 
 window.addEventListener("load", () => {
   onAuthStateChanged(auth, (user) => {
@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
   });
 });
 
-function signUp(){
+export function signUp(){
 
   let email = document.querySelector("input[type=`email`]");
   let password = document.querySelector("input[type=`password`]");
@@ -34,7 +34,8 @@ function signUp(){
     });
 }
 
-function signIn(){
+export function signIn(){
+
   let email = document.querySelector("input[type=`email`]");
   let password = document.querySelector("input[type=`password`]");
 
@@ -46,4 +47,4 @@ function signIn(){
       const errorCode = error.code;
       const errorMessage = error.message;
     });
-}q
+}
