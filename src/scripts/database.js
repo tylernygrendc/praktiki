@@ -6,12 +6,12 @@ import { doc, getDoc, setDoc, setDocs } from "firebase/firestore";
 
 export const db = getFirestore(app);
 
-export function read(collection){
-
+export function read(query = {}, collection = ""){
+  
 }
 
 function write(){
-
+  read()
 }
 
 // Add a new document in collection "cities"

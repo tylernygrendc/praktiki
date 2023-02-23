@@ -9,16 +9,6 @@ import { updateProfile, updateEmail, updatePassword, deleteUser } from "firebase
 
 export const auth = getAuth();
 
-window.addEventListener("load", () => {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-    } else {
-      window.location.replace("../auth");
-    }
-  });
-});
-
 export function signUp(){
 
   let email = document.querySelector("input[type=`email`]");
