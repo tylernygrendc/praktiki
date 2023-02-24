@@ -32,10 +32,21 @@ onAuthStateChanged(auth, (signedIn) => {
 
 window.addEventListener("load", async () => {
 
+    showProgress(0, `Loading workspace settings...`);
+
+    let patientId = getQueryObjectFrom(window.location.search)[patientId];
+
     let userPreferences = await getDoc(collection(db, "users"), user.uid),
         patientFile = await getDoc(collection(db, "patients"), patientId);
 
-    showProgress(0, `Loading workspace settings...`);
+    if(patientFile.exists()) {
+        showProgress(25, `Loading patient information...`);
+        patientFile = patientFile.data();
+        
+    } else {
+        // prompt user to select patient
+    }
+
 });
 
 
