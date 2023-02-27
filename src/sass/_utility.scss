@@ -1,0 +1,229 @@
+
+@use "sass:color";
+@use "sass:map";
+
+// TYPOGRAPHY STYLES
+
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/open-sans.ttf);
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../font/material-icons.ttf);
+}
+
+@mixin text($size) {
+    display: inline-block;
+    font-family: "Open Sans";
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+}
+
+@mixin icon($size) {
+    display: inline-block;
+    font-family: 'Material Icons';
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+// THEME STYLES
+
+$primary: #2d5345; $secondary: #e2b736; $default: #222;
+
+@function contrast($color){
+    @if (lightness($color) > 50) { @return #000; } 
+    @else { @return #FFF; } 
+}
+
+$palette: (
+    "primary-light": color.scale($primary, $lightness: 10%),
+    "primary-medium": $primary,
+    "primary-dark": color.scale($primary, $lightness: -10%),
+    "on-primary": contrast($primary),
+    "secondary-light": color.scale($secondary, $lightness: 10%),
+    "secondary-medium": $secondary,
+    "secondary-dark": color.scale($secondary, $lightness: -10%),
+    "on-secondary": contrast($secondary),
+    "default-light": color.scale($default, $lightness: 10%),
+    "default-medium": $default,
+    "default-dark": color.scale($default, $lightness: -10%),
+    "on-default": contrast($default)
+);
+
+// SCROLL STYLES
+
+html {
+    scroll-behavior: smooth;
+    background-color: $default;
+    color: contrast($default);
+}
+
+::-webkit-scrollbar{
+    width: 16px;
+    height: 16px;
+
+    &-track {
+        background-color: map.get($palette, "default-dark");
+    }
+
+    &-thumb{
+        background-color: map.get($palette, "on-default");
+        border: map.get($palette, "default-dark") solid 4px;
+        border-radius: 8px;
+    }
+
+    &-button{
+        display: none;
+    }
+
+    &-corner {
+        background-color: map.get($palette, "default-dark");
+    }
+}
+
+// DEFAULT BLOCK STYLES
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+body {
+    background-color: map.get($palette, "default");
+    @include text(1rem);
+    color: map.get($palette, "on-default");
+}
+
+img, svg, video  {
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    max-width: 100%;
+    background-color: map.get($palette, "default");
+}
+
+details {
+    summary {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        :last-child {
+            position: relative;
+            right: 0.25em;
+        }
+    }
+    &[open]{
+        summary :last-child{
+            position: relative;
+            right: 0.25em;
+            transform: rotate(180deg);
+        }
+    }
+}
+
+// BUTTON STYLES
+
+@mixin button($size: 1em, $color: map.get($palette, "default-light")){
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5em;
+    border: 0;
+    border-radius: 6px;
+    background-color: $color;
+    color: contrast($color);
+    font-family: "Open Sans";
+    font-size: $size;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    cursor: pointer;
+
+    * { 
+        background-color: transparent; 
+    }
+
+    a{
+        color: contrast($color);
+        text-decoration: none !important;
+    }
+
+    :last-child{ 
+        margin-left: auto; 
+    }
+
+    &:hover, &:focus-visible {
+        outline: 0.1em solid map.get($palette, "accent");
+    }
+}
+
+button {
+    @include button();
+
+    &.raised {
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+
+        &--primary{
+            @extend .raised;
+            background-color: map.get($primary, "primary-medium");
+
+            &:hover, &:focus-visible {
+                transition: 250ms;
+                transform: scale(1.05);
+                background-color: color.scale(map.get($primary, "primary-light"), $lightness: 5%);
+            }
+        }
+
+        &:hover, &:focus-visible {
+            transition: 250ms;
+            transform: scale(1.05);
+            background-color: color.scale(map.get($default, "default-light"), $lightness: 5%);
+        }
+    }
+}
+
+// TAB STYLES
+
+[role=tablist]{
+
+}
+
+[role=tab]{
+
+}
+
+[role=tabpanel] {
+
+}
+
+// INPUT STYLES
