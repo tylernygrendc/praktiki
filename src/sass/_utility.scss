@@ -213,16 +213,27 @@ button {
 }
 
 // TAB STYLES
+.tabs{
 
-[role=tablist]{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 54px 1fr;
 
-    [role=tab]{
+    [role=tablist]{
 
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25em;
+
+        [role=tab]{
+            height: 100%;
+        }
     }
-}
 
-[role=tabpanel] {
-    
+    [role=tabpanel] {
+        
+    }
 }
 
 // INPUT STYLES
