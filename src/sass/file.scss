@@ -1,0 +1,105 @@
+
+@use "sass:map";
+@use "sass:color";
+@use "utility";
+
+$menubar: (
+    height: 1.5em,
+    backgroundColor: map.get(utility.$palette, "default-dark"),
+    color: map.get(utility.$palette, "on-default")
+);
+
+$tree: (
+    width: "400px",
+    backgroundColor: map.get(utility.$palette, "default-medium"),
+    color: map.get(utility.$palette, "on-default")
+);
+
+$feed: (
+    width: "400px",
+    backgroundColor: map.get(utility.$palette, "default-medium"),
+    color: map.get(utility.$palette, "on-default")
+);
+
+[role=menubar]{
+
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: map.get($menubar, "height");
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    :first-child{
+        margin-right: auto;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 1em;
+        list-style: none;
+    }
+}
+
+main {
+    position: fixed;
+    inset: map.get($menubar, "height") map.get($feed, "width") 0 map.get($tree, "width");
+}
+
+[role=tree]{
+
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: map.get($tree, "width");
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25em;
+    background-color: map.get($tree, "backgroundColor");
+    color: map.get($tree, "color");
+
+    [role=treeitem]{
+
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 0.5em 1em;
+        border-radius: 0 6px 6px 0;
+        background-color: color.scale(map.get($tree, "backgroundColor"), $lightness: 10%);
+        color: map.get($tree, "color");
+
+        &.profile{
+
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            grid-template-rows: repeat(auto-fit, auto);
+
+            img{
+                border: 2px solid map.get($tree, "color");
+                border-radius: 50%;
+            }
+
+            :last-child{
+                grid-column: span 2;
+            }
+        }
+
+        * {
+            padding: 0 !important;
+            background-color: inherit !important;
+        }
+    }
+}
+
+form{
+    position: absolute;
+    inset: 0 map.get($tools, "width") 0 map.get($tree, "width");
+}
+
+[role=feed]{
+    position: absolute;
+    inset: 0 0 0 auto;
+    height: map.get($feed, "width");
+}
