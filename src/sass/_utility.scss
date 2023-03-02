@@ -123,7 +123,7 @@ img, svg, video  {
     object-fit: cover;
     object-position: center;
     max-width: 100%;
-    background-color: map.get($palette, "default");
+    background-color: map.get($palette, "default-medium");
 }
 
 details {
@@ -147,12 +147,12 @@ details {
 
 // BUTTON STYLES
 
-@mixin button($size: 1em, $color: map.get($palette, "default-light")){
+@mixin button($size: 1em, $color: map.get($palette, "default-medium")){
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0.5em;
-    border: 0;
+    border: 0 solid;
     border-radius: 6px;
     background-color: $color;
     color: contrast($color);
@@ -182,7 +182,7 @@ details {
     }
 
     &:hover, &:focus-visible {
-        outline: 0.1em solid map.get($palette, "accent");
+        outline: 0.1em solid map.get($palette, "accent-medium");
     }
 }
 
@@ -200,7 +200,7 @@ button {
             &:hover, &:focus-visible {
                 transition: 250ms;
                 transform: scale(1.05);
-                background-color: color.scale(map.get($primary, "primary-light"), $lightness: 5%);
+                background-color: color.scale(map.get($primary, "primary-medium"), $lightness: 5%);
             }
         }
 
@@ -209,6 +209,24 @@ button {
             transform: scale(1.05);
             background-color: color.scale(map.get($default, "default-light"), $lightness: 5%);
         }
+    }
+
+    &.icon{
+        border-radius: 50%;
+        padding: 1em;
+    }
+}
+
+[type=button] {
+    @include button();
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+    background-color: map.get($primary, "primary-medium");
+
+    &:hover, &:focus-visible {
+        transition: 250ms;
+        transform: scale(1.05);
+        background-color: color.scale(map.get($primary, "primary-medium"), $lightness: 5%);
     }
 }
 
@@ -221,19 +239,136 @@ button {
 
     [role=tablist]{
 
+        grid-row: 1 / 2;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
         gap: 0.25em;
+        background-color: map.get($palette, "default-medium");
+        color: map.get($palette, "on-default");
 
         [role=tab]{
-            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            background-color: inherit;
+            color: inherit;
+            
+            :last-child{
+                margin-left: auto;
+            }
+
+            &[aria-selected=true]{
+                background-color: map.get($palette, "default-medium");
+            }
         }
     }
 
     [role=tabpanel] {
-        
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1em;
+        gap: 0.25em;
+        background-color: map.get($palette, "default-medium");
+        color: map.get($palette, "on-default");
     }
 }
 
 // INPUT STYLES
+
+@mixin input($size: 1em, $color: map.get($palette, "default-light")) {
+    display: inline-block;
+    border: 0 solid;
+    border-radius: 6px;
+    background-color: $color;
+    padding: 0.25em;
+    color: contrast($color);
+    font-family: "Open Sans";
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+    line-height: 1.5;
+    cursor: text;
+
+    :hover {
+        background-color: color.scale($color, $lightness: 5%);
+    }
+
+    :focus-visible{
+        outline: 0.1em solid map.get($palette, "secondary-medium");
+    }
+}
+
+input{
+    @include input();
+}
+
+textarea {
+    @include input();
+}
+
+div:has(>input):has(>label){
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+fieldset{
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5em;
+    gap: 0.25em;
+    border: 0 solid;
+    border-radius: 6px;
+    background-color: map.get($palette, "default-light");
+    color: map.get($palette, "on-default");
+    font-family: "Open Sans";
+    font-size: $size;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    font-optical-sizing: auto;
+    text-decoration: none;
+    text-transform: none;
+    text-shadow: none;
+    letter-spacing: 0;
+
+    div {
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.25em;
+        border: 0 solid;
+        border-radius: 6px;
+
+        &:hover {
+            background-color: map.get($palette, "default-medium");
+        }
+
+        &:has(:checked){
+            background-color: map.get($palette, "default-medium");
+            color: map.get($palette, "primary-light");
+        }
+
+        input {
+            width: 1.5em;  
+            height: 1.5em;  
+            accent-color: map.get($palette, "secondary-light");
+        }
+
+        :last-child {
+            margin-left: auto;
+        }
+    }
+}
