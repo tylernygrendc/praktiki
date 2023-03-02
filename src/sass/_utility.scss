@@ -221,17 +221,34 @@ button {
 
     [role=tablist]{
 
+        grid-row: 1 / 2;
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
         gap: 0.25em;
 
         [role=tab]{
-            height: 100%;
+
+            background-color: map.get($palette, "default-dark");
+            color: map.get($palette, "on-default");
+
+            &[aria-selected=true]{
+                background-color: map.get($palette, "default-medium");
+                color: map.get($palette, "on-default");
+            }
         }
+
+
     }
 
     [role=tabpanel] {
+
+        grid-row: 2 / 3;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1em;
+        gap: 0.25em;
         
     }
 }
