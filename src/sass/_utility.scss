@@ -372,3 +372,36 @@ fieldset{
         }
     }
 }
+
+.datePicker {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em;
+    gap: 0.25em;
+
+    .controls{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25em;
+
+        :first-child{
+            font-weight: 700;
+            margin-right: auto;
+        }
+    }
+    
+    .calendar{
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        grid-template-rows: repeat(7, auto);
+        gap: 2px;
+    }
+
+    [type=reset]{
+        width: 100%;    
+    }
+}

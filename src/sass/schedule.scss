@@ -9,13 +9,19 @@ $menubar: (
     color: map.get(utility.$palette, "on-default")
 );
 
+$feed: (
+    width: 400px,
+    backgroundColor: map.get(utility.$palette, "default-dark"),
+    color: map.get(utility.$palette, "on-default")
+);
+
 [role=menubar]{
 
     position: fixed;
     inset: 0 0 auto 0;
     height: map.get($menubar, "height");
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     :first-child{
@@ -31,9 +37,25 @@ $menubar: (
     }
 }
 
-main {
-    display: grid;
-    grid-template-rows: 54px repeat(288, 0.5em);
-    grid-template-columns: repeat(25, 20ch);
+[role=feed]{
+    position: fixed;
+    inset: map.get($menubar, "height") auto 0 0;
+    width: map.get($feed, "width");
+}
 
+@mixin agenda($columns: 7){
+    
+}
+
+.agenda{
+    position: fixed;
+    inset: map.get($menubar, "height") 0 0 map.get($feed, "width");
+
+    &--day{
+        
+    }
+
+    &--week{
+
+    }
 }

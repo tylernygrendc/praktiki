@@ -27,7 +27,7 @@ $feed: (
     inset: 0 0 auto 0;
     height: map.get($menubar, "height");
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     :first-child{
