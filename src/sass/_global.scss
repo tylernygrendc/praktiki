@@ -1,0 +1,84 @@
+
+@use "sass:map";
+@use "sass:color";
+@use "utility";
+
+$menubar: (
+    height: 2rem,
+    backgroundColor: map.get(utility.$palette, "default-dark"),
+    color: map.get(utility.$palette, "on-default"),
+    fontSize: 1rem
+);
+
+[role=menubar]{
+
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: map.get($menubar, "height");
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 8px;
+    font-size: 1rem;
+
+    :first-child{
+        margin-right: auto;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 1em;
+        list-style: none;
+    }
+
+    [role=progressbar]{
+
+        @keyframes progress {
+            0% { left: 0%; right: 100%; }
+            50%{ left: 0%; right: 0%; }
+            100%{ left: 100%; right: 0%; }
+    
+        }
+
+        z-index: 10;
+        position: absolute;
+        animation: progress 1s ease-in-out infinite;
+
+    }
+}
+
+main {
+    position: fixed;
+    inset: map.get($menubar, "height") 0 0 0;
+}
+
+[role=alert]{
+    position: fixed;
+    inset: calc(map.get($menubar, "height") + 0.5em) 0.5em auto auto;
+}
+
+[role=dialog]{
+    position: fixed;
+    
+}
+
+.actions {
+    z-index: 10;
+    position: absolute;
+    inset: auto 1rem 1rem auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+
+    > * {
+        padding: 0.5em;
+        border-radius: 50%;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    :first-child{
+        @include utility.button(map.get(utility.$palette, "primary-medium"));
+    }
+}

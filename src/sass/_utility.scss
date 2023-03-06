@@ -147,7 +147,7 @@ details {
 
 // BUTTON STYLES
 
-@mixin button($size: 1em, $color: map.get($palette, "default-medium")){
+@mixin button($color: map.get($palette, "default-medium"),  $size: 1em){
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -195,19 +195,19 @@ button {
 
         &--primary{
             @extend .raised;
-            background-color: map.get($primary, "primary-medium");
+            background-color: map.get($palette, "primary-medium");
 
             &:hover, &:focus-visible {
                 transition: 250ms;
                 transform: scale(1.05);
-                background-color: color.scale(map.get($primary, "primary-medium"), $lightness: 5%);
+                background-color: color.scale(map.get($palette, "primary-medium"), $lightness: 5%);
             }
         }
 
         &:hover, &:focus-visible {
             transition: 250ms;
             transform: scale(1.05);
-            background-color: color.scale(map.get($default, "default-light"), $lightness: 5%);
+            background-color: color.scale(map.get($palette, "default-light"), $lightness: 5%);
         }
     }
 
@@ -221,12 +221,12 @@ button {
     @include button();
     text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
     box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    background-color: map.get($primary, "primary-medium");
+    background-color: map.get($palette, "primary-medium");
 
     &:hover, &:focus-visible {
         transition: 250ms;
         transform: scale(1.05);
-        background-color: color.scale(map.get($primary, "primary-medium"), $lightness: 5%);
+        background-color: color.scale(map.get($palette, "primary-medium"), $lightness: 5%);
     }
 }
 
@@ -335,7 +335,7 @@ fieldset{
     background-color: map.get($palette, "default-light");
     color: map.get($palette, "on-default");
     font-family: "Open Sans";
-    font-size: $size;
+    font-size: 1em;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -372,5 +372,38 @@ fieldset{
         :last-child {
             margin-left: auto;
         }
+    }
+}
+
+.datePicker {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em;
+    gap: 0.25em;
+
+    .controls{
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.25em;
+
+        :first-child{
+            font-weight: 700;
+            margin-right: auto;
+        }
+    }
+
+    .calendar{
+        display: grid;
+        grid-template-columns: repeat(7, auto);
+        grid-template-rows: repeat(7, auto);
+        gap: 2px;
+    }
+
+    [type=reset]{
+        width: 100%;    
     }
 }

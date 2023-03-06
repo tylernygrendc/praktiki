@@ -2,12 +2,7 @@
 @use "sass:map";
 @use "sass:color";
 @use "utility";
-
-$menubar: (
-    height: 1.5em,
-    backgroundColor: map.get(utility.$palette, "default-dark"),
-    color: map.get(utility.$palette, "on-default")
-);
+@use "global";
 
 $tree: (
     width: "400px",
@@ -20,33 +15,6 @@ $feed: (
     backgroundColor: map.get(utility.$palette, "default-medium"),
     color: map.get(utility.$palette, "on-default")
 );
-
-[role=menubar]{
-
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: map.get($menubar, "height");
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    :first-child{
-        margin-right: auto;
-    }
-
-    ul{
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        gap: 1em;
-        list-style: none;
-    }
-}
-
-main {
-    position: fixed;
-    inset: map.get($menubar, "height") map.get($feed, "width") 0 map.get($tree, "width");
-}
 
 [role=tree]{
 
@@ -95,7 +63,7 @@ main {
 
 form{
     position: absolute;
-    inset: 0 map.get($tools, "width") 0 map.get($tree, "width");
+    inset: 0 map.get($feed, "width") 0 map.get($tree, "width");
 }
 
 [role=feed]{
