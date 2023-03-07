@@ -54,18 +54,67 @@ main {
     inset: map.get($menubar, "height") 0 0 0;
 }
 
-[role=alert]{
+.notifications{
     position: fixed;
     inset: calc(map.get($menubar, "height") + 0.5em) 0.5em auto auto;
+
+    > div {
+        position: relative;
+        padding: 1rem;
+
+        .icon {
+            position: absolute;
+            inset: 0.25rem 0.25rem auto auto;
+            font-size: 0.5rem;
+        }
+
+        :nth-child(2n){
+
+        }
+
+        :nth-child(2n+1){
+
+        }
+
+        :nth-child(3n){
+            
+        }
+    }
 }
 
 [role=dialog]{
+    z-index: 20;
     position: fixed;
-    
+    inset: 40% auto auto 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: auto;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1em;
+    gap: 0.5em;
+
+    p{
+        max-height: 50vh;
+    }
+
+    >:has(button, [type=button]) {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-end;
+        gap: 0.25em;
+    }
+
 }
 
 .scrim {
-    
+    z-index: 15;
+    position: fixed;
+    inset: 0;
+    background-color: black;
+    opacity: 20%;
 }
 
 .actions {
