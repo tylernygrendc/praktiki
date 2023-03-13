@@ -55,22 +55,30 @@ main {
 }
 
 .notifications{
+    z-index: 20;
     position: fixed;
-    inset: calc(map.get($menubar, "height") + 0.5em) 0.5em auto auto;
-
+    inset: map.get($menubar, "height") 0 auto auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5em;
+    gap: 0.25em;
+    font-size: 0.75rem;
+    
     > div {
         position: relative;
-        padding: 1rem;
+        inset: 0 0 auto 0;
+        padding: 1em;
 
-        .icon {
+        > .icon {
             position: absolute;
-            inset: 0.25rem 0.25rem auto auto;
-            font-size: 0.5rem;
+            inset: 0.25em 0.25em auto auto;
+            font-size: 0.5em;
         }
     }
 }
 
-[role=dialog]{
+dialog {
     z-index: 20;
     position: fixed;
     inset: 40% auto auto 50%;
@@ -83,26 +91,33 @@ main {
     align-items: stretch;
     padding: 1em;
     gap: 0.5em;
+    font-size: 1rem;
+
+    p:first-of-type {
+       font-size: 1em;
+       font-weight: 700;
+    }
 
     p{
+        font-size: 0.8em;
         max-height: 50vh;
+        overflow-y: scroll;
     }
 
-    >:has(button, [type=button]) {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: flex-end;
-        gap: 0.25em;
+    > .icon {
+        position: absolute;
+        inset: 0.25rem 0.25rem auto auto;
+        font-size: 0.5rem;
     }
 
-}
+    .scrim {
+        z-index: 15;
+        position: fixed;
+        inset: 0;
+        background-color: black;
+        opacity: 20%;
+    }
 
-.scrim {
-    z-index: 15;
-    position: fixed;
-    inset: 0;
-    background-color: black;
-    opacity: 20%;
 }
 
 .actions {
