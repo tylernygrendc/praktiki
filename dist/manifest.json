@@ -1,9 +1,9 @@
 {
-    "name": "Starter",
-    "short_name": "Starter",
+    "name": "Praktiki | Web-Based Practice Management for Chiropractors",
+    "short_name": "Praktiki Software",
     "icons": [{
-        "src": "google-touch-icon.png",
-        "sizes": "512x512"
+        "src": "/assets/android-touch-icon.png",
+        "size": "512x512"
     }],
     "background_color": "#ffffff",
     "theme_color": "#ffffff",

@@ -3,11 +3,14 @@ doctype html
 html(lang="en")
     head
 
+        - const description = '';
+
         //- meta tags
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(name="theme-color" content="#ffffff")
-        meta(name="description", content="")
+        meta(name="theme-color", media="(prefers-color-scheme: light)", content="#FFF")
+        meta(name="theme-color", media="(prefers-color-scheme: dark)", content="#000")
+        meta(name="description", content=`${description}`)
     
         //- link tags
 
@@ -15,8 +18,10 @@ html(lang="en")
         - const css = "../../css"
 
         link(rel="icon", href=`${icons}/favicon.svg`)
-        link(media="screen and (prefers-color-scheme: light)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#000")
-        link(media="screen and (prefers-color-scheme: light)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#FFF")
+        link(media="(prefers-color-scheme: light)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#000")
+        link(media="(prefers-color-scheme: dark)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#FFF")
         link(rel="apple-touch-icon" href=`${icons}/apple-touch-icon.png`)
         link(rel="stylesheet", href=`${css}/${page}.css`)
+
+
     body 
