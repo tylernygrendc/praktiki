@@ -16,7 +16,7 @@ $feed: (
     color: map.get(utility.$palette, "on-default")
 );
 
-[role=tree]{
+#fileTree{
 
     position: absolute;
     inset: 0 auto 0 0;
@@ -61,12 +61,12 @@ $feed: (
     }
 }
 
-form{
+#note{
     position: absolute;
     inset: 0 map.get($feed, "width") 0 map.get($tree, "width");
 }
 
-[role=feed]{
+#shortcuts{
     position: absolute;
     inset: 0 0 0 auto;
     height: map.get($feed, "width");

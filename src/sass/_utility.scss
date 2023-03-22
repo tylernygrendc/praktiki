@@ -8,14 +8,14 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
-    src: url(../font/open-sans.ttf);
+    src: url(/font/open-sans.ttf);
 }
 
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
     font-weight: 400;
-    src: url(../font/material-icons.ttf);
+    src: url(/font/material-icons.ttf);
 }
 
 @mixin text($size) {

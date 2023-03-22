@@ -2,13 +2,13 @@
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: url(../font/open-sans.ttf);
+  src: url(/font/open-sans.ttf);
 }
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(../font/material-icons.ttf);
+  src: url(/font/material-icons.ttf);
 }
 html {
   scroll-behavior: smooth;
@@ -113,7 +113,7 @@ button :last-child {
   margin-left: auto;
 }
 button:hover, button:focus-visible {
-  outline: 0.1em solid;
+  outline: 0.1em solid #e2b736;
 }
 button.raised, button.raised--primary {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
@@ -172,7 +172,7 @@ button.icon {
   margin-left: auto;
 }
 [type=button]:hover, [type=button]:focus-visible {
-  outline: 0.1em solid;
+  outline: 0.1em solid #e2b736;
 }
 [type=button]:hover, [type=button]:focus-visible {
   transition: 250ms;
@@ -348,287 +348,6 @@ fieldset div :last-child {
 }
 .datePicker [type=reset] {
   width: 100%;
-}
-
-[role=menubar] {
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 4px 8px;
-  font-size: 1rem;
-}
-[role=menubar] :first-child {
-  margin-right: auto;
-}
-[role=menubar] ul {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 1em;
-  list-style: none;
-}
-[role=menubar] [role=progressbar] {
-  z-index: 10;
-  position: absolute;
-  animation: progress 1s ease-in-out infinite;
-}
-@keyframes progress {
-  0% {
-    left: 0%;
-    right: 100%;
-  }
-  50% {
-    left: 0%;
-    right: 0%;
-  }
-  100% {
-    left: 100%;
-    right: 0%;
-  }
-}
-
-main {
-  position: fixed;
-  inset: 2rem 0 0 0;
-}
-
-[role=alert] {
-  position: fixed;
-  inset: calc(2rem + 0.5em) 0.5em auto auto;
-}
-
-[role=dialog] {
-  position: fixed;
-}
-
-.actions {
-  z-index: 10;
-  position: absolute;
-  inset: auto 1rem 1rem auto;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-}
-.actions > * {
-  padding: 0.5em;
-  border-radius: 50%;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-}
-.actions :first-child {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0.5em;
-  border: 0 solid;
-  border-radius: 6px;
-  background-color: #2d5345;
-  color: #FFF;
-  font-family: "Open Sans";
-  font-size: 1em;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
-  text-decoration: none;
-  text-transform: none;
-  text-shadow: none;
-  letter-spacing: 0;
-  cursor: pointer;
-}
-.actions :first-child * {
-  background-color: transparent;
-}
-.actions :first-child a {
-  color: #FFF;
-  text-decoration: none !important;
-}
-.actions :first-child :last-child {
-  margin-left: auto;
-}
-.actions :first-child:hover, .actions :first-child:focus-visible {
-  outline: 0.1em solid;
-}
-
-[role=feed] {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 400px;
-}
-
-.agenda {
-  position: absolute;
-  inset: 0 0 0 400px;
-}
-.agenda--day {
-  font-size: 0.8rem;
-  background-color: #222;
-  color: #FFF;
-}
-.agenda--day .head {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
-  justify-items: flex-start;
-  padding: 0.5em;
-  gap: 0.5em;
-}
-.agenda--day .body {
-  position: absolute;
-  inset: 100px 0 0 0;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  overflow-y: scroll;
-}
-.agenda--day .body > div {
-  height: 288rem;
-  border-right: 1px solid #1f1f1f;
-}
-.agenda--day .body > div .event {
-  position: absolute;
-  inset: auto 10% auto 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0.5em;
-  gap: 0.25em;
-  border: 0 solid;
-  border-radius: 4px;
-  background-color: #383838;
-  color: #FFF;
-  font-size: 0.8em;
-}
-.agenda--twoDay {
-  font-size: 0.8rem;
-  background-color: #222;
-  color: #FFF;
-}
-.agenda--twoDay .head {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
-  justify-items: flex-start;
-  padding: 0.5em;
-  gap: 0.5em;
-}
-.agenda--twoDay .body {
-  position: absolute;
-  inset: 100px 0 0 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  overflow-y: scroll;
-}
-.agenda--twoDay .body > div {
-  height: 288rem;
-  border-right: 1px solid #1f1f1f;
-}
-.agenda--twoDay .body > div .event {
-  position: absolute;
-  inset: auto 10% auto 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0.5em;
-  gap: 0.25em;
-  border: 0 solid;
-  border-radius: 4px;
-  background-color: #383838;
-  color: #FFF;
-  font-size: 0.8em;
-}
-.agenda--fiveDay {
-  font-size: 0.8rem;
-  background-color: #222;
-  color: #FFF;
-}
-.agenda--fiveDay .head {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
-  justify-items: flex-start;
-  padding: 0.5em;
-  gap: 0.5em;
-}
-.agenda--fiveDay .body {
-  position: absolute;
-  inset: 100px 0 0 0;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  overflow-y: scroll;
-}
-.agenda--fiveDay .body > div {
-  height: 288rem;
-  border-right: 1px solid #1f1f1f;
-}
-.agenda--fiveDay .body > div .event {
-  position: absolute;
-  inset: auto 10% auto 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0.5em;
-  gap: 0.25em;
-  border: 0 solid;
-  border-radius: 4px;
-  background-color: #383838;
-  color: #FFF;
-  font-size: 0.8em;
-}
-.agenda--week {
-  font-size: 0.8rem;
-  background-color: #222;
-  color: #FFF;
-}
-.agenda--week .head {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: auto;
-  align-items: center;
-  justify-items: flex-start;
-  padding: 0.5em;
-  gap: 0.5em;
-}
-.agenda--week .body {
-  position: absolute;
-  inset: 100px 0 0 0;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  overflow-y: scroll;
-}
-.agenda--week .body > div {
-  height: 288rem;
-  border-right: 1px solid #1f1f1f;
-}
-.agenda--week .body > div .event {
-  position: absolute;
-  inset: auto 10% auto 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0.5em;
-  gap: 0.25em;
-  border: 0 solid;
-  border-radius: 4px;
-  background-color: #383838;
-  color: #FFF;
-  font-size: 0.8em;
 }
 
 form {

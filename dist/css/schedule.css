@@ -2,13 +2,13 @@
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: url(../font/open-sans.ttf);
+  src: url(/font/open-sans.ttf);
 }
 @font-face {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(../font/material-icons.ttf);
+  src: url(/font/material-icons.ttf);
 }
 html {
   scroll-behavior: smooth;
@@ -113,7 +113,7 @@ button :last-child {
   margin-left: auto;
 }
 button:hover, button:focus-visible {
-  outline: 0.1em solid;
+  outline: 0.1em solid #e2b736;
 }
 button.raised, button.raised--primary {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
@@ -172,7 +172,7 @@ button.icon {
   margin-left: auto;
 }
 [type=button]:hover, [type=button]:focus-visible {
-  outline: 0.1em solid;
+  outline: 0.1em solid #e2b736;
 }
 [type=button]:hover, [type=button]:focus-visible {
   transition: 250ms;
@@ -358,19 +358,15 @@ fieldset div :last-child {
   flex-direction: row;
   align-items: center;
   padding: 4px 8px;
+  gap: 1em;
+  list-style: none;
   font-size: 1rem;
 }
 [role=menubar] :first-child {
   margin-right: auto;
 }
-[role=menubar] ul {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 1em;
-  list-style: none;
-}
-[role=menubar] [role=progressbar] {
+
+[role=progressbar] {
   z-index: 10;
   position: absolute;
   animation: progress 1s ease-in-out infinite;
@@ -395,13 +391,64 @@ main {
   inset: 2rem 0 0 0;
 }
 
-[role=alert] {
+#notifications {
+  z-index: 20;
   position: fixed;
-  inset: calc(2rem + 0.5em) 0.5em auto auto;
+  inset: 2rem 0 auto auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5em;
+  gap: 0.25em;
+  font-size: 0.75rem;
+  list-style: none;
+}
+#notifications > li {
+  position: relative;
+  inset: 0 0 auto 0;
+  padding: 1em;
+}
+#notifications > li > .icon {
+  position: absolute;
+  inset: 0.25em 0.25em auto auto;
+  font-size: 0.5em;
 }
 
-[role=dialog] {
+dialog {
+  z-index: 20;
   position: fixed;
+  inset: 40% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1em;
+  gap: 0.5em;
+  font-size: 1rem;
+}
+dialog p:first-of-type {
+  font-size: 1em;
+  font-weight: 700;
+}
+dialog p {
+  font-size: 0.8em;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+dialog > .icon {
+  position: absolute;
+  inset: 0.25rem 0.25rem auto auto;
+  font-size: 0.5rem;
+}
+dialog .scrim {
+  z-index: 15;
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 20%;
 }
 
 .actions {
@@ -449,7 +496,7 @@ main {
   margin-left: auto;
 }
 .actions :first-child:hover, .actions :first-child:focus-visible {
-  outline: 0.1em solid;
+  outline: 0.1em solid #e2b736;
 }
 
 [role=feed] {

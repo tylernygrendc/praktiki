@@ -19,34 +19,28 @@ $menubar: (
     flex-direction: row;
     align-items: center;
     padding: 4px 8px;
+    gap: 1em;
+    list-style: none;
     font-size: 1rem;
 
     :first-child{
         margin-right: auto;
     }
+}
 
-    ul{
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: center;
-        gap: 1em;
-        list-style: none;
-    }
+[role=progressbar]{
 
-    [role=progressbar]{
-
-        @keyframes progress {
-            0% { left: 0%; right: 100%; }
-            50%{ left: 0%; right: 0%; }
-            100%{ left: 100%; right: 0%; }
-    
-        }
-
-        z-index: 10;
-        position: absolute;
-        animation: progress 1s ease-in-out infinite;
+    @keyframes progress {
+        0% { left: 0%; right: 100%; }
+        50%{ left: 0%; right: 0%; }
+        100%{ left: 100%; right: 0%; }
 
     }
+
+    z-index: 10;
+    position: absolute;
+    animation: progress 1s ease-in-out infinite;
+
 }
 
 main {
@@ -54,7 +48,7 @@ main {
     inset: map.get($menubar, "height") 0 0 0;
 }
 
-.notifications{
+#notifications{
     z-index: 20;
     position: fixed;
     inset: map.get($menubar, "height") 0 auto auto;
@@ -64,8 +58,9 @@ main {
     padding: 0.5em;
     gap: 0.25em;
     font-size: 0.75rem;
+    list-style: none;
     
-    > div {
+    > li {
         position: relative;
         inset: 0 0 auto 0;
         padding: 1em;

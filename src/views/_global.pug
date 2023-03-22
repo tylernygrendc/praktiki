@@ -3,25 +3,39 @@ doctype html
 html(lang="en")
     head
 
-        - const description = '';
-
-        //- meta tags
+        //- meta
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(name="theme-color", media="(prefers-color-scheme: light)", content="#FFF")
-        meta(name="theme-color", media="(prefers-color-scheme: dark)", content="#000")
-        meta(name="description", content=`${description}`)
+        meta(rel="manifest" href="/manifest.json")
+
+        //- title and description
+
+        - const title = String(page).toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(" ");
+
+        block description
+            title #{ title } | Praktiki Software
+            meta(name="description", content=`${description}`)
     
-        //- link tags
+        //- assets
 
         - const icons = "../../assets/icons";
+
+        block assets
+            link(rel="icon", href=`${icons}/favicon.svg`)
+            link(media="(prefers-color-scheme: light)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#000")
+            link(media="(prefers-color-scheme: dark)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#FFF")
+            link(rel="apple-touch-icon" href=`${icons}/apple-touch-icon.png`)
+
+        //- styles
+
         - const css = "../../css"
 
-        link(rel="icon", href=`${icons}/favicon.svg`)
-        link(media="(prefers-color-scheme: light)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#000")
-        link(media="(prefers-color-scheme: dark)" rel="mask-icon", href=`${icons}/mask-icon.svg`, color="#FFF")
-        link(rel="apple-touch-icon" href=`${icons}/apple-touch-icon.png`)
-        link(rel="stylesheet", href=`${css}/${page}.css`)
+        block css
+            link(rel="stylesheet", href=`${css}/${page}.css`)
 
+    body: block body
+        ul(role="menubar", aria-label="app menu")
 
-    body 
+        main: block main
+
+        ul#notifications(role="feed", aria-label="notification feed")
