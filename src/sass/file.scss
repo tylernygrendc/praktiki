@@ -4,14 +4,8 @@
 @use "utility";
 @use "global";
 
-$tree: (
-    width: "400px",
-    backgroundColor: map.get(utility.$palette, "default-medium"),
-    color: map.get(utility.$palette, "on-default")
-);
-
-$feed: (
-    width: "400px",
+$fileTree: (
+    width: 400px,
     backgroundColor: map.get(utility.$palette, "default-medium"),
     color: map.get(utility.$palette, "on-default")
 );
@@ -20,13 +14,13 @@ $feed: (
 
     position: absolute;
     inset: 0 auto 0 0;
-    width: map.get($tree, "width");
+    width: map.get($fileTree, "width");
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0.25em;
-    background-color: map.get($tree, "backgroundColor");
-    color: map.get($tree, "color");
+    background-color: map.get($fileTree, "backgroundColor");
+    color: map.get($fileTree, "color");
 
     [role=treeitem]{
 
@@ -35,39 +29,33 @@ $feed: (
         height: auto;
         padding: 0.5em 1em;
         border-radius: 0 6px 6px 0;
-        background-color: color.scale(map.get($tree, "backgroundColor"), $lightness: 10%);
-        color: map.get($tree, "color");
-
-        &.profile{
-
-            display: grid;
-            grid-template-columns: 54px 1fr;
-            grid-template-rows: repeat(auto-fit, auto);
-
-            img{
-                border: 2px solid map.get($tree, "color");
-                border-radius: 50%;
-            }
-
-            :last-child{
-                grid-column: span 2;
-            }
-        }
+        background-color: color.scale(map.get($fileTree, "backgroundColor"), $lightness: 10%);
+        color: map.get($fileTree, "color");
 
         * {
             padding: 0 !important;
             background-color: inherit !important;
         }
     }
+
+    .profile{
+
+        display: grid;
+        grid-template-columns: 54px 1fr;
+        grid-template-rows: repeat(auto-fit, auto);
+
+        img{
+            border: 2px solid map.get($fileTree, "color");
+            border-radius: 50%;
+        }
+
+        :last-child{
+            grid-column: span 2;
+        }
+    }
 }
 
-#note{
+#note{ 
     position: absolute;
-    inset: 0 map.get($feed, "width") 0 map.get($tree, "width");
-}
-
-#shortcuts{
-    position: absolute;
-    inset: 0 0 0 auto;
-    height: map.get($feed, "width");
+    inset: 0 0 0 map.get($fileTree, "width");
 }

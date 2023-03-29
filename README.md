@@ -139,7 +139,7 @@ Receipts must be available in both 8.500 and 3.125 inch widths for printing. Com
 
 # Approach
 
-Praktiki is a dynamic, multi-page application. It will be built with standard javascript bundled with webpack. Styles will be implemented with css, utilizing the @import rule for modular construction. The login/product page will consist of static html (for performance), while all other pages will be generated dynamically with pug and express running on Cloud Functions. Authentication will be managed with Firebase Auth. Data will be managed with Firestore and Cloud Storage.
+Praktiki is a dynamic, multi-page application. It will be built with javascript and bundled with webpack. Styles will be implemented with scss, utilizing the @import rule for modular construction. Pages will be generated dynamically with pug and express running on Cloud Functions. Authentication will be managed with Firebase. Data will be managed with Firestore and Cloud Storage.
 
 ## 1. Task List
 

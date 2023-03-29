@@ -10,65 +10,95 @@ $menubar: (
     fontSize: 1rem
 );
 
-[role=menubar]{
+$shortcut: (
+    width: 400px,
+    backgroundColor: map.get(utility.$palette, "default-medium"),
+    color: map.get(utility.$palette, "on-default")
+);
 
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: map.get($menubar, "height");
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 4px 8px;
-    gap: 1em;
-    list-style: none;
-    font-size: 1rem;
+$notifications: (
+    width: 200px,
+    backgroundColor: map.get(utility.$palette, "default-medium"),
+    color: map.get(utility.$palette, "on-default")
+);
 
-    :first-child{
-        margin-right: auto;
-    }
+@keyframes progressbar {
+    0% { left: 0%; right: 100%; }
+    50%{ left: 0%; right: 0%; }
+    100%{ left: 100%; right: 0%; }
+
 }
 
 [role=progressbar]{
 
-    @keyframes progress {
-        0% { left: 0%; right: 100%; }
-        50%{ left: 0%; right: 0%; }
-        100%{ left: 100%; right: 0%; }
-
-    }
-
     z-index: 10;
     position: absolute;
-    animation: progress 1s ease-in-out infinite;
+    animation: progressbar 1s ease-in-out infinite;
 
 }
 
-main {
+#menubar {
+
+    position: fixed;
+    inset: 0 0 auto 0;
+
+    ul{
+
+        width: 100%;
+        height: map.get($menubar, "height");
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 4px 8px;
+        gap: 1em;
+        list-style: none;
+        font-size: 1rem;
+
+        :first-child{
+            margin-right: auto;
+        }
+    }
+}
+
+article {
+
     position: fixed;
     inset: map.get($menubar, "height") 0 0 0;
-}
 
-#notifications{
-    z-index: 20;
-    position: fixed;
-    inset: map.get($menubar, "height") 0 auto auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.5em;
-    gap: 0.25em;
-    font-size: 0.75rem;
-    list-style: none;
+    main {
     
-    > li {
-        position: relative;
-        inset: 0 0 auto 0;
-        padding: 1em;
-
-        > .icon {
+        position: absolute;
+        inset: 0 calc(map.get($shortcut, "width") + map.get($notifications, "width")) 0 0;
+    
+        #shortcut{
             position: absolute;
-            inset: 0.25em 0.25em auto auto;
-            font-size: 0.5em;
+            inset: 0 map.get($notifications, "width") 0 ;
+            height: map.get($shortcut, "width");
+        }
+        
+        #notifications{
+            z-index: 20;
+            position: absolute;
+            inset: 0 0 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding: 0.5em;
+            gap: 0.25em;
+            font-size: 0.75rem;
+            list-style: none;
+            
+            > li {
+                position: relative;
+                inset: 0 0 auto 0;
+                padding: 1em;
+        
+                > .icon {
+                    position: absolute;
+                    inset: 0.25em 0.25em auto auto;
+                    font-size: 0.5em;
+                }
+            }
         }
     }
 }

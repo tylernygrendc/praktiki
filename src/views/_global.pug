@@ -34,8 +34,8 @@ html(lang="en")
             link(rel="stylesheet", href=`${css}/${page}.css`)
 
     body: block body
-        ul(role="menubar", aria-label="app menu")
-
-        main: block main
-
-        ul#notifications(role="feed", aria-label="notification feed")
+        nav#menubar: ul(role="menubar", aria-label="app menu")
+        article
+            ul#notifications(role="feed", aria-label="notification feed")
+            div#shortcut.tabs(aria-label="shortcut tool")
+            main: block main

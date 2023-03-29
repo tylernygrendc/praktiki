@@ -350,28 +350,7 @@ fieldset div :last-child {
   width: 100%;
 }
 
-[role=menubar] {
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 4px 8px;
-  gap: 1em;
-  list-style: none;
-  font-size: 1rem;
-}
-[role=menubar] :first-child {
-  margin-right: auto;
-}
-
-[role=progressbar] {
-  z-index: 10;
-  position: absolute;
-  animation: progress 1s ease-in-out infinite;
-}
-@keyframes progress {
+@keyframes progressbar {
   0% {
     left: 0%;
     right: 100%;
@@ -385,16 +364,48 @@ fieldset div :last-child {
     right: 0%;
   }
 }
+[role=progressbar] {
+  z-index: 10;
+  position: absolute;
+  animation: progressbar 1s ease-in-out infinite;
+}
 
-main {
+#menubar {
+  position: fixed;
+  inset: 0 0 auto 0;
+}
+#menubar ul {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px 8px;
+  gap: 1em;
+  list-style: none;
+  font-size: 1rem;
+}
+#menubar ul :first-child {
+  margin-right: auto;
+}
+
+article {
   position: fixed;
   inset: 2rem 0 0 0;
 }
-
-#notifications {
+article main {
+  position: absolute;
+  inset: 0 600px 0 0;
+}
+article main #shortcut {
+  position: absolute;
+  inset: 0 200px 0;
+  height: 400px;
+}
+article main #notifications {
   z-index: 20;
-  position: fixed;
-  inset: 2rem 0 auto auto;
+  position: absolute;
+  inset: 0 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -403,12 +414,12 @@ main {
   font-size: 0.75rem;
   list-style: none;
 }
-#notifications > li {
+article main #notifications > li {
   position: relative;
   inset: 0 0 auto 0;
   padding: 1em;
 }
-#notifications > li > .icon {
+article main #notifications > li > .icon {
   position: absolute;
   inset: 0.25em 0.25em auto auto;
   font-size: 0.5em;
@@ -502,7 +513,7 @@ dialog .scrim {
 #fileTree {
   position: absolute;
   inset: 0 auto 0 0;
-  width: "400px";
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -519,32 +530,26 @@ dialog .scrim {
   background-color: #383838;
   color: #FFF;
 }
-#fileTree [role=treeitem].profile {
-  display: grid;
-  grid-template-columns: 54px 1fr;
-  grid-template-rows: repeat(auto-fit, auto);
-}
-#fileTree [role=treeitem].profile img {
-  border: 2px solid #FFF;
-  border-radius: 50%;
-}
-#fileTree [role=treeitem].profile :last-child {
-  grid-column: span 2;
-}
 #fileTree [role=treeitem] * {
   padding: 0 !important;
   background-color: inherit !important;
 }
+#fileTree .profile {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  grid-template-rows: repeat(auto-fit, auto);
+}
+#fileTree .profile img {
+  border: 2px solid #FFF;
+  border-radius: 50%;
+}
+#fileTree .profile :last-child {
+  grid-column: span 2;
+}
 
 #note {
   position: absolute;
-  inset: 0 "400px" 0 "400px";
-}
-
-#shortcuts {
-  position: absolute;
-  inset: 0 0 0 auto;
-  height: "400px";
+  inset: 0 0 0 400px;
 }
 
 /*# sourceMappingURL=file.css.map */

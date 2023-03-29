@@ -4,18 +4,6 @@
 @use "utility";
 @use "global";
 
-$feed: (
-    width: 400px,
-    backgroundColor: map.get(utility.$palette, "default-dark"),
-    color: map.get(utility.$palette, "on-default")
-);
-
-[role=feed]{
-    position: absolute;
-    inset: 0 auto 0 0;
-    width: map.get($feed, "width");
-}
-
 @mixin agenda($columns: 5){
 
     $interval: 1rem;
@@ -71,23 +59,15 @@ $feed: (
     }
 }
 
-.agenda{
+#agenda{
     position: absolute;
-    inset: 0 0 0 map.get($feed, "width");
+    inset: 0 map.get($feed, "width") 0 0;
 
-    &--day{
-        @include agenda(1);
-    }
-
-    &--twoDay{
+    &.showDays{
         @include agenda(2);
     }
 
-    &--fiveDay{
-        @include agenda(5);
-    }
-
-    &--week{
+    &.showWeek{
         @include agenda(7);
     }
 }
