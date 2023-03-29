@@ -1,5 +1,5 @@
 
-import { getQueryObjectFrom } from "./utility";
+import { applyPreferencesFor, getQueryObjectFrom } from "./utility";
 
 // AUTH
 import { auth, db, storage } from "./firebase";
@@ -32,24 +32,21 @@ onAuthStateChanged(auth, (signedIn) => {
 
 window.addEventListener("load", async () => {
 
-    showProgress(0, `Loading workspace settings...`);
+    enableWorkspace();
 
-    let patientId = getQueryFrom(window.location.search)[patientId];
+    applyPreferencesFor(user);
 
-    let userPreferences = await getDoc(collection(db, "users"), user.uid),
-        patientFile = await getDoc(collection(db, "patients"), patientId);
-
-    if(patientFile.exists()) {
-        showProgress(25, `Loading patient information...`);
-        patientFile = patientFile.data();
-        
-        
-    } else {
-        // prompt user to select patient
-    }
+    getRecordsFor(patient);
 
 });
 
+// TOP LEVEL FUNCTIONS
+
+function getRecordsFor(patient){
+    
+}
+
+// LOW LEVEL FUNCTIONS
 
 
 
