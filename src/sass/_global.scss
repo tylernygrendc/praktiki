@@ -3,104 +3,41 @@
 @use "sass:color";
 @use "utility";
 
-$menubar: (
-    height: 2rem,
+$banner: (
+    height: 0rem,
     backgroundColor: map.get(utility.$palette, "default-dark"),
     color: map.get(utility.$palette, "on-default"),
     fontSize: 1rem
 );
 
 $shortcut: (
-    width: 400px,
-    backgroundColor: map.get(utility.$palette, "default-medium"),
+    width: 250px,
+    backgroundColor: map.get(utility.$palette, "default-dark"),
     color: map.get(utility.$palette, "on-default")
 );
 
-$notifications: (
-    width: 200px,
-    backgroundColor: map.get(utility.$palette, "default-medium"),
-    color: map.get(utility.$palette, "on-default")
-);
-
-@keyframes progressbar {
-    0% { left: 0%; right: 100%; }
-    50%{ left: 0%; right: 0%; }
-    100%{ left: 100%; right: 0%; }
-
-}
-
-[role=progressbar]{
-
-    z-index: 10;
-    position: absolute;
-    animation: progressbar 1s ease-in-out infinite;
-
-}
-
-#menubar {
+#banner {
 
     position: fixed;
     inset: 0 0 auto 0;
+    height: map.get($banner, "height");
+    padding-top: 0.25rem;
+    background-color: map.get($banner, "backgroundColor");
 
-    ul{
-
-        width: 100%;
-        height: map.get($menubar, "height");
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 4px 8px;
-        gap: 1em;
-        list-style: none;
-        font-size: 1rem;
-
-        :first-child{
-            margin-right: auto;
-        }
-    }
 }
 
-article {
-
+#shortcut {
     position: fixed;
-    inset: map.get($menubar, "height") 0 0 0;
+    inset: map.get($banner, "height") 0 0 auto;
+    width: map.get($shortcut, "width");
+    border-left: 1px dotted map.get(utility.$palette, "default-light");
+    background-color: map.get($shortcut, "backgroundColor");
+}
 
-    main {
-    
-        position: absolute;
-        inset: 0 calc(map.get($shortcut, "width") + map.get($notifications, "width")) 0 0;
-    
-        #shortcut{
-            position: absolute;
-            inset: 0 map.get($notifications, "width") 0 ;
-            height: map.get($shortcut, "width");
-        }
-        
-        #notifications{
-            z-index: 20;
-            position: absolute;
-            inset: 0 0 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            padding: 0.5em;
-            gap: 0.25em;
-            font-size: 0.75rem;
-            list-style: none;
-            
-            > li {
-                position: relative;
-                inset: 0 0 auto 0;
-                padding: 1em;
-        
-                > .icon {
-                    position: absolute;
-                    inset: 0.25em 0.25em auto auto;
-                    font-size: 0.5em;
-                }
-            }
-        }
-    }
+main {
+    position: fixed;
+    inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
+    width: auto;
 }
 
 dialog {
@@ -145,7 +82,7 @@ dialog {
 
 }
 
-.actions {
+#fab {
     z-index: 10;
     position: absolute;
     inset: auto 1rem 1rem auto;

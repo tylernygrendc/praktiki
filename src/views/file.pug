@@ -3,8 +3,48 @@ extends _global
 prepend description
     - const description = '';
 
-append body
-    nav#fileTree(role="tree", aria-label="file tree")
-
 append main
-    form#note
+    nav#fileTree
+        form#fileSearch
+            input(type="search", aria-label="file search")
+            button.icon(type="submit") search
+        ul(role="tree", aria-label="file tree")
+
+    form#note.tabs
+        ul(role="tablist")
+            li#subjectiveTab(role="tab", tabindex="0", aria-selected="true", aria-controls="subjectivePanel") Subjective
+            li#objectiveTab(role="tab", tabindex="0", aria-selected="false", aria-controls="objectivePanel") Objective
+            li#assessmentTab(role="tab", tabindex="0", aria-selected="false", aria-controls="assessmentPanel") Assessment
+            li#planTab(role="tab", tabindex="0", aria-selected="false", aria-controls="planPanel") Plan
+        section#subjectivePanel(role="tabpanel", aria-labelledby="subjectiveTab")
+            .input
+                label Problem
+                textarea#problem(name="problem")
+            .input
+                label Site
+                textarea#site(name="site")
+            .input
+                label Onset
+                textarea#onset(name="onset")
+            .input
+                label Palliative Factors
+                textarea#palliative(name="palliative")
+            .input
+                label Provocative Factors
+                textarea#provocative(name="provocative")
+            .input
+                label Trend
+                textarea#trend(name="trend")
+        section#objectivePanel.hidden(role="tabpanel", aria-labelledby="objectiveTab")
+        section#assessmentPanel.hidden(role="tabpanel", aria-labelledby="assessmentTab")
+        section#planPanel.hidden(role="tabpanel", aria-labelledby="planTab")
+
+append shortcut
+    ul(role="tablist")
+        li#examTab.icon(role="tab", tabindex="0", aria-selected="false", aria-controls="examPanel") profile
+        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") folder
+        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") schedule
+        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") task_alt
+        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") assistant
+    section#examPanel(role="tabpanel", tabindex="0", aria-labelledby="examTab")
+    section#assistantPanel(role="tabpanel", tabindex="0", aria-labelledby="assistantTab")

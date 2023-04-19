@@ -33,9 +33,15 @@ html(lang="en")
         block css
             link(rel="stylesheet", href=`${css}/${page}.css`)
 
+        //- scripts
+
+        - const js = "../../js"
+
+        block js
+            script(defer src=`${js}/${page}.js`)
+
     body: block body
-        nav#menubar: ul(role="menubar", aria-label="app menu")
-        article
-            ul#notifications(role="feed", aria-label="notification feed")
-            div#shortcut.tabs(aria-label="shortcut tool")
-            main: block main
+        header#banner(role="banner")
+        aside#shortcut.tabs(aria-label="shortcut tool")
+            block shortcut
+        main: block main
