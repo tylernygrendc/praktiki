@@ -206,9 +206,9 @@ button.icon {
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  padding: 0rem 0.25rem;
+  padding: 0.25rem 0 0 0;
   gap: 0.25rem;
-  background-color: #222;
+  background-color: #111111;
   color: #FFF;
 }
 .tabs [role=tablist] [role=tab] {
@@ -216,9 +216,11 @@ button.icon {
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0.5rem 1rem;
   margin-top: 0.25rem;
-  padding: 0.5rem;
-  border-radius: 4px 4px 0px 0px;
+  margin-bottom: 0.25rem;
+  border-right: 1px solid #434343;
+  border-radius: 0px;
   box-sizing: border-box;
   font-size: 0.85rem;
   text-transform: capitalize;
@@ -226,16 +228,20 @@ button.icon {
   color: #FFF;
   cursor: pointer;
 }
-.tabs [role=tablist] [role=tab] :last-child {
+.tabs [role=tablist] [role=tab] > .icon {
+  flex-grow: 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+.tabs [role=tablist] [role=tab] :nth-child(2) {
   margin-left: auto;
 }
-.tabs [role=tablist] [role=tab][aria-selected=true] {
+.tabs [role=tablist] [role=tab].selected, .tabs [role=tablist] [role=tab][aria-selected=true] {
+  margin: 0;
+  border-radius: 4px 4px 0px 0px;
+  border-right: 1px solid transparent;
   background-color: #222;
-  border: 1px solid #2d5345;
-  border-bottom: 0;
-}
-.tabs [role=tablist] #assistantTab {
-  margin-left: auto;
 }
 .tabs [role=tabpanel] {
   position: absolute;
@@ -388,28 +394,77 @@ fieldset div :last-child {
 }
 
 #banner {
+  display: none;
+  z-index: 8;
   position: fixed;
   inset: 0 0 auto 0;
   height: 0rem;
   padding-top: 0.25rem;
   background-color: #111111;
+  color: #FFF;
 }
 
 #shortcut {
+  z-index: 4;
   position: fixed;
   inset: 0rem 0 0 auto;
   width: 250px;
-  border-left: 1px dotted #434343;
   background-color: #111111;
+  color: #FFF;
+}
+#shortcut [role=tablist] {
+  position: absolute;
+  inset: 0 0.5rem auto 0.75rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0.25rem 0 0 0;
+}
+#shortcut [role=tablist] [role=tab] {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  border-bottom: 1px solid transparent;
+  background-color: inherit;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#shortcut [role=tablist] [role=tab] > .icon {
+  flex-grow: 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+#shortcut [role=tablist] [role=tab].selected, #shortcut [role=tablist] [role=tab][aria-selected=true] {
+  border-bottom: 1px solid #e2b736;
+  color: #e2b736;
+}
+#shortcut [role=tabpanel] {
+  position: absolute;
+  inset: 2rem 0.5rem 0 1rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem;
+  gap: 0.25em;
+  background-color: #111111;
+  color: #FFF;
 }
 
 main {
+  z-index: 0;
   position: fixed;
   inset: 0rem 250px 0 0;
   width: auto;
 }
 
 dialog {
+  z-index: 16;
   z-index: 20;
   position: fixed;
   inset: 40% auto auto 50%;
@@ -447,7 +502,7 @@ dialog .scrim {
 }
 
 #fab {
-  z-index: 10;
+  z-index: 12;
   position: absolute;
   inset: auto 1rem 1rem auto;
   display: flex;
@@ -501,7 +556,7 @@ dialog .scrim {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 0.5rem 0.5rem 0.5rem 0rem;
+  padding: 0.5rem 1rem 0.5rem 0rem;
   gap: 0.25em;
   background-color: #111111;
   color: #FFF;

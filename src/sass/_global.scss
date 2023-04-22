@@ -17,30 +17,93 @@ $shortcut: (
 );
 
 #banner {
-
+    display: none;
+    z-index: 8;
     position: fixed;
     inset: 0 0 auto 0;
     height: map.get($banner, "height");
     padding-top: 0.25rem;
     background-color: map.get($banner, "backgroundColor");
-
+    color: map.get($banner, "color");
 }
 
 #shortcut {
+    z-index: 4;
     position: fixed;
     inset: map.get($banner, "height") 0 0 auto;
     width: map.get($shortcut, "width");
-    border-left: 1px dotted map.get(utility.$palette, "default-light");
     background-color: map.get($shortcut, "backgroundColor");
+    color: map.get($shortcut, "color");
+
+    [role=tablist]{
+
+        position: absolute;
+        inset: 0 0.5rem auto 0.75rem;
+        height: 2rem;
+
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        padding: 0.25rem 0 0 0;
+
+        [role=tab]{
+
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100%;
+
+            border-bottom: 1px solid transparent;
+            background-color: inherit;
+            color: inherit;
+
+            font-size: 1rem;
+            
+            cursor: pointer;
+
+            > .icon {
+                flex-grow: 1;
+                justify-self: center;
+                align-self: center;
+                text-align: center;
+            }
+            
+            &.selected,
+            &[aria-selected=true] {
+                border-bottom: 1px solid utility.$secondary;
+                color: utility.$secondary;
+            }
+        }
+    }
+
+    [role=tabpanel] {
+        
+        position: absolute;
+        inset: 2rem 0.5rem 0 1rem;
+        height: auto;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.25em;
+
+        background-color: map.get(utility.$palette, "default-dark");
+        color: map.get(utility.$palette, "on-default");
+    }
 }
 
 main {
+    z-index: 0;
     position: fixed;
     inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
     width: auto;
 }
 
 dialog {
+    z-index: 16;
     z-index: 20;
     position: fixed;
     inset: 40% auto auto 50%;
@@ -83,7 +146,7 @@ dialog {
 }
 
 #fab {
-    z-index: 10;
+    z-index: 12;
     position: absolute;
     inset: auto 1rem 1rem auto;
     display: flex;

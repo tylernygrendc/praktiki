@@ -19,7 +19,7 @@ $fileTree: (
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.5rem 1rem 0.5rem 0rem;
     gap: 0.25em;
     background-color: map.get($fileTree, "backgroundColor");
     color: map.get($fileTree, "color");

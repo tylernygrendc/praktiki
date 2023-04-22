@@ -11,40 +11,20 @@ append main
         ul(role="tree", aria-label="file tree")
 
     form#note.tabs
+        - const noteTabs = ["subjective", "objective", "assessment", "procedures", "history"]
         ul(role="tablist")
-            li#subjectiveTab(role="tab", tabindex="0", aria-selected="true", aria-controls="subjectivePanel") Subjective
-            li#objectiveTab(role="tab", tabindex="0", aria-selected="false", aria-controls="objectivePanel") Objective
-            li#assessmentTab(role="tab", tabindex="0", aria-selected="false", aria-controls="assessmentPanel") Assessment
-            li#planTab(role="tab", tabindex="0", aria-selected="false", aria-controls="planPanel") Plan
-        section#subjectivePanel(role="tabpanel", aria-labelledby="subjectiveTab")
-            .input
-                label Problem
-                textarea#problem(name="problem")
-            .input
-                label Site
-                textarea#site(name="site")
-            .input
-                label Onset
-                textarea#onset(name="onset")
-            .input
-                label Palliative Factors
-                textarea#palliative(name="palliative")
-            .input
-                label Provocative Factors
-                textarea#provocative(name="provocative")
-            .input
-                label Trend
-                textarea#trend(name="trend")
-        section#objectivePanel.hidden(role="tabpanel", aria-labelledby="objectiveTab")
-        section#assessmentPanel.hidden(role="tabpanel", aria-labelledby="assessmentTab")
-        section#planPanel.hidden(role="tabpanel", aria-labelledby="planTab")
+            each val, i in noteTabs
+                li(role="tab", tabindex="0", aria-selected=`${i === 0 ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)= val
+        each val, i in noteTabs
+            section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`)= val
+
 
 append shortcut
+    - const shortcutTabs = ["file", "schedule", "business", "tasks", "chat", "account"];
+    - const shortcutIcon = ["folder", "schedule", "storefront", "task_alt", "chat", "account_circle"];
     ul(role="tablist")
-        li#examTab.icon(role="tab", tabindex="0", aria-selected="false", aria-controls="examPanel") profile
-        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") folder
-        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") schedule
-        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") task_alt
-        li#assistantTab.icon(role="tab", tabindex="0", aria-selected="true", aria-controls="assistantPanel") assistant
-    section#examPanel(role="tabpanel", tabindex="0", aria-labelledby="examTab")
-    section#assistantPanel(role="tabpanel", tabindex="0", aria-labelledby="assistantTab")
+        each val, i in shortcutTabs
+            li(role="tab", tabindex="0", aria-selected=`${i === 0 ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)
+                span.icon= shortcutIcon[i]
+    each val, i in shortcutTabs
+        section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`)= val

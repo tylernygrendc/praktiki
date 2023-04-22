@@ -1,4 +1,7 @@
 export function enableTabs(){
+
+    // enable tabs for all elements with class = "tabs"
+
     document.querySelectorAll(".tabs").forEach(element => {
         element.querySelectorAll("[role='tab']").forEach(tab => {
             tab.addEventListener("click", function () {
@@ -8,12 +11,39 @@ export function enableTabs(){
                 tablist.querySelectorAll(`[role="tab"]`).forEach((child, i) => {
                     if(child === this){
                         child.ariaSelected = true;
+                        child.classList.add("selected");
                         tabpanel[i].classList.remove("hidden");
                     } else {
                         child.ariaSelected = false;
+                        child.classList.remove("selected");
                         tabpanel[i].classList.add("hidden");
                     }
                 });
+            });
+        });
+    });
+
+    // enable tabs that are part of shortcut
+
+    const shortcut = document.querySelector("#shortcut");
+
+    shortcut.querySelectorAll("[role='tab']").forEach(tab => {
+
+        tab.addEventListener("click", function () {
+
+            let tablist = shortcut.querySelector(`[role="tablist"]`),
+                tabpanel = shortcut.querySelectorAll(`[role="tabpanel"]`);
+            
+            tablist.querySelectorAll(`[role="tab"]`).forEach((child, i) => {
+                if(child === this){
+                    child.ariaSelected = true;
+                    child.classList.add("selected");
+                    tabpanel[i].classList.remove("hidden");
+                } else {
+                    child.ariaSelected = false;
+                    child.classList.remove("selected");
+                    tabpanel[i].classList.add("hidden");
+                }
             });
         });
     });
