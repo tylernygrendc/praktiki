@@ -131,71 +131,17 @@ button a {
 button :last-child {
   margin-left: auto;
 }
-button:hover, button:focus-visible {
+button:focus-visible {
   outline: 0.1em solid #e2b736;
 }
-button.raised, button.raised--primary {
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+button.raised {
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-}
-button.raised--primary {
-  background-color: #2d5345;
-}
-button.raised--primary:hover, button.raised--primary:focus-visible {
-  transition: 250ms;
-  transform: scale(1.05);
-  background-color: #345f4f;
-}
-button.raised:hover, button.raised--primary:hover, button.raised:focus-visible, button.raised--primary:focus-visible {
-  transition: 250ms;
-  transform: scale(1.05);
-  background-color: #4d4d4d;
-}
-button.icon {
-  border-radius: 50%;
-  padding: 1em;
-}
-
-[type=button] {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0.5em;
-  border: 0 solid;
-  border-radius: 6px;
-  background-color: #222;
-  color: #FFF;
-  font-family: "Open Sans";
-  font-size: 1em;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
-  text-decoration: none;
-  text-transform: none;
-  text-shadow: none;
-  letter-spacing: 0;
-  cursor: pointer;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
   background-color: #2d5345;
-}
-[type=button] * {
-  background-color: transparent;
-}
-[type=button] a {
   color: #FFF;
-  text-decoration: none !important;
 }
-[type=button] :last-child {
-  margin-left: auto;
-}
-[type=button]:hover, [type=button]:focus-visible {
-  outline: 0.1em solid #e2b736;
-}
-[type=button]:hover, [type=button]:focus-visible {
+button:hover {
   transition: 250ms;
-  transform: scale(1.05);
   background-color: #345f4f;
 }
 
@@ -276,12 +222,6 @@ input {
   line-height: 1.5;
   cursor: text;
 }
-input:hover {
-  background-color: #4d4d4d;
-}
-input:focus-visible {
-  outline: 0.1em solid #e2b736;
-}
 
 textarea {
   display: inline-block;
@@ -303,36 +243,69 @@ textarea {
   line-height: 1.5;
   cursor: text;
 }
-textarea:hover {
-  background-color: #4d4d4d;
-}
-textarea:focus-visible {
-  outline: 0.1em solid #e2b736;
-}
 
 .input {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 0.25rem;
   width: 100%;
+}
+.input label {
+  text-transform: capitalize;
+  font-size: 0.75rem;
 }
 .input input,
 .input textarea {
   width: 100%;
+}
+.input textarea {
+  flex-grow: 1;
+}
+.input:focus-within label {
+  color: #e2b736;
+}
+.input:focus-within input,
+.input:focus-within textarea {
+  outline: 1px solid #e2b736;
+}
+
+.combinedInputButton {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 6px;
+}
+.combinedInputButton:focus-within {
+  outline: 1px solid #e2b736;
+}
+.combinedInputButton input {
+  flex-grow: 1;
+  border-radius: 6px 0px 0px 6px;
+}
+.combinedInputButton input:focus-visible {
+  outline: 0px;
+}
+.combinedInputButton button {
+  border-radius: 0px 6px 6px 0px;
+}
+.combinedInputButton button:focus-visible {
+  outline: 0px;
 }
 
 fieldset {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 0.5em;
-  gap: 0.25em;
+  padding: 0.5rem;
+  gap: 0.25rem;
   border: 0 solid;
   border-radius: 6px;
   background-color: #434343;
   color: #FFF;
   font-family: "Open Sans";
-  font-size: 1em;
+  font-size: 0.75rem;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -346,8 +319,8 @@ fieldset div {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0.25em;
-  border: 0 solid;
+  padding-right: 0.25rem;
+  border: 1px solid transparent;
   border-radius: 6px;
 }
 fieldset div:hover {
@@ -355,15 +328,21 @@ fieldset div:hover {
 }
 fieldset div:has(:checked) {
   background-color: #222;
-  color: #417864;
+  color: #e2b736;
+}
+fieldset div label {
+  flex-grow: 1;
+  padding: 0.25rem 0.5em;
+  cursor: pointer;
 }
 fieldset div input {
-  width: 1.5em;
-  height: 1.5em;
+  width: 18px;
+  height: 18px;
   accent-color: #e6c254;
+  cursor: pointer;
 }
-fieldset div :last-child {
-  margin-left: auto;
+fieldset legend {
+  text-transform: capitalize;
 }
 
 .datePicker {

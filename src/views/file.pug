@@ -4,27 +4,48 @@ prepend description
     - const description = '';
 
 append main
-    nav#fileTree
-        form#fileSearch
-            input(type="search", aria-label="file search")
-            button.icon(type="submit") search
-        ul(role="tree", aria-label="file tree")
+    ul#fileTree(role="tree", aria-label="file tree")
 
     form#note.tabs
-        - const noteTabs = ["subjective", "objective", "assessment", "procedures", "history"]
+        - const noteTabs = ["subjective", "objective", "assessment", "plan", "history"]
         ul(role="tablist")
             each val, i in noteTabs
                 li(role="tab", tabindex="0", aria-selected=`${i === 0 ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)= val
         each val, i in noteTabs
-            section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`)= val
-
-
-append shortcut
-    - const shortcutTabs = ["file", "schedule", "business", "tasks", "chat", "account"];
-    - const shortcutIcon = ["folder", "schedule", "storefront", "task_alt", "chat", "account_circle"];
-    ul(role="tablist")
-        each val, i in shortcutTabs
-            li(role="tab", tabindex="0", aria-selected=`${i === 0 ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)
-                span.icon= shortcutIcon[i]
-    each val, i in shortcutTabs
-        section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`)= val
+            section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`, class=`${i === 0 ? "" : "hidden"}`)
+                case val
+                    when "subjective"
+                        .freeform.input
+                            label(for=`${val}Freeform`) Freeform
+                            textarea(id=`${val}Freeform`, name=`${val}Freeform`) This patient presents for evaluation and management of acute neck pain that began on 04/22/2023 following a low-speed motor vehicle accident.
+                        .painScale
+                        .painDiagram
+                    when "objective"
+                        .freeform
+                            each val in ["inspection", "palpation", "motion", "tests"]
+                                .input
+                                    label(for=`${val}Freeform`)= val
+                                    textarea(id=`${val}Freeform` name=`${val}Freeform`)  
+                    when "assessment"
+                        .shorthand
+                            fieldset
+                                legend Diagnosis
+                                each val, i in ["M99.01 - Cervical Dysfunction", "M99.02 - Thoracic Dysfunction", "M99.03 - Lumbar Dysfunction", "M99.04 - Sacral Dysfunction", "M99.05 - Pelvic Dysfunction"]
+                                    div
+                                        label(for=`diagnosisId${i}`)= val
+                                        input(id=`diagnosisId${i}`, type="checkbox", name="diagnosis", value=`${val}`)
+                            fieldset
+                                legend Phase of Care
+                                each val, i in ["relief", "corrective", "stabilization", "maintenance"]
+                                    div
+                                        label(for=`phaseId${i}`)= val
+                                        input(id=`phaseId${i}`, type="checkbox", name="phase", value=`${val}`)
+                                
+                    when "plan"
+                        span under construction
+                    when "history"
+                        span under construction
+                    default
+                        span this tab was unexpected
+                
+                

@@ -81,17 +81,81 @@ $shortcut: (
     [role=tabpanel] {
         
         position: absolute;
-        inset: 2rem 0.5rem 0 1rem;
+        inset: 2rem 0 0 0.25rem;
         height: auto;
 
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        padding: 1rem;
+        padding: 0.5rem;
         gap: 0.25em;
 
         background-color: map.get(utility.$palette, "default-dark");
         color: map.get(utility.$palette, "on-default");
+    }
+
+    #agenda {
+        overflow-x: none;
+        overflow-y: scroll;
+
+        .hour {
+            width: 100%;
+            height: 4rem;
+            border-bottom: 1px solid map.get(utility.$palette, "default-light");
+        }
+    }
+
+    #tasks {
+        
+    }
+
+    #chat {
+
+
+
+        #contactList {
+
+            [role=feed]{
+                display: flex;
+                flex-direction: column;
+                align-items: flex;
+                overflow-y: scroll;
+            }
+
+            .contact{
+
+                display: grid;
+                grid-template-columns: auto 1fr 5ch;
+                grid-template-rows: 1rem 1rem;
+                align-items: center;
+
+                img {
+                    grid-row: 1 / 3;
+                    grid-column: 1 / 2;
+                    border-radius: 50%;
+                    overflow: none;
+                }
+
+                .name {
+                    grid-row: 1 / 2;
+                    grid-column: 2 / 3;
+                }
+
+                .message{
+                    grid-row: 2 / 3;
+                    grid-column: 2 / 3;
+                }
+
+                .date{
+                    grid-row: 1 / 2;
+                    grid-column: 3 / 4;
+                }
+            }
+        }
+
+        #messageFeed {
+            nav
+        }
     }
 }
 

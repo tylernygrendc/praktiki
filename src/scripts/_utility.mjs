@@ -23,7 +23,7 @@ export function enableTabs(){
         });
     });
 
-    // enable tabs that are part of shortcut
+    // enable tabs that are part of id = "shortcut"
 
     const shortcut = document.querySelector("#shortcut");
 

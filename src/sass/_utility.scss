@@ -153,8 +153,6 @@ details {
     visibility: hidden;
 }
 
-// BUTTON STYLES
-
 @mixin button($color: map.get($palette, "default-medium"),  $size: 1em){
     display: flex;
     flex-direction: row;
@@ -189,52 +187,25 @@ details {
         margin-left: auto; 
     }
 
-    &:hover, &:focus-visible {
+    &:focus-visible {
         outline: 0.1em solid map.get($palette, "secondary-medium");
     }
 }
 
 button {
+
     @include button();
 
     &.raised {
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
         box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-
-        &--primary{
-            @extend .raised;
-            background-color: map.get($palette, "primary-medium");
-
-            &:hover, &:focus-visible {
-                transition: 250ms;
-                transform: scale(1.05);
-                background-color: color.scale(map.get($palette, "primary-medium"), $lightness: 5%);
-            }
-        }
-
-        &:hover, &:focus-visible {
-            transition: 250ms;
-            transform: scale(1.05);
-            background-color: color.scale(map.get($palette, "default-light"), $lightness: 5%);
-        }
+        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+        background-color: $primary;
+        color: map.get($palette, "on-primary");
     }
 
-    &.icon{
-        border-radius: 50%;
-        padding: 1em;
-    }
-}
-
-[type=button] {
-    @include button();
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    background-color: map.get($palette, "primary-medium");
-
-    &:hover, &:focus-visible {
+    &:hover {
         transition: 250ms;
-        transform: scale(1.05);
-        background-color: color.scale(map.get($palette, "primary-medium"), $lightness: 5%);
+        background-color: color.scale($primary, $lightness: 5%);
     }
 }
 
@@ -317,8 +288,6 @@ button {
     }
 }
 
-// INPUT STYLES
-
 @mixin input($size: 0.85em, $color: map.get($palette, "default-light")) {
     display: inline-block;
     border: 0 solid;
@@ -338,14 +307,6 @@ button {
     letter-spacing: 0;
     line-height: 1.5;
     cursor: text;
-
-    &:hover {
-        background-color: color.scale($color, $lightness: 5%);
-    }
-
-    &:focus-visible{
-        outline: 0.1em solid map.get($palette, "secondary-medium");
-    }
 }
 
 input{
@@ -361,11 +322,63 @@ textarea {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 0.25rem;
     width: 100%;
+
+    label{
+        text-transform: capitalize;
+        font-size: 0.75rem;
+    }
     
     input,
     textarea {
         width: 100%;
+    }
+
+    textarea {
+        flex-grow: 1;
+    }
+
+    &:focus-within{
+        label {
+            color: $secondary;
+        }
+
+        input,
+        textarea {
+            outline: 1px solid $secondary;
+        }
+    }
+}
+
+.combinedInputButton {
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    width: 100%;
+    border-radius: 6px;
+
+    &:focus-within{
+        outline: 1px solid $secondary;
+    }
+
+    input {
+        flex-grow: 1;
+        border-radius: 6px 0px 0px 6px;
+
+        &:focus-visible {
+            outline: 0px;
+        }
+    }
+
+    button {
+        border-radius: 0px 6px 6px 0px;
+
+        &:focus-visible{
+            outline: 0px;
+        }
     }
 }
 
@@ -374,14 +387,14 @@ fieldset{
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0.5em;
-    gap: 0.25em;
+    padding: 0.5rem;
+    gap: 0.25rem;
     border: 0 solid;
     border-radius: 6px;
     background-color: map.get($palette, "default-light");
     color: map.get($palette, "on-default");
     font-family: "Open Sans";
-    font-size: 1em;
+    font-size: 0.75rem;
     font-weight: normal;
     font-style: normal;
     font-stretch: normal;
@@ -396,8 +409,8 @@ fieldset{
         display: flex;
         flex-direction: row;
         align-items: center;
-        padding: 0.25em;
-        border: 0 solid;
+        padding-right: 0.25rem;
+        border: 1px solid transparent;
         border-radius: 6px;
 
         &:hover {
@@ -406,18 +419,26 @@ fieldset{
 
         &:has(:checked){
             background-color: map.get($palette, "default-medium");
-            color: map.get($palette, "primary-light");
+            color: $secondary;
+        }
+
+        label {
+            flex-grow: 1;
+            padding: 0.25rem 0.5em;
+            cursor: pointer;
         }
 
         input {
-            width: 1.5em;  
-            height: 1.5em;  
+            width: 18px;  
+            height: 18px;
             accent-color: map.get($palette, "secondary-light");
-        }
+            cursor: pointer;
 
-        :last-child {
-            margin-left: auto;
         }
+    }
+
+    legend {
+        text-transform: capitalize;
     }
 }
 
