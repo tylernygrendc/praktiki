@@ -43,42 +43,58 @@ html(lang="en")
     body: block body
         header#banner(role="banner")
         aside#shortcut(aria-label="shortcut tool")
-            - const shortcutTabs = ["file", "schedule", "business", "tasks", "chat", "account"];
-            - const shortcutIcon = ["folder", "schedule", "storefront", "task_alt", "chat", "account_circle"];
+            - const shortcutTabs = ["file", "schedule", "billing", "business", "tasks", "chat", "account"];
+            - const shortcutIcon = ["folder", "schedule", "sell", "storefront", "task_alt", "chat", "account_circle"];
             ul(role="tablist")
                 each val, i in shortcutTabs
                     li(role="tab", tabindex="0", aria-selected=`${val === page ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)
                         span.icon= shortcutIcon[i]
             each val, i in shortcutTabs
-                section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`, class=`${val === page ? "" : "hidden"}`)
+                section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`, class=`${val === page ? "" : "invisible"}`)
                     case val
                         when "file"
-                            .input
-                                label File Search
-                                .combinedInputButton
-                                    input(type="search")
-                                    button(type="submit" class="icon") search
+                            #fileShortcut
+                                .input
+                                    label File Search
+                                    .combinedInputButton
+                                        input(type="search")
+                                        button(type="submit" class="icon") search
                         when "schedule"
-                            #agenda
-                                - for(let i = 0; i <24; ++i){
-                                    .hour
-                                - }
+                            #scheduleShortcut
+                                #agenda
+                                    - for(let i = 0; i <24; ++i){
+                                        .hour
+                                    - }
+                                button
+                                    span New Appointment
+                                    .icon edit_calendar
+                        when "business"
+                            #businessShortcut
+                                
                         when "tasks"
-                            #tasks
+                            #taskShortcut
                                 #newTask.input
                                     label New Task
                                     .combinedInputButton
                                         input(type="text")
                                         button(type="submit" class="icon") add_task
                         when "chat"
-                            #chat
-                                #contactList.hide
-
+                            #chatShortcut
+                                #contactList.hidden
+                                    .input 
+                                        label Search Chat
+                                        .combinedInputButton
+                                            input(type="text", aria-label="search contacts")
+                                            button(type="search", class="icon") person_search
+                                    ul
+                                    button
+                                        span Compose Message
+                                        .icon create
                                 #messageFeed
                                     nav
                                         button.icon arrow_back
                                         span#contactName
-                                    div(role="feed")
+                                    .feed(role="feed")
                                     .combinedInputButton
                                         input(type="text", aria-label="send message")
                                         button(type="submit", class="icon") send

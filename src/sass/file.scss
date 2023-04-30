@@ -93,6 +93,8 @@ $fileTree: (
             grid-column: 1 / 2;
             display: flex;
             flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
 
             > .input {
                 flex-grow: 1;

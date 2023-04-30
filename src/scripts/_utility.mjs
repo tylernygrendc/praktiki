@@ -12,11 +12,11 @@ export function enableTabs(){
                     if(child === this){
                         child.ariaSelected = true;
                         child.classList.add("selected");
-                        tabpanel[i].classList.remove("hidden");
+                        tabpanel[i].classList.remove("invisible");
                     } else {
                         child.ariaSelected = false;
                         child.classList.remove("selected");
-                        tabpanel[i].classList.add("hidden");
+                        tabpanel[i].classList.add("invisible");
                     }
                 });
             });
@@ -38,11 +38,11 @@ export function enableTabs(){
                 if(child === this){
                     child.ariaSelected = true;
                     child.classList.add("selected");
-                    tabpanel[i].classList.remove("hidden");
+                    tabpanel[i].classList.remove("invisible");
                 } else {
                     child.ariaSelected = false;
                     child.classList.remove("selected");
-                    tabpanel[i].classList.add("hidden");
+                    tabpanel[i].classList.add("invisible");
                 }
             });
         });

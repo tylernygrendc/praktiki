@@ -94,67 +94,99 @@ $shortcut: (
         color: map.get(utility.$palette, "on-default");
     }
 
-    #agenda {
-        overflow-x: none;
-        overflow-y: scroll;
+    #scheduleShortcut{
 
-        .hour {
-            width: 100%;
-            height: 4rem;
-            border-bottom: 1px solid map.get(utility.$palette, "default-light");
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: 0.5rem;
+        height: 100%;
+
+        #agenda {
+
+            position: relative;
+            overflow-x: none;
+            overflow-y: scroll;
+
+            .hour {
+                width: 100%;
+                height: 4rem;
+                border-bottom: 1px solid map.get(utility.$palette, "default-light");
+            }
         }
     }
 
-    #tasks {
+    #taskShortcut{
         
     }
 
-    #chat {
-
-
+    #chatShortcut {
+        height: 100%;
+        width: 100%;
 
         #contactList {
 
-            [role=feed]{
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100%;
+
+            ul{
+        
                 display: flex;
                 flex-direction: column;
                 align-items: flex;
                 overflow-y: scroll;
-            }
+                flex-grow: 1;
 
-            .contact{
+                li{
 
-                display: grid;
-                grid-template-columns: auto 1fr 5ch;
-                grid-template-rows: 1rem 1rem;
-                align-items: center;
-
-                img {
-                    grid-row: 1 / 3;
-                    grid-column: 1 / 2;
-                    border-radius: 50%;
-                    overflow: none;
-                }
-
-                .name {
-                    grid-row: 1 / 2;
-                    grid-column: 2 / 3;
-                }
-
-                .message{
-                    grid-row: 2 / 3;
-                    grid-column: 2 / 3;
-                }
-
-                .date{
-                    grid-row: 1 / 2;
-                    grid-column: 3 / 4;
+                    display: grid;
+                    grid-template-columns: auto 1fr 5ch;
+                    grid-template-rows: 1rem 1rem;
+                    align-items: center;
+                    list-style: none;
+    
+                    img {
+                        grid-row: 1 / 3;
+                        grid-column: 1 / 2;
+                        border-radius: 50%;
+                        overflow: none;
+                    }
+    
+                    .name {
+                        grid-row: 1 / 2;
+                        grid-column: 2 / 3;
+                    }
+    
+                    .preview{
+                        grid-row: 2 / 3;
+                        grid-column: 2 / 3;
+                    }
+    
+                    .date{
+                        grid-row: 1 / 2;
+                        grid-column: 3 / 4;
+                    }
                 }
             }
         }
 
         #messageFeed {
-            nav
+
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            height: 100%;
+
+            nav {
+                display: flex;
+                flex-direction: row;
+                align-items: stretch;
+            }
+
+            .feed {
+                flex-grow: 1;
+            }
         }
     }
 }

@@ -7,12 +7,12 @@ append main
     ul#fileTree(role="tree", aria-label="file tree")
 
     form#note.tabs
-        - const noteTabs = ["subjective", "objective", "assessment", "plan", "history"]
+        - const noteTabs = ["subjective", "objective", "assessment", "plan"]
         ul(role="tablist")
             each val, i in noteTabs
                 li(role="tab", tabindex="0", aria-selected=`${i === 0 ? true : false }`, id=`${val}Tab`, aria-controls=`${val}Panel`)= val
         each val, i in noteTabs
-            section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`, class=`${i === 0 ? "" : "hidden"}`)
+            section(role="tabpanel", id=`${val}Panel`, aria-labelledby=`${val}Tab`, class=`${i === 0 ? "" : "invisible"}`)
                 case val
                     when "subjective"
                         .freeform.input
@@ -42,8 +42,6 @@ append main
                                         input(id=`phaseId${i}`, type="checkbox", name="phase", value=`${val}`)
                                 
                     when "plan"
-                        span under construction
-                    when "history"
                         span under construction
                     default
                         span this tab was unexpected

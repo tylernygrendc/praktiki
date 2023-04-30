@@ -1,10 +1,9 @@
-/* Error: expected "{".
- *     ,
- * 157 |             nav
- *     |                ^
- *     '
- *   src/sass/_global.scss 157:16  @use
- *   src/sass/schedule.scss 5:1    root stylesheet */
+/* Error: Undefined variable.
+ *    ,
+ * 64 |     inset: 0 map.get($feed, "width") 0 0;
+ *    |                      ^^^^^
+ *    '
+ *   src/sass/schedule.scss 64:22  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -14,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a     \2577 \a 157 \2502              nav\a     \2502                 ^\a     \2575 \a   src/sass/_global.scss 157:16  @use\a   src/sass/schedule.scss 5:1    root stylesheet';
+  content: 'Error: Undefined variable.\a    \2577 \a 64 \2502      inset: 0 map.get($feed, "width") 0 0;\a    \2502                       ^^^^^\a    \2575 \a   src/sass/schedule.scss 64:22  root stylesheet';
 }

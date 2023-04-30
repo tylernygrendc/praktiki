@@ -149,8 +149,12 @@ details {
     }
 }
 
-.hidden {
-    visibility: hidden;
+.invisible {
+    visibility: hidden !important;
+}
+
+.hidden{
+    display: none !important;
 }
 
 @mixin button($color: map.get($palette, "default-medium"),  $size: 1em){
@@ -230,6 +234,7 @@ button {
         [role=tab]{
 
             flex-grow: 1;
+            max-width: 20ch;
 
             display: flex;
             flex-direction: row;
@@ -249,6 +254,10 @@ button {
             color: map.get($palette, "on-default");
             
             cursor: pointer;
+
+            &:hover{
+                color: $secondary;
+            }
 
             > .icon {
                 flex-grow: 1;

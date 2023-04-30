@@ -96,8 +96,12 @@ details[open] summary :last-child {
   transform: rotate(180deg);
 }
 
+.invisible {
+  visibility: hidden !important;
+}
+
 .hidden {
-  visibility: hidden;
+  display: none !important;
 }
 
 button {
@@ -159,6 +163,7 @@ button:hover {
 }
 .tabs [role=tablist] [role=tab] {
   flex-grow: 1;
+  max-width: 20ch;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -173,6 +178,9 @@ button:hover {
   background-color: #111111;
   color: #FFF;
   cursor: pointer;
+}
+.tabs [role=tablist] [role=tab]:hover {
+  color: #e2b736;
 }
 .tabs [role=tablist] [role=tab] > .icon {
   flex-grow: 1;

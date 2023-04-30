@@ -1,18 +1,687 @@
-/* Error: expected "{".
- *     ,
- * 157 |             nav
- *     |                ^
- *     '
- *   src/sass/_global.scss 157:16  @use
- *   src/sass/file.scss 5:1        root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "{".\a     \2577 \a 157 \2502              nav\a     \2502                 ^\a     \2575 \a   src/sass/_global.scss 157:16  @use\a   src/sass/file.scss 5:1        root stylesheet';
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/open-sans.ttf);
 }
+@font-face {
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/material-icons.ttf);
+}
+.icon {
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none !important;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #222;
+  color: #FFF;
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  background-color: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #FFF;
+  border: #111111 solid 4px;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-button {
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  background-color: #111111;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+body {
+  display: inline-block;
+  font-family: "Open Sans";
+  font-size: 1rem;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  color: #FFF;
+}
+
+img, svg, video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
+  background-color: #222;
+}
+
+details summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+details summary :last-child {
+  position: relative;
+  right: 0.25em;
+}
+details[open] summary :last-child {
+  position: relative;
+  right: 0.25em;
+  transform: rotate(180deg);
+}
+
+.invisible {
+  visibility: hidden !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: #222;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+button * {
+  background-color: transparent;
+}
+button a {
+  color: #FFF;
+  text-decoration: none !important;
+}
+button :last-child {
+  margin-left: auto;
+}
+button:focus-visible {
+  outline: 0.1em solid #e2b736;
+}
+button.raised {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  background-color: #2d5345;
+  color: #FFF;
+}
+button:hover {
+  transition: 250ms;
+  background-color: #345f4f;
+}
+
+.tabs [role=tablist] {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0.25rem 0 0 0;
+  gap: 0.25rem;
+  background-color: #111111;
+  color: #FFF;
+}
+.tabs [role=tablist] [role=tab] {
+  flex-grow: 1;
+  max-width: 20ch;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-right: 1px solid #434343;
+  border-radius: 0px;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  background-color: #111111;
+  color: #FFF;
+  cursor: pointer;
+}
+.tabs [role=tablist] [role=tab]:hover {
+  color: #e2b736;
+}
+.tabs [role=tablist] [role=tab] > .icon {
+  flex-grow: 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+.tabs [role=tablist] [role=tab] :nth-child(2) {
+  margin-left: auto;
+}
+.tabs [role=tablist] [role=tab].selected, .tabs [role=tablist] [role=tab][aria-selected=true] {
+  margin: 0;
+  border-radius: 4px 4px 0px 0px;
+  border-right: 1px solid transparent;
+  background-color: #222;
+}
+.tabs [role=tabpanel] {
+  position: absolute;
+  inset: 2rem 0 0 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem;
+  gap: 0.25em;
+  background-color: #222;
+  color: #FFF;
+}
+
+input {
+  display: inline-block;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: #434343;
+  padding: 0.5em;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 0.85em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  cursor: text;
+}
+
+textarea {
+  display: inline-block;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: #434343;
+  padding: 0.5em;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 0.85em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  cursor: text;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  width: 100%;
+}
+.input label {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+}
+.input input,
+.input textarea {
+  width: 100%;
+}
+.input textarea {
+  flex-grow: 1;
+}
+.input:focus-within label {
+  color: #e2b736;
+}
+.input:focus-within input,
+.input:focus-within textarea {
+  outline: 1px solid #e2b736;
+}
+
+.combinedInputButton {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 100%;
+  border-radius: 6px;
+}
+.combinedInputButton:focus-within {
+  outline: 1px solid #e2b736;
+}
+.combinedInputButton input {
+  flex-grow: 1;
+  border-radius: 6px 0px 0px 6px;
+}
+.combinedInputButton input:focus-visible {
+  outline: 0px;
+}
+.combinedInputButton button {
+  border-radius: 0px 6px 6px 0px;
+}
+.combinedInputButton button:focus-visible {
+  outline: 0px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem;
+  gap: 0.25rem;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: #434343;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+fieldset div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 0.25rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+fieldset div:hover {
+  background-color: #222;
+}
+fieldset div:has(:checked) {
+  background-color: #222;
+  color: #e2b736;
+}
+fieldset div label {
+  flex-grow: 1;
+  padding: 0.25rem 0.5em;
+  cursor: pointer;
+}
+fieldset div input {
+  width: 18px;
+  height: 18px;
+  accent-color: #e6c254;
+  cursor: pointer;
+}
+fieldset legend {
+  text-transform: capitalize;
+}
+
+.datePicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  gap: 0.25em;
+}
+.datePicker .controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25em;
+}
+.datePicker .controls :first-child {
+  font-weight: 700;
+  margin-right: auto;
+}
+.datePicker .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-template-rows: repeat(7, auto);
+  gap: 2px;
+}
+.datePicker [type=reset] {
+  width: 100%;
+}
+
+#banner {
+  display: none;
+  z-index: 8;
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 0rem;
+  padding-top: 0.25rem;
+  background-color: #111111;
+  color: #FFF;
+}
+
+#shortcut {
+  z-index: 4;
+  position: fixed;
+  inset: 0rem 0 0 auto;
+  width: 250px;
+  background-color: #111111;
+  color: #FFF;
+}
+#shortcut [role=tablist] {
+  position: absolute;
+  inset: 0 0.5rem auto 0.75rem;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0.25rem 0 0 0;
+}
+#shortcut [role=tablist] [role=tab] {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  border-bottom: 1px solid transparent;
+  background-color: inherit;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#shortcut [role=tablist] [role=tab] > .icon {
+  flex-grow: 1;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+#shortcut [role=tablist] [role=tab].selected, #shortcut [role=tablist] [role=tab][aria-selected=true] {
+  border-bottom: 1px solid #e2b736;
+  color: #e2b736;
+}
+#shortcut [role=tabpanel] {
+  position: absolute;
+  inset: 2rem 0 0 0.25rem;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem;
+  gap: 0.25em;
+  background-color: #111111;
+  color: #FFF;
+}
+#shortcut #scheduleShortcut {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 0.5rem;
+  height: 100%;
+}
+#shortcut #scheduleShortcut #agenda {
+  position: relative;
+  overflow-x: none;
+  overflow-y: scroll;
+}
+#shortcut #scheduleShortcut #agenda .hour {
+  width: 100%;
+  height: 4rem;
+  border-bottom: 1px solid #434343;
+}
+#shortcut #chatShortcut {
+  height: 100%;
+  width: 100%;
+}
+#shortcut #chatShortcut #contactList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+#shortcut #chatShortcut #contactList ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex;
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+#shortcut #chatShortcut #contactList ul li {
+  display: grid;
+  grid-template-columns: auto 1fr 5ch;
+  grid-template-rows: 1rem 1rem;
+  align-items: center;
+  list-style: none;
+}
+#shortcut #chatShortcut #contactList ul li img {
+  grid-row: 1/3;
+  grid-column: 1/2;
+  border-radius: 50%;
+  overflow: none;
+}
+#shortcut #chatShortcut #contactList ul li .name {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+#shortcut #chatShortcut #contactList ul li .preview {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+#shortcut #chatShortcut #contactList ul li .date {
+  grid-row: 1/2;
+  grid-column: 3/4;
+}
+#shortcut #chatShortcut #messageFeed {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
+}
+#shortcut #chatShortcut #messageFeed nav {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+#shortcut #chatShortcut #messageFeed .feed {
+  flex-grow: 1;
+}
+
+main {
+  z-index: 0;
+  position: fixed;
+  inset: 0rem 250px 0 0;
+  width: auto;
+}
+
+dialog {
+  z-index: 16;
+  z-index: 20;
+  position: fixed;
+  inset: 40% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1em;
+  gap: 0.5em;
+  font-size: 1rem;
+}
+dialog p:first-of-type {
+  font-size: 1em;
+  font-weight: 700;
+}
+dialog p {
+  font-size: 0.8em;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+dialog > .icon {
+  position: absolute;
+  inset: 0.25rem 0.25rem auto auto;
+  font-size: 0.5rem;
+}
+dialog .scrim {
+  z-index: 15;
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 20%;
+}
+
+#fab {
+  z-index: 12;
+  position: absolute;
+  inset: auto 1rem 1rem auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+#fab > * {
+  padding: 0.5em;
+  border-radius: 50%;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+#fab :first-child {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: #2d5345;
+  color: #FFF;
+  font-family: "Open Sans";
+  font-size: 1em;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+#fab :first-child * {
+  background-color: transparent;
+}
+#fab :first-child a {
+  color: #FFF;
+  text-decoration: none !important;
+}
+#fab :first-child :last-child {
+  margin-left: auto;
+}
+#fab :first-child:focus-visible {
+  outline: 0.1em solid #e2b736;
+}
+
+#fileTree {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem 1rem 0.5rem 0rem;
+  gap: 0.25em;
+  background-color: #111111;
+  color: #FFF;
+}
+#fileTree [role=treeitem] {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0.5em 1em;
+  border-radius: 0 6px 6px 0;
+  background-color: #292929;
+  color: #FFF;
+}
+#fileTree [role=treeitem] * {
+  padding: 0 !important;
+  background-color: inherit !important;
+}
+#fileTree .profile {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  grid-template-rows: repeat(auto-fit, auto);
+}
+#fileTree .profile img {
+  border: 2px solid #FFF;
+  border-radius: 50%;
+}
+#fileTree .profile :last-child {
+  grid-column: span 2;
+}
+
+#note {
+  position: absolute;
+  inset: 0 0 0 250px;
+}
+#note #subjectivePanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+#note #subjectivePanel .freeform {
+  grid-row: 1/3;
+  grid-column: 1/2;
+}
+#note #subjectivePanel .painScale {
+  grid-row: 1/2;
+  grid-column: 2/3;
+}
+#note #subjectivePanel .painDiagram {
+  grid-row: 2/3;
+  grid-column: 2/3;
+}
+#note #objectivePanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+}
+#note #objectivePanel .freeform {
+  grid-row: 1/3;
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+}
+#note #objectivePanel .freeform > .input {
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=file.css.map */
