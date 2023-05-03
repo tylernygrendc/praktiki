@@ -162,8 +162,7 @@ button:hover {
   color: #FFF;
 }
 .tabs [role=tablist] [role=tab] {
-  flex-grow: 1;
-  max-width: 20ch;
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -327,7 +326,8 @@ fieldset div {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-right: 0.25rem;
+  padding: 0.25rem;
+  gap: 0.25rem;
   border: 1px solid transparent;
   border-radius: 6px;
 }
@@ -338,19 +338,58 @@ fieldset div:has(:checked) {
   background-color: #222;
   color: #e2b736;
 }
+fieldset div:has(:checked) input[type=number] {
+  border-bottom: solid 1px #e2b736;
+}
 fieldset div label {
   flex-grow: 1;
   padding: 0.25rem 0.5em;
   cursor: pointer;
 }
-fieldset div input {
+fieldset div input[type=radio],
+fieldset div input[type=checkbox] {
   width: 18px;
   height: 18px;
-  accent-color: #e6c254;
+  accent-color: #e2b736;
   cursor: pointer;
+}
+fieldset div input[type=number] {
+  width: 10ch;
+  background-color: inherit;
+  border-radius: 0;
+  border-bottom: solid 1px #FFF;
+}
+fieldset div input[type=number]:focus-visible {
+  border-radius: 6px;
+  border-bottom: 1px solid transparent;
+  outline: 1px solid #e2b736;
+}
+fieldset span {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+fieldset span input {
+  width: 10ch;
+  background-color: #222;
+}
+fieldset span input:focus-visible {
+  outline: solid 1px #e2b736;
 }
 fieldset legend {
   text-transform: capitalize;
+}
+
+.fieldsetRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fieldsetRow fieldset {
+  flex-grow: 1;
 }
 
 .datePicker {
@@ -409,7 +448,7 @@ fieldset legend {
   padding: 0.25rem 0 0 0;
 }
 #shortcut [role=tablist] [role=tab] {
-  flex-grow: 1;
+  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -678,10 +717,40 @@ dialog .scrim {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 #note #objectivePanel .freeform > .input {
   flex-grow: 1;
+}
+#note #assessmentPanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, auto);
+}
+#note #assessmentPanel .shorthand {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#note #assessmentPanel .shorthand fieldset {
+  flex: 1;
+}
+#note #planPanel {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(auto-fit, auto);
+}
+#note #planPanel .shorthand {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+#note #planPanel .shorthand fieldset {
+  flex: 1;
 }
 
 /*# sourceMappingURL=file.css.map */
