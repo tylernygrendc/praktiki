@@ -10,61 +10,61 @@ router.set('view engine', 'pug');
 
 router.get('/', (req, res) => {
     res.status(200)
-        .render("product", {
-            page: "product"
+        .render("productApp", {
+            page: "product app"
         });
 });
 
-router.get('/auth', (req,res) => {
+router.get('/auth-app', (req,res) => {
     res.status(200)
-        .render("auth", {
-            page: "auth"
+        .render("authApp", {
+            page: "authApp"
         });
 });
 
-router.get('/auth/file', (req, res) => {
+router.get('/auth/file-app', (req, res) => {
     res.status(200)
-        .render("file", {
-            page: "file"
+        .render("fileApp", {
+            page: "fileApp"
         });
 });
 
-router.get('/auth/schedule', (req, res) => {
+router.get('/auth/schedule-app', (req, res) => {
     res.status(200)
-        .render("schedule", {
-            page: "schedule"
+        .render("scheduleApp", {
+            page: "scheduleApp"
         });
 });
 
-router.get('/auth/billing', (req, res) => {
+router.get('/auth/billing-app', (req, res) => {
     res.status(200)
-        .render("billing", {
-            page: "billing"
+        .render("billingApp", {
+            page: "billingApp"
         });
 });
 
-router.get('/auth/business', (req, res) => {
+router.get('/auth/business-app', (req, res) => {
     res.status(200)
-        .render("business", {
-            page: "business"
+        .render("businessApp", {
+            page: "businessApp"
         });
 });
 
-router.get('/auth/tasks', (req, res) => {
+router.get('/auth/task-app', (req, res) => {
     res.status(200)
-        .render("tasks", {
-            page: "tasks"
+        .render("taskApp", {
+            page: "taskApp"
         });
 });
 
-router.get('/auth/chat', (req, res) => {
+router.get('/auth/chat-app', (req, res) => {
     res.status(200)
-        .render("chat", {
-            page: "chat"
+        .render("chatApp", {
+            page: "chatApp"
         });
 });
 
-router.get('/auth/account', (req, res) => {
+router.get('/auth/account-app', (req, res) => {
     res.status(200)
         .render("account", {
             page: "account"

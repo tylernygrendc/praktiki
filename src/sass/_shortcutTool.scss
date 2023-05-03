@@ -1,33 +1,10 @@
-
-@use "sass:map";
-@use "sass:color";
-@use "utility";
-
-$banner: (
-    height: 0rem,
-    backgroundColor: map.get(utility.$palette, "default-dark"),
-    color: map.get(utility.$palette, "on-default"),
-    fontSize: 1rem
-);
-
 $shortcut: (
     width: 250px,
     backgroundColor: map.get(utility.$palette, "default-dark"),
     color: map.get(utility.$palette, "on-default")
 );
 
-#banner {
-    display: none;
-    z-index: 8;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: map.get($banner, "height");
-    padding-top: 0.25rem;
-    background-color: map.get($banner, "backgroundColor");
-    color: map.get($banner, "color");
-}
-
-#shortcut {
+#shortcutTool {
     z-index: 4;
     position: fixed;
     inset: map.get($banner, "height") 0 0 auto;
@@ -188,74 +165,5 @@ $shortcut: (
                 flex-grow: 1;
             }
         }
-    }
-}
-
-main {
-    z-index: 0;
-    position: fixed;
-    inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
-    width: auto;
-}
-
-dialog {
-    z-index: 16;
-    z-index: 20;
-    position: fixed;
-    inset: 40% auto auto 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: auto;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1em;
-    gap: 0.5em;
-    font-size: 1rem;
-
-    p:first-of-type {
-       font-size: 1em;
-       font-weight: 700;
-    }
-
-    p{
-        font-size: 0.8em;
-        max-height: 50vh;
-        overflow-y: scroll;
-    }
-
-    > .icon {
-        position: absolute;
-        inset: 0.25rem 0.25rem auto auto;
-        font-size: 0.5rem;
-    }
-
-    .scrim {
-        z-index: 15;
-        position: fixed;
-        inset: 0;
-        background-color: black;
-        opacity: 20%;
-    }
-
-}
-
-#fab {
-    z-index: 12;
-    position: absolute;
-    inset: auto 1rem 1rem auto;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-
-    > * {
-        padding: 0.5em;
-        border-radius: 50%;
-        box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-    }
-
-    :first-child{
-        @include utility.button(map.get(utility.$palette, "primary-medium"));
     }
 }
