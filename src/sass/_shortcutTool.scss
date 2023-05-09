@@ -1,8 +1,5 @@
-$shortcut: (
-    width: 250px,
-    backgroundColor: map.get(utility.$palette, "default-dark"),
-    color: map.get(utility.$palette, "on-default")
-);
+$width: 350px;
+$backgroundColor: var(--materialColor100);
 
 #shortcutTool {
     z-index: 4;

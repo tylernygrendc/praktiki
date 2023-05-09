@@ -1,708 +1,613 @@
-
-
 @use "sass:color";
 @use "sass:map";
 
 // TYPOGRAPHY STYLES
 
 @font-face {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 400;
-    src: url(/font/open-sans.ttf);
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/open-sans.ttf);
 }
 
 @font-face {
-    font-family: 'Material Icons';
-    font-style: normal;
-    font-weight: 400;
-    src: url(/font/material-icons.ttf);
+  font-family: "Material Icons";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/material-icons.ttf);
 }
 
 @mixin text($size) {
-    display: inline-block;
-    font-family: "Open Sans";
-    font-size: $size;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    font-optical-sizing: auto;
-    text-decoration: none;
-    text-transform: none;
-    text-shadow: none;
-    letter-spacing: 0;
-    line-height: 1.5;
+  display: inline-block;
+  font-family: "Open Sans";
+  font-size: $size;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
 }
 
 @mixin icon($size) {
-    display: inline-block;
-    font-family: 'Material Icons';
-    font-size: $size;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    font-optical-sizing: auto;
-    text-decoration: none;
-    text-transform: none !important;
-    text-shadow: none;
-    letter-spacing: 0;
-    line-height: 1;
+  display: inline-block;
+  font-family: "Material Icons";
+  font-size: $size;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none !important;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .icon {
-    @include icon(1em);
+  @include icon(1em);
 }
 
 // THEME STYLES
 
 $darkTheme: (
-    ACT: #FB0,
-    F10: #FFF,
-    F20: #CCC,
-    100: #111,
-    200: #222,
-    300: #333,
-    400: #444,
-    500: #555,
-    600: #666,
-    700: #777,
-    800: #888,
-    900: #999,
+  ACT: #fb0,
+  F10: #fff,
+  F20: #ccc,
+  100: #111,
+  200: #222,
+  300: #333,
+  400: #444,
+  500: #555,
+  600: #666,
+  700: #777,
+  800: #888,
+  900: #999,
 );
 
 $lightTheme: (
-    ACT: #FB0,
-    F10: #111,
-    F20: #222,
-    100: #FFF,
-    200: #EEE,
-    300: #DDD,
-    400: #CCC,
-    500: #BBB,
-    600: #AAA,
-    700: #999,
-    800: #888,
-    900: #777
+  ACT: #fb0,
+  F10: #111,
+  F20: #222,
+  100: #fff,
+  200: #eee,
+  300: #ddd,
+  400: #ccc,
+  500: #bbb,
+  600: #aaa,
+  700: #999,
+  800: #888,
+  900: #777,
 );
 
-@media (prefers-color-scheme: dark){
-    :root {
-        --accentColor: map.get($darkTheme, "ACT");
-        --fontColor10: map.get($darkTheme, "F10");
-        --fontColor20: map.get($darkTheme, "F20");
-        --materialColor100: map.get($darkTheme, "100");
-        --materialColor200: map.get($darkTheme, "200");
-        --materialColor300: map.get($darkTheme, "300");
-        --materialColor400: map.get($darkTheme, "400");
-        --materialColor500: map.get($darkTheme, "500");
-        --materialColor100: map.get($darkTheme, "600");
-        --materialColor200: map.get($darkTheme, "700");
-        --materialColor300: map.get($darkTheme, "800");
-        --materialColor400: map.get($darkTheme, "900");
-    }
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accentColor: map.get($darkTheme, "ACT");
+    --fontColor10: map.get($darkTheme, "F10");
+    --fontColor20: map.get($darkTheme, "F20");
+    --materialColor100: map.get($darkTheme, "100");
+    --materialColor200: map.get($darkTheme, "200");
+    --materialColor300: map.get($darkTheme, "300");
+    --materialColor400: map.get($darkTheme, "400");
+    --materialColor500: map.get($darkTheme, "500");
+    --materialColor100: map.get($darkTheme, "600");
+    --materialColor200: map.get($darkTheme, "700");
+    --materialColor300: map.get($darkTheme, "800");
+    --materialColor400: map.get($darkTheme, "900");
+  }
 }
 
-@media (prefers-color-scheme: light){
-    :root {
-        --accentColor: map.get($lightTheme, "ACT");
-        --fontColor10: map.get($lightTheme, "F10");
-        --fontColor20: map.get($lightTheme, "F20");
-        --materialColor100: map.get($lightTheme, "100");
-        --materialColor200: map.get($lightTheme, "200");
-        --materialColor300: map.get($lightTheme, "300");
-        --materialColor400: map.get($lightTheme, "400");
-        --materialColor500: map.get($lightTheme, "500");
-        --materialColor100: map.get($lightTheme, "600");
-        --materialColor200: map.get($lightTheme, "700");
-        --materialColor300: map.get($lightTheme, "800");
-        --materialColor400: map.get($lightTheme, "900");
-    }
+@media (prefers-color-scheme: light) {
+  :root {
+    --accentColor: map.get($lightTheme, "ACT");
+    --fontColor10: map.get($lightTheme, "F10");
+    --fontColor20: map.get($lightTheme, "F20");
+    --materialColor100: map.get($lightTheme, "100");
+    --materialColor200: map.get($lightTheme, "200");
+    --materialColor300: map.get($lightTheme, "300");
+    --materialColor400: map.get($lightTheme, "400");
+    --materialColor500: map.get($lightTheme, "500");
+    --materialColor100: map.get($lightTheme, "600");
+    --materialColor200: map.get($lightTheme, "700");
+    --materialColor300: map.get($lightTheme, "800");
+    --materialColor400: map.get($lightTheme, "900");
+  }
 }
 
-.darkTheme{
-    --accentColor: map.get($darkTheme, "ACT") !important;
-    --fontColor10: map.get($darkTheme, "F10") !important;
-    --fontColor20: map.get($darkTheme, "F20") !important;
-    --materialColor100: map.get($darkTheme, "100") !important;
-    --materialColor200: map.get($darkTheme, "200") !important;
-    --materialColor300: map.get($darkTheme, "300") !important;
-    --materialColor400: map.get($darkTheme, "400") !important;
-    --materialColor500: map.get($darkTheme, "500") !important;
-    --materialColor100: map.get($darkTheme, "600") !important;
-    --materialColor200: map.get($darkTheme, "700") !important;
-    --materialColor300: map.get($darkTheme, "800") !important;
-    --materialColor400: map.get($darkTheme, "900") !important;
+.darkTheme {
+  --accentColor: map.get($darkTheme, "ACT") !important;
+  --fontColor10: map.get($darkTheme, "F10") !important;
+  --fontColor20: map.get($darkTheme, "F20") !important;
+  --materialColor100: map.get($darkTheme, "100") !important;
+  --materialColor200: map.get($darkTheme, "200") !important;
+  --materialColor300: map.get($darkTheme, "300") !important;
+  --materialColor400: map.get($darkTheme, "400") !important;
+  --materialColor500: map.get($darkTheme, "500") !important;
+  --materialColor100: map.get($darkTheme, "600") !important;
+  --materialColor200: map.get($darkTheme, "700") !important;
+  --materialColor300: map.get($darkTheme, "800") !important;
+  --materialColor400: map.get($darkTheme, "900") !important;
 }
 
-.lightTheme{
-    --accentColor: map.get($darkTheme, "ACT") !important;
-    --fontColor10: map.get($darkTheme, "F10") !important;
-    --fontColor20: map.get($darkTheme, "F20") !important;
-    --materialColor100: map.get($darkTheme, "100") !important;
-    --materialColor200: map.get($darkTheme, "200") !important;
-    --materialColor300: map.get($darkTheme, "300") !important;
-    --materialColor400: map.get($darkTheme, "400") !important;
-    --materialColor500: map.get($darkTheme, "500") !important;
-    --materialColor100: map.get($darkTheme, "600") !important;
-    --materialColor200: map.get($darkTheme, "700") !important;
-    --materialColor300: map.get($darkTheme, "800") !important;
-    --materialColor400: map.get($darkTheme, "900") !important;
+.lightTheme {
+  --accentColor: map.get($darkTheme, "ACT") !important;
+  --fontColor10: map.get($darkTheme, "F10") !important;
+  --fontColor20: map.get($darkTheme, "F20") !important;
+  --materialColor100: map.get($darkTheme, "100") !important;
+  --materialColor200: map.get($darkTheme, "200") !important;
+  --materialColor300: map.get($darkTheme, "300") !important;
+  --materialColor400: map.get($darkTheme, "400") !important;
+  --materialColor500: map.get($darkTheme, "500") !important;
+  --materialColor100: map.get($darkTheme, "600") !important;
+  --materialColor200: map.get($darkTheme, "700") !important;
+  --materialColor300: map.get($darkTheme, "800") !important;
+  --materialColor400: map.get($darkTheme, "900") !important;
 }
-
-@function contrast($color){
-    @if (lightness($color) > 50) { @return #000; } 
-    @else { @return #FFF; } 
-}
-
-// SCROLL STYLES
 
 html {
-    scroll-behavior: smooth;
-    background-color: $default;
-    color: contrast($default);
+  scroll-behavior: smooth;
+  background-color: var(--materialColor100);
+  color: var(--fontColor10);
+  @include text(1rem);
 }
 
-::-webkit-scrollbar{
-    width: 16px;
-    height: 16px;
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
 
-    &-track {
-        background-color: var(--materialColor100);
-    }
-
-    &-thumb{
-        background-color: var(--fontColor20);
-        border: var(--materialColor100) solid 4px;
-        border-radius: 8px;
-    }
-
-    &-button{
-        display: none;
-    }
-
-    &-corner {
-        background-color: var(--materialColor100);
-    }
-}
-
-// DEFAULT BLOCK STYLES
-
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font: inherit;
-}
-
-body {
+  &-track {
     background-color: var(--materialColor100);
-    @include text(1rem);
-    color: var(--fontColor10);
+  }
+
+  &-thumb {
+    background-color: var(--fontColor20);
+    border: var(--materialColor100) solid 4px;
+    border-radius: 8px;
+  }
+
+  &-button {
+    display: none;
+  }
+
+  &-corner {
+    background-color: var(--materialColor100);
+  }
 }
 
-img, svg, video  {
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    max-width: 100%;
-    background-color: var(--materialColor200);
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: inherit;
+}
+
+img,
+svg,
+video {
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  max-width: 100%;
 }
 
 details {
-    summary {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        :last-child {
-            position: relative;
-            right: 0.25em;
-        }
+  summary {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    :last-child {
+      position: relative;
+      right: 0.25em;
+      margin-left: auto;
+      &[open] {
+        position: relative;
+        right: 0.25em;
+        transform: rotate(180deg);
+      }
     }
-    &[open]{
-        summary :last-child{
-            position: relative;
-            right: 0.25em;
-            transform: rotate(180deg);
-        }
-    }
+  }
 }
 
 .invisible {
-    visibility: hidden !important;
+  visibility: hidden !important;
 }
 
-.hidden{
-    display: none !important;
+.hidden {
+  display: none !important;
 }
 
-@mixin button($size: 1em){
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 0.5em;
-    border: 0 solid;
-    border-radius: 6px;
-    background-color: inherit;
-    color: inherit;
-    font-family: inherit;
-    font-size: $size;
-    font-weight: 500;
-    font-style: normal;
-    font-stretch: normal;
-    font-optical-sizing: auto;
-    text-decoration: none;
-    text-transform: none;
-    text-shadow: none;
-    letter-spacing: 0;
-    cursor: pointer;
+@mixin button($size: 1em) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5em;
+  border: 0 solid;
+  border-radius: 6px;
+  background-color: inherit;
+  color: inherit;
+  font-family: inherit;
+  font-size: $size;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  cursor: pointer;
 
-    * { 
-        background-color: transparent; 
-    }
+  &:focus-within,
+  &:focus-visible {
+    outline: 1px solid var(--accentColor);
+  }
 
-    a{
-        text-decoration: none !important;
+  * {
+    background-color: transparent;
+    text-decoration: none !important;
+    &:focus-visible {
+      outline: 0px;
     }
+  }
 
-    :last-child{ 
-        margin-left: auto; 
-    }
+  :last-child {
+    margin-left: auto;
+  }
 }
 
-.textButton{
-
+.textButton {
+  @include button(0.85em);
+  &:hover {
+    color: var(--accentColor);
+  }
+  &:focus-visible {
+    color: var(--accentColor);
+  }
 }
 
 .raisedButton {
-
+  @include button(1em);
+  background-color: var(--materialColor500);
+  color: var(--fontColor10);
+  &:hover {
+    background-color: var(--materialColor600);
+  }
 }
 
-.inputButton {
-
-}
-
-button {
-
-    @include button();
-
-    &.raised {
-        box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-        text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-        background-color: $primary;
-        color: map.get($palette, "on-primary");
-    }
-
-    &:hover {
-        transition: 250ms;
-        background-color: color.scale($primary, $lightness: 5%);
-    }
-}
-
-// TAB STYLES
-.tabs{
-
-    [role=tablist]{
-
-        position: absolute;
-        inset: 0 0 auto 0;
-        height: 2rem;
-
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        padding: 0.25rem 0 0 0;
-        gap: 0.25rem;
-
-        background-color: map.get($palette, "default-dark");
-        color: var(--fontColor10);
-
-        [role=tab]{
-
-            flex: 1;
-
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            padding: 0.5rem 1rem;@use "sass:map";
-            @use "sass:color";
-            margin-top: 0.25rem;
-            margin-bottom: 0.25rem;
-
-            border-right: 1px solid map.get($palette, "default-light");
-            border-radius: 0px;
-            box-sizing: border-box;
-
-            font-size: 0.85rem;
-            text-transform: capitalize;
-
-            background-color: map.get($palette, "default-dark");;
-            color: var(--fontColor10);
-            
-            cursor: pointer;
-
-            &:hover{
-                color: $secondary;
-            }
-
-            > .icon {
-                flex-grow: 1;
-                justify-self: center;
-                align-self: center;
-                text-align: center;
-            }
-
-            :nth-child(2) {
-                margin-left: auto;
-            }
-            
-            &.selected,
-            &[aria-selected=true] {
-                margin: 0;
-                border-radius: 4px 4px 0px 0px;
-                border-right: 1px solid transparent;
-                background-color: var(--materialColor200);
-            }
-        }
-    }
-
-    [role=tabpanel] {
-        
-        position: absolute;
-        inset: 2rem 0 0 0;
-        height: auto;
-
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1rem;
-        gap: 0.25em;
-
-        background-color: var(--materialColor200);
-        color: var(--fontColor10);
-    }
-}
-
-@mixin input($size: 0.85em, $color: map.get($palette, "default-light")) {
-    display: inline-block;
-    border: 0 solid;
-    border-radius: 6px;
-    background-color: $color;
-    padding: 0.5em;
-    color: contrast($color);
-    font-family: "Open Sans";
-    font-size: $size;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    font-optical-sizing: auto;
-    text-decoration: none;
-    text-transform: none;
-    text-shadow: none;@use "sass:map";
-    @use "sass:color";
-    letter-spacing: 0;
-    line-height: 1.5;
-    cursor: text;
-}
-
-input{
-    @include input();
-}
-
-textarea {
-    @include input();
+@mixin input($size: 0.85em) {
+  display: inline-block;
+  border: 0 solid;
+  border-bottom: 1px solid transparent;
+  border-radius: 6px;
+  padding: 0.5em;
+  font-family: "Open Sans";
+  font-size: $size;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  font-optical-sizing: auto;
+  text-decoration: none;
+  text-transform: none;
+  text-shadow: none;
+  letter-spacing: 0;
+  line-height: 1.5;
+  cursor: text;
 }
 
 .input {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25em;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    width: 100%;
-
-    label{
-        text-transform: capitalize;
-        font-size: 0.75rem;
+  &:focus-within {
+    label {
+      color: var(--accentColor);
     }
-    
     input,
     textarea {
-        width: 100%;
+      outline: 1px solid var(--accentColor);
     }
-
-    textarea {
-        flex-grow: 1;
-    }
-
-    &:focus-within{
-        label {
-            color: $secondary;
-        }
-
-        input,
-        textarea {
-            outline: 1px solid $secondary;
-        }
-    }
-}
-
-.combinedInputButton {
-
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-
-    width: 100%;
-    border-radius: 6px;
-
-    &:focus-within{
-        outline: 1px solid $secondary;
-    }
-
-    input {
-        flex-grow: 1;
-        border-radius: 6px 0px 0px 6px;
-
-        &:focus-visible {
-            outline: 0px;
-        }
-    }
-
-    button {
-        border-radius: 0px 6px 6px 0px;
-
-        &:focus-visible{
-            outline: 0px;
-        }
-    }
-}
-
-fieldset{
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0.5rem;
-    gap: 0.25rem;
-    border: 0 solid;
-    border-radius: 6px;
-    background-color: map.get($palette, "default-light");
+  }
+  label {
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 0.75em;
+  }
+  input,
+  textarea {
+    @include input();
+    background-color: var(--materialColor300);
     color: var(--fontColor10);
-    font-family: "Open Sans";
-    font-size: 0.75rem;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    font-optical-sizing: auto;
-    text-decoration: none;
-    text-transform: none;
-    text-shadow: none;
-    letter-spacing: 0;
-
-    div {
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        padding: 0.25rem;
-        gap: 0.25rem;
-        border: 1px solid transparent;
-        border-radius: 6px;
-
-        &:hover {
-            background-color: var(--materialColor200);
-        }
-
-        &:has(:checked){
-            background-color: var(--materialColor200);
-            color: $secondary;
-
-            input[type=number] {
-                border-bottom: solid 1px $secondary;
-            }
-        }
-
-        label {
-            flex-grow: 1;
-            padding: 0.25rem 0.5em;
-            cursor: pointer;
-        }
-
-        input[type=radio],
-        input[type=checkbox] {
-            width: 18px;  
-            height: 18px;
-            accent-color: $secondary;
-            cursor: pointer;
-        }
-
-        input[type=number]{
-            
-            width: 10ch;
-            background-color: inherit;
-            border-radius: 0;
-            border-bottom: solid 1px map.get($palette, 
-            "on-default");
-
-            &:focus-visible{
-                border-radius: 6px;
-                border-bottom: 1px solid transparent;
-                outline: 1px solid $secondary;
-            }
-        }
-    }
-
-    span {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.5rem;
-
-        input {
-            width: 10ch;
-            background-color: var(--materialColor200);
-            &:focus-visible{
-                outline: solid 1px $secondary;
-            }
-        }
-    }
-
-    legend {
-        text-transform: capitalize;
-    }
+  }
 }
 
-.fieldsetRow {
-    width: 100%;
+.inputButton {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  align-items: stretch;
+  border-radius: 6px;
+  &:focus-within {
+    outline: 1px solid var(--accentColor);
+  }
+  input {
+    @include input();
+    border-radius: 6px 0px 0px 6px;
+    background-color: var(--materialColor300);
+    color: var(--fontColor10);
+    &:focus-visible {
+      outline: 0px;
+    }
+  }
+  button {
+    @include button(0.85em);
+    border-radius: 0px 6px 6px 0px;
+    background-color: var(--materialColor500);
+    color: var(--fontColor10);
+    &:focus-visible {
+      outline: 0px;
+    }
+  }
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5rem;
+  gap: 0.25rem;
+  @include input();
+  background-color: var(--materialColor300);
+  color: var(--fontColor10);
+
+  legend {
+    text-transform: capitalize;
+  }
+
+  div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    padding: 0.25em;
+    gap: 0.25em;
+    border: 1px solid transparent;
+    border-radius: 6px;
 
-    fieldset {
-        flex-grow: 1;
+    &:hover {
+      background-color: var(--materialColor200);
     }
+
+    label {
+      flex: 1;
+      padding: 0.25em 0.5em;
+      background-color: inherit;
+      color: inherit;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      width: 1.25em;
+      height: 1.25em;
+      accent-color: var(--accentColor);
+      cursor: pointer;
+    }
+
+    input[type="number"] {
+      width: 10ch;
+      @include input(1em);
+      border: 0 solid;
+      border-bottom: 1px solid var(--materialColor500);
+      color: inherit;
+
+      &:focus-visible {
+        border-radius: 6px;
+        border-bottom: 1px solid transparent;
+        outline: 1px solid var(--accentColor);
+      }
+    }
+
+    &:has(:checked) {
+      background-color: var(--materialColor200);
+    }
+  }
+}
+
+// TAB STYLES
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr;
+  padding: 0.25rem;
+
+  ul[role="tablist"] {
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0.25rem;
+    background-color: var(--materialColor100);
+    color: var(--fontColor10);
+
+    li[role="tab"] {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      margin-top: 0.25rem;
+      margin-bottom: 0.25rem;
+      border-right: 1px solid var(--materialColor500);
+      border-radius: 0px;
+      box-sizing: border-box;
+      font-size: 0.85rem;
+      text-transform: capitalize;
+      background-color: var();
+      color: var(--fontColor10);
+
+      cursor: pointer;
+
+      &:hover {
+        color: $secondary;
+      }
+
+      > .icon {
+        flex-grow: 1;
+        justify-self: center;
+        align-self: center;
+        text-align: center;
+      }
+
+      :nth-child(2) {
+        margin-left: auto;
+      }
+
+      &.selected {
+        margin: 0;
+        border-radius: 4px 4px 0px 0px;
+        border-right: 1px solid transparent;
+        background-color: var(--materialColor200);
+      }
+    }
+  }
+
+  [role="tabpanel"] {
+    position: absolute;
+    inset: 2rem 0 0 0;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+    gap: 0.25em;
+
+    background-color: var(--materialColor200);
+    color: var(--fontColor10);
+  }
 }
 
 .datePicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  gap: 0.25em;
 
+  .controls {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    padding: 0.5em;
     gap: 0.25em;
 
-    .controls{
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 0.25em;
-
-        :first-child{
-            font-weight: 700;
-            margin-right: auto;
-        }
+    :first-child {
+      font-weight: 700;
+      margin-right: auto;
     }
+  }
 
-    .calendar{
-        display: grid;
-        grid-template-columns: repeat(7, auto);
-        grid-template-rows: repeat(7, auto);
-        gap: 2px;
-    }
+  .calendar {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(7, auto);
+    gap: 2px;
+  }
 
-    [type=reset]{
-        width: 100%;    
-    }
+  [type="reset"] {
+    width: 100%;
+  }
 }
 
-
-
 $banner: (
-    height: 0rem,
-    backgroundColor: map.get(utility.$palette, "default-dark"),
-    color: map.get(utility.$palette, "on-default"),
-    fontSize: 1rem
+  height: 0rem,
+  backgroundColor: map.get(utility.$palette, "default-dark"),
+  color: map.get(utility.$palette, "on-default"),
+  fontSize: 1rem,
 );
 
 #banner {
-    display: none;
-    z-index: 8;
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: map.get($banner, "height");
-    padding-top: 0.25rem;
-    background-color: map.get($banner, "backgroundColor");
-    color: map.get($banner, "color");
+  display: none;
+  z-index: 8;
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: map.get($banner, "height");
+  padding-top: 0.25rem;
+  background-color: map.get($banner, "backgroundColor");
+  color: map.get($banner, "color");
 }
 
-
 main {
-    z-index: 0;
-    position: fixed;
-    inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
-    width: auto;
+  z-index: 0;
+  position: fixed;
+  inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
+  width: auto;
 }
 
 dialog {
-    z-index: 16;
-    z-index: 20;
+  z-index: 16;
+  z-index: 20;
+  position: fixed;
+  inset: 40% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1em;
+  gap: 0.5em;
+  font-size: 1rem;
+
+  p:first-of-type {
+    font-size: 1em;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.8em;
+    max-height: 50vh;
+    overflow-y: scroll;
+  }
+
+  > .icon {
+    position: absolute;
+    inset: 0.25rem 0.25rem auto auto;
+    font-size: 0.5rem;
+  }
+
+  .scrim {
+    z-index: 15;
     position: fixed;
-    inset: 40% auto auto 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    height: auto;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1em;
-    gap: 0.5em;
-    font-size: 1rem;
-
-    p:first-of-type {
-       font-size: 1em;
-       font-weight: 700;
-    }
-
-    p{
-        font-size: 0.8em;
-        max-height: 50vh;
-        overflow-y: scroll;
-    }
-
-    > .icon {
-        position: absolute;
-        inset: 0.25rem 0.25rem auto auto;
-        font-size: 0.5rem;
-    }
-
-    .scrim {
-        z-index: 15;
-        position: fixed;
-        inset: 0;
-        background-color: black;
-        opacity: 20%;
-    }
-
+    inset: 0;
+    background-color: black;
+    opacity: 20%;
+  }
 }
 
 #fab {
-    z-index: 12;
-    position: absolute;
-    inset: auto 1rem 1rem auto;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
+  z-index: 12;
+  position: absolute;
+  inset: auto 1rem 1rem auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
 
-    > * {
-        padding: 0.5em;
-        border-radius: 50%;
-        box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
-    }
+  > * {
+    padding: 0.5em;
+    border-radius: 50%;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  }
 
-    :first-child{
-        @include utility.button(map.get(utility.$palette, "primary-medium"));
-    }
+  :first-child {
+    @include utility.button(map.get(utility.$palette, "primary-medium"));
+  }
 }
