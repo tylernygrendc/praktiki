@@ -17,7 +17,7 @@
   src: url(/font/material-icons.ttf);
 }
 
-@mixin text($size) {
+@mixin text($size: 1em) {
   display: inline-block;
   font-family: "Open Sans";
   font-size: $size;
@@ -32,7 +32,7 @@
   line-height: 1.5;
 }
 
-@mixin icon($size) {
+@mixin icon($size: 1em) {
   display: inline-block;
   font-family: "Material Icons";
   font-size: $size;
@@ -48,7 +48,7 @@
 }
 
 .icon {
-  @include icon(1em);
+  @include icon();
 }
 
 // THEME STYLES
@@ -57,6 +57,8 @@ $darkTheme: (
   ACT: #fb0,
   F10: #fff,
   F20: #ccc,
+  B10: #b22,
+  B20: #d22,
   100: #111,
   200: #222,
   300: #333,
@@ -72,6 +74,8 @@ $lightTheme: (
   ACT: #fb0,
   F10: #111,
   F20: #222,
+  B10: #b22,
+  B20: #d22,
   100: #fff,
   200: #eee,
   300: #ddd,
@@ -88,6 +92,8 @@ $lightTheme: (
     --accentColor: map.get($darkTheme, "ACT");
     --fontColor10: map.get($darkTheme, "F10");
     --fontColor20: map.get($darkTheme, "F20");
+    --buttonColor10: map.get($darkTheme, "B10");
+    --buttonColor20: map.get($darkTheme, "B20");
     --materialColor100: map.get($darkTheme, "100");
     --materialColor200: map.get($darkTheme, "200");
     --materialColor300: map.get($darkTheme, "300");
@@ -105,6 +111,8 @@ $lightTheme: (
     --accentColor: map.get($lightTheme, "ACT");
     --fontColor10: map.get($lightTheme, "F10");
     --fontColor20: map.get($lightTheme, "F20");
+    --buttonColor10: map.get($lightTheme, "B10");
+    --buttonColor20: map.get($lightTheme, "B20");
     --materialColor100: map.get($lightTheme, "100");
     --materialColor200: map.get($lightTheme, "200");
     --materialColor300: map.get($lightTheme, "300");
@@ -121,6 +129,8 @@ $lightTheme: (
   --accentColor: map.get($darkTheme, "ACT") !important;
   --fontColor10: map.get($darkTheme, "F10") !important;
   --fontColor20: map.get($darkTheme, "F20") !important;
+  --buttonColor10: map.get($darkTheme, "B10") !important;
+  --buttonColor20: map.get($darkTheme, "B20") !important;
   --materialColor100: map.get($darkTheme, "100") !important;
   --materialColor200: map.get($darkTheme, "200") !important;
   --materialColor300: map.get($darkTheme, "300") !important;
@@ -136,6 +146,8 @@ $lightTheme: (
   --accentColor: map.get($darkTheme, "ACT") !important;
   --fontColor10: map.get($darkTheme, "F10") !important;
   --fontColor20: map.get($darkTheme, "F20") !important;
+  --buttonColor10: map.get($lightTheme, "B10") !important;
+  --buttonColor20: map.get($lightTheme, "B20") !important;
   --materialColor100: map.get($darkTheme, "100") !important;
   --materialColor200: map.get($darkTheme, "200") !important;
   --materialColor300: map.get($darkTheme, "300") !important;
@@ -151,7 +163,7 @@ html {
   scroll-behavior: smooth;
   background-color: var(--materialColor100);
   color: var(--fontColor10);
-  @include text(1rem);
+  @include text();
 }
 
 ::-webkit-scrollbar {
@@ -217,7 +229,7 @@ details {
   visibility: hidden !important;
 }
 
-.hidden {
+.disappeared {
   display: none !important;
 }
 
@@ -272,10 +284,10 @@ details {
 
 .raisedButton {
   @include button(1em);
-  background-color: var(--materialColor500);
+  background-color: var(--buttonColor10);
   color: var(--fontColor10);
   &:hover {
-    background-color: var(--materialColor600);
+    background-color: var(--buttonColor20);
   }
 }
 
@@ -360,8 +372,8 @@ details {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 0.5rem;
-  gap: 0.25rem;
+  padding: 0.5em;
+  gap: 0.25em;
   @include input();
   background-color: var(--materialColor300);
   color: var(--fontColor10);
@@ -420,12 +432,12 @@ details {
   }
 }
 
-// TAB STYLES
 .tabs {
+
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2rem 1fr;
-  padding: 0.25rem;
+  grid-template-rows: 2em 1fr;
+  padding: 0.25em;
 
   ul[role="tablist"] {
     grid-row: 1 / 2;
@@ -433,181 +445,58 @@ details {
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    gap: 0.25rem;
+    padding-top: 0.25em;
+    gap: 0.25em;
     background-color: var(--materialColor100);
     color: var(--fontColor10);
 
     li[role="tab"] {
+
+      tabindex: 0;
       flex: 1;
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: 0.5rem 1rem;
-      margin-top: 0.25rem;
-      margin-bottom: 0.25rem;
       border-right: 1px solid var(--materialColor500);
       border-radius: 0px;
-      box-sizing: border-box;
-      font-size: 0.85rem;
+      font-size: 0.85em;
       text-transform: capitalize;
-      background-color: var();
-      color: var(--fontColor10);
-
       cursor: pointer;
 
       &:hover {
-        color: $secondary;
+        color: var(--accentColor);
       }
 
-      > .icon {
-        flex-grow: 1;
-        justify-self: center;
-        align-self: center;
-        text-align: center;
+      &:focus-visible {
+        color: var(--accentColor);
+        border-radius: 6px;
+        border-right: transparent;
+        outline: solid 1px var(--accentColor);
+        outline-offset: -2px;
       }
 
-      :nth-child(2) {
-        margin-left: auto;
+      *{
+        tabindex: -1;
       }
 
       &.selected {
         margin: 0;
-        border-radius: 4px 4px 0px 0px;
-        border-right: 1px solid transparent;
+        border-radius: 6px 6px 0px 0px;
+        border-right: transparent;
         background-color: var(--materialColor200);
+      }
+
+      :first-child{
+        margin-right: auto;
       }
     }
   }
 
   [role="tabpanel"] {
-    position: absolute;
-    inset: 2rem 0 0 0;
-    height: auto;
-
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 1rem;
-    gap: 0.25em;
-
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+    padding: 1em;
     background-color: var(--materialColor200);
     color: var(--fontColor10);
-  }
-}
-
-.datePicker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5em;
-  gap: 0.25em;
-
-  .controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.25em;
-
-    :first-child {
-      font-weight: 700;
-      margin-right: auto;
-    }
-  }
-
-  .calendar {
-    display: grid;
-    grid-template-columns: repeat(7, auto);
-    grid-template-rows: repeat(7, auto);
-    gap: 2px;
-  }
-
-  [type="reset"] {
-    width: 100%;
-  }
-}
-
-$banner: (
-  height: 0rem,
-  backgroundColor: map.get(utility.$palette, "default-dark"),
-  color: map.get(utility.$palette, "on-default"),
-  fontSize: 1rem,
-);
-
-#banner {
-  display: none;
-  z-index: 8;
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: map.get($banner, "height");
-  padding-top: 0.25rem;
-  background-color: map.get($banner, "backgroundColor");
-  color: map.get($banner, "color");
-}
-
-main {
-  z-index: 0;
-  position: fixed;
-  inset: map.get($banner, "height") map.get($shortcut, "width") 0 0;
-  width: auto;
-}
-
-dialog {
-  z-index: 16;
-  z-index: 20;
-  position: fixed;
-  inset: 40% auto auto 50%;
-  transform: translate(-50%, -50%);
-  width: 350px;
-  height: auto;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 1em;
-  gap: 0.5em;
-  font-size: 1rem;
-
-  p:first-of-type {
-    font-size: 1em;
-    font-weight: 700;
-  }
-
-  p {
-    font-size: 0.8em;
-    max-height: 50vh;
-    overflow-y: scroll;
-  }
-
-  > .icon {
-    position: absolute;
-    inset: 0.25rem 0.25rem auto auto;
-    font-size: 0.5rem;
-  }
-
-  .scrim {
-    z-index: 15;
-    position: fixed;
-    inset: 0;
-    background-color: black;
-    opacity: 20%;
-  }
-}
-
-#fab {
-  z-index: 12;
-  position: absolute;
-  inset: auto 1rem 1rem auto;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-
-  > * {
-    padding: 0.5em;
-    border-radius: 50%;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
-  }
-
-  :first-child {
-    @include utility.button(map.get(utility.$palette, "primary-medium"));
   }
 }

@@ -1,0 +1,104 @@
+@use "_ui";
+
+#praktiki{
+    position: fixed;
+    inset: 0;
+    overflow: none;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 300px 1fr 300px;
+}
+
+#globalBanner{
+    position: relative;
+    grid-row: 1/2;
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#toolDrawer{
+    position: relative;
+    grid-row: 2/3;
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5em;
+    gap: 0.25em;
+}
+
+#app {
+    position: relative;
+    grid-row: 2/3;
+    grid-column: 2/3;
+}
+
+#appDrawer{
+
+    position: relative;
+    grid-row: 2/3;
+    grid-column: 3/4;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2rem 1fr;
+    padding: 0.5em;
+
+    background-color: var(--materialColor100);
+    color: var(--fontColor10);
+      
+    ul[role="tablist"] {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0.25rem;
+    
+        li[role="tab"] {
+
+            tabindex: 0;
+            flex: 1;
+            border-radius: 0px;
+            border-bottom: solid 1px transparent;
+            @include _ui.icon();
+            cursor: pointer;
+    
+            &:hover,
+            &:focus-visible {
+                color: var(--accentColor);
+            }
+        
+            &.selected {
+                color: var(--accentColor);
+                border-bottom: var(--accentColor);
+            }
+
+            *{
+                tabindex: -1;
+            }
+        }
+    }
+    
+    [role="tabpanel"] {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.25em;
+        background-color: var(--materialColor100);
+        color: var(--fontColor10);
+    }
+}
+
+#globalActions{
+    position: relative;
+    grid-row: 3/4;
+    grid-column: 1/4;
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
