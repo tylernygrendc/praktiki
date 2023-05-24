@@ -212,10 +212,12 @@ details {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     :last-child {
       position: relative;
       right: 0.25em;
       margin-left: auto;
+
       &[open] {
         position: relative;
         right: 0.25em;
@@ -262,6 +264,7 @@ details {
   * {
     background-color: transparent;
     text-decoration: none !important;
+
     &:focus-visible {
       outline: 0px;
     }
@@ -274,9 +277,11 @@ details {
 
 .textButton {
   @include button(0.85em);
+
   &:hover {
     color: var(--accentColor);
   }
+
   &:focus-visible {
     color: var(--accentColor);
   }
@@ -286,6 +291,7 @@ details {
   @include button(1em);
   background-color: var(--buttonColor10);
   color: var(--fontColor10);
+
   &:hover {
     background-color: var(--buttonColor20);
   }
@@ -321,16 +327,19 @@ details {
     label {
       color: var(--accentColor);
     }
+
     input,
     textarea {
       outline: 1px solid var(--accentColor);
     }
   }
+
   label {
     text-align: left;
     text-transform: capitalize;
     font-size: 0.75em;
   }
+
   input,
   textarea {
     @include input();
@@ -345,23 +354,28 @@ details {
   grid-template-rows: auto;
   align-items: stretch;
   border-radius: 6px;
+
   &:focus-within {
     outline: 1px solid var(--accentColor);
   }
+
   input {
     @include input();
     border-radius: 6px 0px 0px 6px;
     background-color: var(--materialColor300);
     color: var(--fontColor10);
+
     &:focus-visible {
       outline: 0px;
     }
   }
+
   button {
     @include button(0.85em);
     border-radius: 0px 6px 6px 0px;
     background-color: var(--materialColor500);
     color: var(--fontColor10);
+
     &:focus-visible {
       outline: 0px;
     }
@@ -436,7 +450,7 @@ details {
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2em 1fr;
+  grid-template-rows: 2lh 1fr;
   padding: 0.25em;
 
   ul[role="tablist"] {
@@ -475,7 +489,7 @@ details {
         outline-offset: -2px;
       }
 
-      *{
+      * {
         tabindex: -1;
       }
 
@@ -486,7 +500,7 @@ details {
         background-color: var(--materialColor200);
       }
 
-      :first-child{
+      :first-child {
         margin-right: auto;
       }
     }
@@ -498,5 +512,38 @@ details {
     padding: 1em;
     background-color: var(--materialColor200);
     color: var(--fontColor10);
+  }
+}
+
+#alert,
+#prompt {
+  z-index: 20;
+  position: absolute;
+  inset: 20% auto auto 50%;
+  width: 300px;
+  max-width: 95svw;
+  min-height: 100px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0.5em;
+  gap: 0.5em;
+  border-radius: 6px;
+  background-color: var(--materialColor100);
+  color: var(--fontColor10);
+
+  .head {
+    font-size: 1.15em;
+  }
+
+  .body {
+    font-size: 0.9em;
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.5em;
   }
 }

@@ -1,5 +1,19 @@
 @use "_ui";
 
+
+// device breakpoints
+
+$MacBookProWidth: 1280px;
+$iPadProWidth: 1024px;
+$iPadWidth: 820px;
+$iPadMiniWidth: 768px;
+$iPhoneProMaxWidth: 430px;
+$iPhoneWidth: 390px;
+$iPhoneSEWidth: 375px;
+
+// praktiki is designed for tablets and larger
+// functionality on small devices will be limited
+
 #praktiki {
   z-index: 0;
   position: fixed;
@@ -30,7 +44,7 @@
   gap: 0.25em;
 }
 
-#app {
+#appMain {
   position: relative;
   grid-row: 2/3;
   grid-column: 2/3;
@@ -43,7 +57,7 @@
 
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 2rem 1fr;
+  grid-template-rows: 2rlh 1fr;
   padding: 0.5em;
 
   background-color: var(--materialColor100);
@@ -112,15 +126,18 @@
 }
 
 #appDialog {
-  z-index: 15;
+  z-index: 20;
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   align-items: stretch;
   padding: 0.5em;
   gap: 0.5em;
-  position: absolute;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  background-color: var(--materialColor100);
+  color: var(--fontColor10);
 
   .actions {
     display: flex;
@@ -129,26 +146,93 @@
   }
 }
 
-// Device Breakpoints
+// hide tool drawer on small devices and windows
 
-$MacBookProWidth: 1280px;
-$iPadProWidth: 1024px;
-$iPadWidth: 820px;
-$iPadMiniWidth: 768px;
-$iPhoneProMaxWidth: 430px;
-$iPhoneWidth: 390px;
-$iPhoneSEWidth: 375px;
+@media (min-width: $iPadWidth) and (max-width: $iPadProWidth)
+/* tablets and small windows */
 
+  {
+  #praktiki {
+    grid-template-columns: 1fr 300px;
+  }
 
+  #globalBanner {
+    grid-column: 1/3;
+  }
 
-@media screen and (min-width: $iPadProWidth) /* all large screens */ {
+  #toolDrawer {
+    z-index: 15;
+    position: fixed;
+    inset: 0 auto 0 0;
+    display: flex;
+  }
+
+  #appMain {
+    position: relative;
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+
+  #appDrawer {
+    grid-column: 2/3;
+  }
+
+  #globalActions {
+    grid-row: 2/3;
+  }
 }
 
-@media screen and (min-width: $iPadWidth) and (max-width: $iPadProWidth) {
+// functionality is restricted on small devices
+// remove global banner, global actions, tool drawer
+// hide app main, show app drawer only
+
+@media (min-width: $iPhoneSEWidth) and (max-width: $iPadWidth)
+/* small tablets and phones */
+
+  {
+
+  #praktiki {
+    display: block;
+  }
+
+  #globalBanner,
+  #appMain,
+  #globalActions,
+  #appDialog {
+    display: none;
+  }
+
+  #appMain {
+    position: absolute;
+    inset: 0;
+    visibility: hidden;
+  }
+
+  #appDrawer {
+    z-index: 0;
+    position: absolute;
+    inset: 0;
+    grid-template-rows: 1fr 2lh;
+
+    ul[role="tablist"] {
+      grid-row: 2 / 3;
+    }
+
+    [role="tabpanel"] {
+      grid-row: 1 / 2;
+    }
+  }
 }
 
-@media screen and (min-width: 320px) and (max-width: 768px) {
-}
+// some devices are too small to use praktiki
+// prompt user to change orientation or switch to a larger device
 
-@media screen and (max-width: 319px){ 
+@media (max-width: $iPhoneSEWidth),
+(max-height: $iPhoneProMaxWidth)
+/* very small screens and phones in landscape */
+
+  {
+  #praktiki {
+    display: none;
+  }
 }
