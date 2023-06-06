@@ -8,27 +8,7 @@
     ],
     "rewrites": [
       {
-        "source":"/",
-        "destination":"/about.html"
-      },
-      {
-        "source":"/about",
-        "destination":"/about.html"
-      },
-      {
-        "source":"/features",
-        "destination":"/about.html#features"
-      },
-      {
-        "source":"/pricing",
-        "destination":"/about.html#features"
-      },
-      {
-        "source": "/auth",
-        "destination": "/auth.html"
-      },
-      {
-        "source": "/auth/**",
+        "source": "/",
         "function": "routes"
       }
     ]

@@ -1,11 +1,297 @@
 {
-    "name": "Praktiki | Web-Based Practice Management for Chiropractors",
-    "short_name": "Praktiki",
-    "icons": [{
-        "src": "/assets/android-touch-icon.png",
-        "size": "512x512"
-    }],
-    "background_color": "#ffffff",
-    "theme_color": "#ffffff",
-    "display": "fullscreen"
+    "name": "Praktiki Practice Management",
+    "short_name":"Praktiki",
+    "description":"Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory management, and direct patient communication, Praktiki is the all-in-one solution for any chiropractic practice. It is free to use for practices with fewer than 100 monthly patient visits, and paid plans start at just $29 per month.",
+    "start_url": "./auth/schedule-app",
+    "display": "standalone",
+    "icons": 
+    [{
+        "src": "./assets/any-icon-1024.png",
+        "size": "1024x1024",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-512.png",
+        "size": "512x512",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-256.png",
+        "size": "256x256",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-192.png",
+        "size": "192x192",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-180.png",
+        "size": "180x180",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-167.png",
+        "size": "167x167",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-152.png",
+        "size": "152x152",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-128.png",
+        "size": "128x128",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-120.png",
+        "size": "120x120",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-114.png",
+        "size": "114x114",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-87.png",
+        "size": "87x87",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-80.png",
+        "size": "80x80",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-76.png",
+        "size": "76x76",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-64.png",
+        "size": "64x64",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-58.png",
+        "size": "58x58",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/any-icon-32.png",
+        "size": "32x32",
+        "type": "image/png",
+        "purpose": "any"
+    },
+    {
+        "src": "./assets/maskable-icon-1024.png",
+        "size": "1024x1024",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-512.png",
+        "size": "512x512",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-256.png",
+        "size": "256x256",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-192.png",
+        "size": "192x192",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-180.png",
+        "size": "180x180",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-167.png",
+        "size": "167x167",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-152.png",
+        "size": "152x152",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-128.png",
+        "size": "128x128",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-120.png",
+        "size": "120x120",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-114.png",
+        "size": "114x114",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-87.png",
+        "size": "87x87",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-80.png",
+        "size": "80x80",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-76.png",
+        "size": "76x76",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-64.png",
+        "size": "64x64",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-58.png",
+        "size": "58x58",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/maskable-icon-32.png",
+        "size": "32x32",
+        "type": "image/png",
+        "purpose": "maskable"
+    },
+    {
+        "src": "./assets/monochrome-icon-1024.png",
+        "size": "1024x1024",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-512.png",
+        "size": "512x512",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-256.png",
+        "size": "256x256",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-192.png",
+        "size": "192x192",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-180.png",
+        "size": "180x180",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-167.png",
+        "size": "167x167",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-152.png",
+        "size": "152x152",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-128.png",
+        "size": "128x128",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-120.png",
+        "size": "120x120",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-114.png",
+        "size": "114x114",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-87.png",
+        "size": "87x87",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-80.png",
+        "size": "80x80",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-76.png",
+        "size": "76x76",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-64.png",
+        "size": "64x64",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-58.png",
+        "size": "58x58",
+        "type": "image/png",
+        "purpose": "monochrome"
+    },
+    {
+        "src": "./assets/monochrome-icon-32.png",
+        "size": "32x32",
+        "type": "image/png",
+        "purpose": "monochrome"
+    }
+]
 }

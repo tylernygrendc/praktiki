@@ -76,7 +76,7 @@ $iPhoneSEWidth: 375px;
       flex: 1;
       border-radius: 0px;
       border-bottom: solid 1px transparent;
-      @include _ui.icon();
+      @include ui.icon();
       cursor: pointer;
 
       &:hover,
