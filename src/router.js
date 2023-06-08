@@ -1,6 +1,7 @@
 import env from "dotenv";
 import express from "express";
 import functions from "firebase-functions";
+import { taskQueue } from "firebase-functions/v1/tasks";
 
 env.config();
 
@@ -11,56 +12,56 @@ router.set('view engine', 'pug');
 router.get('/', (req, res) => {
     res.status(200)
         .render("productPage", {
-            page: "Login or Sign Up"
+            title: "Login or Sign Up",
+            page: "productPage"
         });
 });
 
 router.get('/auth/file-app', (req, res) => {
     res.status(200)
         .render("fileApp", {
-            page: "File"
+            title: "File",
+            page: "fileApp"
         });
 });
 
 router.get('/auth/schedule-app', (req, res) => {
     res.status(200)
         .render("scheduleApp", {
-            page: "Schedule"
+            title: "Schedule",
+            page: "scheduleApp"
         });
 });
 
 router.get('/auth/billing-app', (req, res) => {
     res.status(200)
         .render("billingApp", {
-            page: "Billing"
+            title: "Billing",
+            page: "billingApp"
         });
 });
 
 router.get('/auth/business-app', (req, res) => {
     res.status(200)
         .render("businessApp", {
-            page: "Business"
+            title: "Business",
+            page: "businessApp"
         });
 });
 
 router.get('/auth/task-app', (req, res) => {
     res.status(200)
         .render("taskApp", {
-            page: "Task"
+            title: "Task",
+            page: "taskApp"
         });
 });
 
 router.get('/auth/chat-app', (req, res) => {
     res.status(200)
         .render("chatApp", {
-            page: "Chat"
-        });
-});
-
-router.get('/auth/account-app', (req, res) => {
-    res.status(200)
-        .render("account", {
-            page: "Account"
+            title: "Chat",
+            page: "chatApp"
         });
 });
 

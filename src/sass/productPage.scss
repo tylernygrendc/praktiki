@@ -1,0 +1,31 @@
+@use "_ui";
+
+// device breakpoints
+
+$MacBookProWidth: 1280px;
+$iPadProWidth: 1024px;
+$iPadWidth: 820px;
+$iPadMiniWidth: 768px;
+$iPhoneProMaxWidth: 430px;
+$iPhoneWidth: 390px;
+$iPhoneSEWidth: 375px;
+
+#primaryNavigation{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.25em;
+    gap: 0.25em;
+
+    #brand {
+        flex: 1;
+        font-size: 1em;
+        .logo {
+            height: 1lh;
+            width: 1lh;
+        }
+        .name {
+            // display if space allows
+        }
+    }
+}

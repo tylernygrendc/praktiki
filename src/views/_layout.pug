@@ -4,14 +4,17 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
 
-        title #{ page }
-        meta(name="description", content=`${ description }`)
+        title #{ title }
+        meta(name="description", content="Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, Praktiki is the all-in-one solution for any chiropractic practice. It is free to use for practices with fewer than 100 monthly patient visits, and paid plans start at just $29 per month.")
 
         link(rel="icon", href="favicon.ico", sizes="any")
         link(rel="icon", href="favicon.svg", type="image/xml+svg")
         link(rel="apple-touch-icon", href="./assets/maskable-icon-180.png")
         link(rel="manifest", href="./manifest.json", crossorigin="use-credentials")
-        link(rel="stylesheet", href=`./css/${ page }.css`)
 
-        script(defer, src=`./js/${ page }.js`)  
-    body 
+        block styles
+            - const stylesPath = "../../css";
+        block scripts        
+            script(defer, src=`./js/${ page }.js`)  
+    body
+        block body

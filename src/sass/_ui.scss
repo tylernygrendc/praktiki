@@ -51,112 +51,32 @@
   @include icon();
 }
 
-// THEME STYLES
-
-$darkTheme: (
-  ACT: #fb0,
-  F10: #fff,
-  F20: #ccc,
-  B10: #b22,
-  B20: #d22,
-  100: #111,
-  200: #222,
-  300: #333,
-  400: #444,
-  500: #555,
-  600: #666,
-  700: #777,
-  800: #888,
-  900: #999,
-);
-
-$lightTheme: (
-  ACT: #fb0,
-  F10: #111,
-  F20: #222,
-  B10: #b22,
-  B20: #d22,
-  100: #fff,
-  200: #eee,
-  300: #ddd,
-  400: #ccc,
-  500: #bbb,
-  600: #aaa,
-  700: #999,
-  800: #888,
-  900: #777,
-);
+:root {
+  --accentColor: #fb0;
+  --fontColor10: #111;
+  --fontColor20: #222;
+  --buttonColor10: #086;
+  --buttonColor20: #197;
+  --materialColor100: #aaa;
+  --materialColor200: #bbb;
+  --materialColor300: #ccc;
+  --materialColor400: #ddd;
+  --materialColor500: #fff;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --accentColor: map.get($darkTheme, "ACT");
-    --fontColor10: map.get($darkTheme, "F10");
-    --fontColor20: map.get($darkTheme, "F20");
-    --buttonColor10: map.get($darkTheme, "B10");
-    --buttonColor20: map.get($darkTheme, "B20");
-    --materialColor100: map.get($darkTheme, "100");
-    --materialColor200: map.get($darkTheme, "200");
-    --materialColor300: map.get($darkTheme, "300");
-    --materialColor400: map.get($darkTheme, "400");
-    --materialColor500: map.get($darkTheme, "500");
-    --materialColor100: map.get($darkTheme, "600");
-    --materialColor200: map.get($darkTheme, "700");
-    --materialColor300: map.get($darkTheme, "800");
-    --materialColor400: map.get($darkTheme, "900");
-  }
+    --accentColor: #fb0;
+    --fontColor10: #fff;
+    --fontColor20: #ccc;
+    --buttonColor10: #086;
+    --buttonColor20: #197;
+    --materialColor100: #111;
+    --materialColor200: #222;
+    --materialColor300: #333;
+    --materialColor400: #444;
+    --materialColor500: #555;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --accentColor: map.get($lightTheme, "ACT");
-    --fontColor10: map.get($lightTheme, "F10");
-    --fontColor20: map.get($lightTheme, "F20");
-    --buttonColor10: map.get($lightTheme, "B10");
-    --buttonColor20: map.get($lightTheme, "B20");
-    --materialColor100: map.get($lightTheme, "100");
-    --materialColor200: map.get($lightTheme, "200");
-    --materialColor300: map.get($lightTheme, "300");
-    --materialColor400: map.get($lightTheme, "400");
-    --materialColor500: map.get($lightTheme, "500");
-    --materialColor100: map.get($lightTheme, "600");
-    --materialColor200: map.get($lightTheme, "700");
-    --materialColor300: map.get($lightTheme, "800");
-    --materialColor400: map.get($lightTheme, "900");
-  }
-}
-
-.darkTheme {
-  --accentColor: map.get($darkTheme, "ACT") !important;
-  --fontColor10: map.get($darkTheme, "F10") !important;
-  --fontColor20: map.get($darkTheme, "F20") !important;
-  --buttonColor10: map.get($darkTheme, "B10") !important;
-  --buttonColor20: map.get($darkTheme, "B20") !important;
-  --materialColor100: map.get($darkTheme, "100") !important;
-  --materialColor200: map.get($darkTheme, "200") !important;
-  --materialColor300: map.get($darkTheme, "300") !important;
-  --materialColor400: map.get($darkTheme, "400") !important;
-  --materialColor500: map.get($darkTheme, "500") !important;
-  --materialColor100: map.get($darkTheme, "600") !important;
-  --materialColor200: map.get($darkTheme, "700") !important;
-  --materialColor300: map.get($darkTheme, "800") !important;
-  --materialColor400: map.get($darkTheme, "900") !important;
-}
-
-.lightTheme {
-  --accentColor: map.get($darkTheme, "ACT") !important;
-  --fontColor10: map.get($darkTheme, "F10") !important;
-  --fontColor20: map.get($darkTheme, "F20") !important;
-  --buttonColor10: map.get($lightTheme, "B10") !important;
-  --buttonColor20: map.get($lightTheme, "B20") !important;
-  --materialColor100: map.get($darkTheme, "100") !important;
-  --materialColor200: map.get($darkTheme, "200") !important;
-  --materialColor300: map.get($darkTheme, "300") !important;
-  --materialColor400: map.get($darkTheme, "400") !important;
-  --materialColor500: map.get($darkTheme, "500") !important;
-  --materialColor100: map.get($darkTheme, "600") !important;
-  --materialColor200: map.get($darkTheme, "700") !important;
-  --materialColor300: map.get($darkTheme, "800") !important;
-  --materialColor400: map.get($darkTheme, "900") !important;
 }
 
 html {
@@ -515,8 +435,7 @@ details {
   }
 }
 
-#alert,
-#prompt {
+dialog {
   z-index: 20;
   position: absolute;
   inset: 20% auto auto 50%;
@@ -546,4 +465,13 @@ details {
     flex-direction: row-reverse;
     gap: 0.5em;
   }
+}
+
+::backdrop {
+  z-index: 10;
+  display: block;
+  position: fixed;
+  inset: 0;
+  background-color: rgb(0 0 0 / 0.2);
+  cursor: not-allowed;
 }
