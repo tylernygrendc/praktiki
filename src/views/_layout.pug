@@ -14,6 +14,7 @@ html(lang="en")
 
         block styles
             - const stylesPath = "../../css";
+            link(rel="stylesheet", href=`${stylesPath}/${page}.css`)
         block scripts        
             script(defer, src=`./js/${ page }.js`)  
     body

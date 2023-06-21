@@ -1,4 +1,27 @@
 extends _layout
 
 append styles
-    link(rel="stylesheet", href=`${stylesPath}/${page}.css`)
+append scripts
+block body
+    header
+        a(href="" aria-label="brand name") Praktiki
+        img(src="favicon.svg" aria-label="brand logo")
+        nav(aria-label="primary navigation"): ul
+            each val in ["features", "pricing"]
+                li: a(href=`#${val}`) #{val}
+            each val in ["account"]
+                li: a(href=`./${val}`) #{val}
+    article
+        section#banner(aria-label="banner")
+            h1 praktiki
+            span practice made perfect
+            p Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, Praktiki is the all-in-one solution for any chiropractic practice.
+            span free for small practices and recent graduates
+            span paid plans starting at $29 per month
+            button try for free
+            a(href="") see discounts 
+        section#features
+            h2 features
+            h3 
+
+        section#pricing

@@ -1,6 +1,5 @@
 {
-    "name": "Praktiki Practice Management",
-    "short_name":"Praktiki",
+    "name": "Praktiki",
     "description":"Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, Praktiki is the all-in-one solution for any chiropractic practice. It is free to use for practices with fewer than 100 monthly patient visits, and paid plans start at just $29 per month.",
     "start_url": "./auth/schedule-app",
     "display": "standalone",
