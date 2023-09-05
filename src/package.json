@@ -3,19 +3,23 @@
   "description": "Cloud Functions for Firebase",
   "type": "module",
   "scripts": {
+    "sass": "sass --watch ./sass:../dist/css",
     "serve": "firebase emulators:start --only functions",
     "shell": "firebase functions:shell",
-    "start": "npm run shell",
+    "start": "sass --watch ./sass:../dist/css & npx webpack-cli & firebase serve",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "webpack": "npx webpack-cli"
   },
   "engines": {
     "node": "18"
   },
   "main": "router.js",
   "dependencies": {
+    "express": "^4.18.2",
     "firebase-admin": "^11.7.0",
-    "firebase-functions": "^4.4.0"
+    "firebase-functions": "^4.4.1",
+    "pug": "^3.0.2"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"

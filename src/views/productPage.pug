@@ -1,27 +1,182 @@
-extends _layout
+extends _boilerplate
 
-append styles
-append scripts
 block body
-    header
-        a(href="" aria-label="brand name") Praktiki
-        img(src="favicon.svg" aria-label="brand logo")
-        nav(aria-label="primary navigation"): ul
-            each val in ["features", "pricing"]
-                li: a(href=`#${val}`) #{val}
-            each val in ["account"]
-                li: a(href=`./${val}`) #{val}
-    article
+
+    nav.drawer(aria-label="primary navigation"): ul
+        li: details
+            ul
+                li: a(href="") Records
+                li: a(href="") Appointments
+                li: a(href="") Communication
+                li: a(href="") Billing
+            summary Features
+        li: details
+            li: details
+            ul
+                li: a(href="") Records
+                li: a(href="") Appointments
+                li: a(href="") Communication
+                li: a(href="") Billing
+            summary Pricing
+    
+    header.menubar
+        button.menubar__icon(aria-label="open navigation menu") menu
+        span.menubar__title: a(href="/") Praktiki
+        div.menubar__actions(aria-label="menubar actions"): ul
+            li: button.icon--24px.btn dark_mode
+            li: button.btn--primary sign in
+
+    article#product.after-menubar
         section#banner(aria-label="banner")
-            h1 praktiki
-            span practice made perfect
-            p Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, Praktiki is the all-in-one solution for any chiropractic practice.
-            span free for small practices and recent graduates
-            span paid plans starting at $29 per month
-            button try for free
-            a(href="") see discounts 
+            .overlay
+                h1.overlay__title praktiki
+                span.overlay__subtitle practice made perfect
+                div.overlay__body
+                    p Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, it's the all-in-one solution for any chiropractic practice.
+                div.overlay__actions
+                    button.btn--secondary try it for free
+                    a(href="").btn--underline view features
         section#features
-            h2 features
-            h3 
+            h2.section-title Features
+            div.feature
+                div.feature__summary
+                    h3.title Health Records
+                    span.subtitle Effortless Electronic Health Records
+                    p.body Praktiki leverages the power of Cloud Firestore to create and maintain hassle-free health records. Its suite of intelligent tools and industry leading features that will cut down busywork and let you focus on what's important: patient care.
+                div.feature__details
+                    ul.feature__promotion
+                        li Intuitive Online and In-Person Forms
+                        li Customizable SOAP Note Autocomplete
+                        li Intelligent Note-Taking Assistant
+                        li Standardized Outcome Assessment Tools
+                        li HIPAA Compliant Storage and Retrieval
+                        li Easy-Access Online Patient Portal
+                        li Integrated Patient Education Resources
+                        li Natural Care Plan Tracking and Modification
+                        li Multi-Doctor and Multi-Office Co-Management
+            div: picture
+                source(media="(max-width: 700px)" srcset="")
+                source(media="(min-width: 700px)" srcset="")
+                source(media="(min-width: 1400px)" srcset="")
+                img(alt="" src="")
+
+            div
+                h3 Appointments
+                span Seamless Online and In-Person Scheduling
+                p Praktiki simplifies scheduling with an easy-to-use online portal. Ensure that patients are scheduled correctly the first time with Praktiki's smart scheduling tools, and minimize no-shows with automatic reminders, digital check-in, and customized cancellation fees.
+                ul
+                    li Easy Online Self-Scheduling
+                    li Add-To-Calendar For All Devices
+                    li Integrated Care Plan Monitoring
+                    li Intuitive Schedule Management
+                    li Automatic Adaptive Schedule
+                    li Hassle-Free Digital Check-In
+                    li Automatic Appointment Reminders 
+                    li Customized Cancellation Fees
+            div: picture
+                source(media="(max-width: 700px)" srcset="")
+                source(media="(min-width: 700px)" srcset="")
+                source(media="(min-width: 1400px)" srcset="")
+                img(alt="" src="")
+
+            div
+                h3 Communication
+                span Supercharged Education and Outreach
+                p Praktiki maximizes impact with advanced text and email education and outreach. Elevate your small business marketing with easy and accessible communication at every stage of patient care.
+                ul
+                    li Automatic Appointment Reminders
+                    li Accessible Online Symptom Checker
+                    li Targeted Email Marketing Resources
+                    li Customizable Text Message Touchpoints
+                    li Secure Patient-Doctor Communication
+                    li Royalty-Free Digital Marketing Assets
+            div: picture
+                source(media="(max-width: 700px)" srcset="")
+                source(media="(min-width: 700px)" srcset="")
+                source(media="(min-width: 1400px)" srcset="")
+                img(alt="" src="")
+
+            div
+                h3 Billing
+                span Integrated Billing and Claim Submission
+                p Praktiki automatically builds invoices and claims based on the treatment you provide. Its 
+                ul
+                    li Automatic Invoice Generation
+                    li Automatic Recurring Billing
+                    li Payment Processing with Stripe
+                    li Reliable Payment Plans with Afterpay
+                    li Eligibility Checks with Availity
+                    li Instant Claim Submission and Monitoring
+                    li Support for Prepaid and Family Plans
+                    li Simple Inventory Management
+            div: picture
+                source(media="(max-width: 700px)" srcset="")
+                source(media="(min-width: 700px)" srcset="")
+                source(media="(min-width: 1400px)" srcset="")
+                img(alt="" src="")
+
+        section#resources
+            h2 Resources
+            span Access Hundreds of Digital Assets
+            p Praktiki seamlessly integrates patient education with personalized patient resources.
+            div
+                button(aria-label="view health catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+                button(aria-label="view therapy catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+                button(aria-label="view stretch catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+                button(aria-label="view exercise catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+                button(aria-label="view nutrition catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+                button(aria-label="view marketing catalog"): picture
+                    source(media="(max-width: 700px)" srcset="")
+                    source(media="(min-width: 700px)" srcset="")
+                    source(media="(min-width: 1400px)" srcset="")
+                    img(alt="" src="")
+            a(href="" download) 
+                .icon download
+                span Download Free Resources
 
         section#pricing
+            h2 Pricing
+            div.tabs
+                div(role="tablist")
+                    button(role="tab") Free
+                    button(role="tab") Premium
+                div(role="tabpanel")
+                    h3 Free Plan
+                    div
+                        span Free
+                        span For Recent Grads!
+                    p The free plan is ideal for recent graduates and small practices seeing fewer than 100 monthly patients. Get access to all of Praktiki's features and resources at no cost.
+                div(role="tabpanel")
+                    h3 Premium Plan
+                        span Everything,
+                        span Just $39.
+                    p The unlimited plan is great for small practices seeing more than 100 monthly patients. Enjoy full-fedged eHR with advanced practice management resources, now less than half the cost of our leading competitor.
+
+
+            
+
+                    
+
+
+
+

@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        title #{title}
+        meta(name="description", content=`${description}`)
+
+        link(rel="icon", href="../../favicon.ico", sizes="any")
+        link(rel="icon", href="../../favicon.svg", type="image/xml+svg")
+        link(rel="apple-touch-icon", href="../../assets/apple-icon/icon-180.png")
+        link(rel="manifest", href="../../manifest.json", crossorigin="use-credentials")
+
+        block styles
+            - const stylesPath = "../../css";
+            link(rel="stylesheet", href=`${stylesPath}/${page}.css`)
+        block scripts
+            - const scriptsPath = "../../js"
+            script(defer, src=`${scriptsPath}/${page}.js`)  
+    body
+        block body

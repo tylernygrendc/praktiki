@@ -1,21 +1,9 @@
-import env from "dotenv";
 import express from "express";
-import functions from "firebase-functions";
-import { taskQueue } from "firebase-functions/v1/tasks";
-
-env.config();
+import { onRequest } from "firebase-functions/v2/https";
 
 const router = express();
 
 router.set('view engine', 'pug');
-
-router.get('/', (req, res) => {
-    res.status(200)
-        .render("productPage", {
-            title: "Login or Sign Up",
-            page: "productPage"
-        });
-});
 
 router.get('/auth/file-app', (req, res) => {
     res.status(200)
@@ -65,4 +53,12 @@ router.get('/auth/chat-app', (req, res) => {
         });
 });
 
-export const routes = functions.https.onRequest(router);
+router.get('/', (req, res) => {
+    res.status(200)
+        .render("productPage", {
+            title: "Login or Sign Up",
+            page: "productPage"
+        });
+});
+
+export const routes = onRequest(router);

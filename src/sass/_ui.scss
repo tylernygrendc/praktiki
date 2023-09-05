@@ -1,46 +1,93 @@
-@use "sass:color";
 @use "sass:map";
+@use "sass:color";
+@use "sass:math";
 
-// TYPOGRAPHY STYLES
+// BREAKPOINTS
+// designed "mobile first"
+
+$tablet-viewport: "700px";
+$laptop-viewport: "1400px";
+
+@mixin forTabletViewport {
+  @media (min-width: #{$tablet-viewport}) and (max-width: #{laptop-viewport}) {
+    @content;
+  }
+}
+
+@mixin forLaptopViewport {
+  @media (min-width: #{$laptop-viewport}) {
+    @content;
+  }
+}
+
+// FONTS
+
+@font-face {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 300;
+  src: url(/font/OpenSans-Light.ttf);
+}
 
 @font-face {
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
-  src: url(/font/OpenSans.ttf);
+  src: url(/font/OpenSans-Regular.ttf);
 }
 
 @font-face {
-  font-family: "Material Icons";
+  font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url(/font/MaterialSymbolsRounded.ttf);
+  src: url(/font/OpenSans-Regular.ttf);
 }
 
-@mixin text($size: 1em) {
-  display: inline-block;
-  font-family: "Open Sans";
-  font-size: $size;
-  font-weight: normal;
+@font-face {
+  font-family: "Roboto";
   font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
-  text-decoration: none;
-  text-transform: none;
-  text-shadow: none;
-  letter-spacing: 0;
-  line-height: 1.5;
+  font-weight: 300;
+  src: url(/font/OpenSans-Light.ttf);
 }
 
-@mixin icon($size: 1em) {
-  display: inline-block;
-  font-family: "Material Icons";
-  font-size: $size;
-  font-weight: normal;
+@font-face {
+  font-family: "Roboto";
   font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
-  text-decoration: none;
+  font-weight: 100;
+  src: url(/font/OpenSans-Thin.ttf);
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: italic;
+  font-weight: normal;
+  src: url(/font/RobotoCondensed.ttf);
+}
+
+:root{
+  // fonts
+  --title-text: "Open Sans", sans-serif;
+  --body-text: "Roboto", sans-serif;
+}
+
+// ICONS
+
+@font-face {
+  font-family: "Material Symbols";
+  font-style: normal;
+  font-weight: 400;
+  src: url(/font/MaterialSymbolsRounded.woff2);
+}
+
+@mixin icon($size: 1em, $weight: 300) {
+  display: inline-block !important;
+  font-family: "Material Symbols" !important;
+  font-size: $size;
+  font-variation-settings: "wght" $weight;
+  font-style: normal !important;
+  font-stretch: normal !important;
+  font-optical-sizing: auto !important;
+  text-decoration: none !important;
   text-transform: none !important;
   text-shadow: none;
   letter-spacing: 0;
@@ -48,56 +95,205 @@
 }
 
 .icon {
-  @include icon();
+  @include icon;
+  &--16px {
+    @extend .icon;
+    font-size: 1em !important;
+    font-variation-settings: "wght" 300 !important;
+  }
+  &--24px{
+    @extend .icon;
+    font-size: 1.5em !important;
+    font-variation-settings: "wght" 200 !important;
+  }
+  &--32px{
+    @extend .icon;
+    font-size: 2em !important;
+    font-variation-settings: "wght" 100 !important;
+  }
+}
+
+// THEME
+
+$background: hsl(0, 0%, 95%);
+$surface: color.scale($background, $lightness: 10%);
+$surface-button: color.scale($surface, $lightness: 10%);
+$primary: hsl(205, 60%, 40%);
+$primary-alt: color.scale($primary, $lightness: -60%);
+$primary-button: color.scale($primary, $lightness: 10%);
+$secondary: color.adjust($primary, $hue: 120deg);
+$secondary-alt: color.scale($secondary, $lightness: -60%);
+$secondary-button: color.scale($secondary, $lightness: 10%);
+$error: #ff3030;
+$success: #0fc150;
+
+// dark theme
+$background--dark: #121212;
+$surface--dark: color.scale($background--dark, $lightness: 5%);
+$surface-button--dark: color.scale($surface--dark, $lightness: 5%);
+$primary--dark: color.scale($primary, $saturation: -50%, $lightness: -50%);
+$primary-alt--dark: color.scale($primary--dark, $lightness: 60%);
+$primary-button--dark: color.scale($primary--dark, $lightness: 10%);
+$secondary--dark: color.scale($secondary, $saturation: -50%, $lightness: -50%);
+$secondary-alt--dark: color.scale($secondary--dark, $lightness: 60%);
+$secondary-button--dark: color.scale($secondary--dark, $lightness: 10%);
+$error--dark: color.scale($error, $saturation: -50%, $lightness: -50%);
+$success--dark: color.scale($success, $saturation: -50%, $lightness: -50%);
+
+// special ui item colors
+$focus: yellow;
+$accent: $secondary;
+$selected: $secondary;
+$scrollbar: $background;
+$scrollbar-thumb: color.scale($background, $lightness: -50%);
+$input: color.scale($background, $blackness: 10%);
+
+// special ui item colors, dark
+$focus--dark: yellow;
+$accent--dark: $secondary--dark;
+$selected--dark: $secondary--dark;
+$scrollbar--dark: $background--dark;
+$scrollbar-thumb--dark: color.scale($background--dark, $lightness: 50%);
+$input--dark: color.scale($background--dark, $blackness: 10%);
+
+
+// "on" colors
+@function onColor($color){
+  @if color.lightness($color) > 50 {
+    @return #000;
+  }
+  @else { 
+    @return #FFF;
+  }
+}
+$on-background: onColor($background);
+$on-surface: onColor($surface);
+$on-primary: onColor($primary);
+$on-secondary: onColor($secondary);
+$on-error: onColor($error);
+$on-success: onColor($success);
+
+// "on" colors, dark
+$on-background--dark: onColor($background--dark);
+$on-surface--dark: onColor($surface--dark);
+$on-primary--dark: onColor($primary--dark);
+$on-secondary--dark: onColor($secondary--dark);
+$on-error--dark: onColor($error--dark);
+$on-success--dark: onColor($success--dark);
+
+@mixin lightTheme() {
+
+  // theme
+  --background: #{$background};
+  --surface: #{$surface};
+  --surface-button: #{$surface-button};
+  $raised: color.scale($surface-button, $lightness: 10%);
+  --surface-button--raised: #{$raised};
+  --primary: #{$primary};
+  --primary-alt: #{$primary-alt};
+  --primary-button: #{$primary-button};
+  $raised: color.scale($primary-button, $lightness: 10%);
+  --primary-button--raised: #{$raised};
+  --secondary: #{$secondary};
+  --secondary-alt: #{$secondary-alt};
+  --secondary-button: #{$secondary-button};
+  $raised: color.scale($secondary-button, $lightness: 10%);
+  --secondary-button--raised: #{$raised};
+  --error: #{$error};
+  --success: #{$success};
+
+  // special ui item colors
+  --focus: #{$focus};
+  --accent: #{$accent};
+  --selected: #{$selected};
+  --scrollbar: #{$scrollbar};
+  --scrollbar-thumb: #{$scrollbar-thumb};
+  --input: #{$input};
+  $underline: onColor($input);
+  --input-underline: #{$underline};
+
+  // "on" colors
+  --on-background: #{$on-background};
+  --on-surface: #{$on-surface};
+  --on-primary: #{$on-primary};
+  --on-secondary: #{$on-secondary};
+  --on-error: #{$on-error};
+  --on-success: #{$on-success};
+}
+
+@mixin darkTheme() {
+    // theme
+    --background: #{$background--dark};
+    --surface: #{$surface--dark};
+    --surface-button: #{$surface-button--dark};
+    $raised: color.scale($surface-button--dark, $lightness: 5%);
+    --surface-button--raised: #{$raised};
+    --primary: #{$primary--dark};
+    --primary-alt: #{$primary-alt--dark};
+    --primary-button: #{$primary-button--dark};
+    $raised: color.scale($primary-button--dark, $lightness: 5%);
+    --primary-button--raised: #{$raised};
+    --secondary: #{$secondary--dark};
+    --secondary-alt: #{$secondary-alt--dark};
+    --secondary-button: #{$secondary-button--dark};
+    $raised: color.scale($secondary-button--dark, $lightness: 5%);
+    --secondary-button--raised: #{$raised};
+    --error: #{$error--dark};
+    --success: #{$success--dark};
+  
+    // special ui item colors
+    --focus: #{$focus--dark};
+    --accent: #{$accent--dark};
+    --selected: #{$selected--dark};
+    --scrollbar: #{$scrollbar--dark};
+    --scrollbar-thumb: #{$scrollbar-thumb--dark};
+    --input: #{$input--dark};
+    $underline: onColor($input--dark);
+    --input-underline: #{$underline};
+  
+    // "on" colors
+    --on-background: #{$on-background--dark};
+    --on-surface: #{$on-surface--dark};
+    --on-primary: #{$on-primary--dark};
+    --on-secondary: #{$on-secondary--dark};
+    --on-error: #{$on-error--dark};
+    --on-success: #{$on-success--dark};
+}
+
+.use-light-theme {
+  @include lightTheme;
+}
+
+.use-dark-theme{
+  @include darkTheme;
 }
 
 :root {
-  --accentColor: #fb0;
-  --fontColor10: #111;
-  --fontColor20: #222;
-  --buttonColor10: #086;
-  --buttonColor20: #197;
-  --materialColor100: #aaa;
-  --materialColor200: #bbb;
-  --materialColor300: #ccc;
-  --materialColor400: #ddd;
-  --materialColor500: #fff;
+  @include lightTheme;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --accentColor: #fb0;
-    --fontColor10: #fff;
-    --fontColor20: #ccc;
-    --buttonColor10: #086;
-    --buttonColor20: #197;
-    --materialColor100: #111;
-    --materialColor200: #222;
-    --materialColor300: #333;
-    --materialColor400: #444;
-    --materialColor500: #555;
-}
+    @include darkTheme;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  background-color: var(--materialColor100);
-  color: var(--fontColor10);
-  @include text();
+// APPEARANCE
+
+@mixin focus() {
+  outline: solid minmax(2px, 0.125rem) var(--focus);
 }
 
 ::-webkit-scrollbar {
-  width: 16px;
-  height: 16px;
+  width: 0.5rem;
+  height: 0.5rem;
 
   &-track {
-    background-color: var(--materialColor100);
+    background-color: #FFFFFF00;
   }
 
   &-thumb {
-    background-color: var(--fontColor20);
-    border: var(--materialColor100) solid 4px;
-    border-radius: 8px;
+    background-color: var(--scrollbar-thumb);
   }
 
   &-button {
@@ -105,7 +301,7 @@ html {
   }
 
   &-corner {
-    background-color: var(--materialColor100);
+    background-color: #FFFFFF00;
   }
 }
 
@@ -115,7 +311,16 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font: inherit;
+}
+
+body {
+  width: 100svw;
+  height: 100svh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--on-background);
+  font-family: var(--body-text);
 }
 
 img,
@@ -132,53 +337,141 @@ details {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
 
-    :last-child {
-      position: relative;
-      right: 0.25em;
-      margin-left: auto;
-
-      &[open] {
-        position: relative;
-        right: 0.25em;
-        transform: rotate(180deg);
-      }
+    &::after {
+      @include icon(1.5em);
+      content: "keyboard_arrow_down";
+      position: absolute;
+      inset: 50% 0 auto auto;
+      translate: 0 -50%;
+      padding: 0 0.25em;
     }
+  }
+  &[open] summary::after {
+    transform: rotate(180deg);
   }
 }
 
+// SHADOWS
+// surfaces rest at five different elevations
+// these are imagined as distances from the background, in pixels
+$elevations: 1, 2, 4, 8, 16;
+@each $elevation in $elevations {
+  .elevation--#{$elevation}px{
+    transition: 0.3s cubic-bezier(.25,.8,.25,1);
+    box-shadow: 0 #{$elevation * 1px} #{$elevation * 3px}  rgba(0,0,0,0.12), 
+      0 #{$elevation * 1px} #{$elevation * 1px} rgba(0,0,0,0.24);
+  }
+}
+
+// SHOW/HIDE
+
+$speed: 250ms;
+
+.hide,
+.hidden,
 .invisible {
+  transition: $speed;
+  opacity: 0%;
   visibility: hidden !important;
 }
 
-.disappeared {
+.show,
+.visible {
+  transition: $speed;
+  opacity: 100%;
+  visibility: visible !important;
+}
+
+.vanish,
+.vanished {
+  transition: $speed;
+  opacity: 0%;
   display: none !important;
 }
 
-@mixin button($size: 1em) {
+.appear,
+.appeared {
+  transition: $speed;
+  opacity: 100%;
+}
+
+// hide block, keep visible to screen readers
+
+@mixin accessibleHideFromView {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.accessibleHideFromView {
+  @include accessibleHideFromView;
+}
+
+// BUTTONS
+
+/*
+
+  <button class="btn-outlined--primary">
+    <div class="btn__icon">download</div>
+    <div class="btn__text">Download</div>
+  </button>
+
+*/ 
+
+@mixin raisedButton($color, $background, $hover) {
+  padding: 0.5lh 2ch;
+  background-color: $background;
+  color: $color;
+  letter-spacing: 0.1ch;
+  @extend .elevation--1px;
+
+  a {
+    color: $color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    transition: 250ms;
+    background-color: $hover;
+    color: $color;
+    @extend .elevation--4px;
+
+  }
+}
+
+.btn{
+  
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0.5em;
+  gap: 1ch;
   border: 0 solid;
-  border-radius: 6px;
-  background-color: inherit;
+  border-radius: 0.5em;
+  background-color: transparent;
   color: inherit;
-  font-family: inherit;
-  font-size: $size;
-  font-weight: 500;
-  font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
+  font-family: var(--body-text);
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: capitalize;
   text-decoration: none;
-  text-transform: none;
-  text-shadow: none;
-  letter-spacing: 0;
+  letter-spacing: 0.1ch;
   cursor: pointer;
+
+  &:hover{
+    color: var(--focus);
+  }
 
   &:focus-within,
   &:focus-visible {
-    outline: 1px solid var(--accentColor);
+    @include focus;
   }
 
   * {
@@ -190,117 +483,144 @@ details {
     }
   }
 
+  a{
+    text-decoration: none;  
+  }
+
+  &--underline {
+    @extend .btn;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+  }
+
   :last-child {
     margin-left: auto;
   }
-}
 
-.textButton {
-  @include button(0.85em);
+  $variants: "primary", "secondary", "surface";
 
-  &:hover {
-    color: var(--accentColor);
-  }
-
-  &:focus-visible {
-    color: var(--accentColor);
+  @each $variant in $variants {
+    &--#{$variant} {
+      @extend .btn;
+      @include raisedButton(var(--on-#{$variant}), var(--#{$variant}-button), var(--#{$variant}-button--raised));
+    }
   }
 }
 
-.raisedButton {
-  @include button(1em);
-  background-color: var(--buttonColor10);
-  color: var(--fontColor10);
+// INPUT
 
-  &:hover {
-    background-color: var(--buttonColor20);
-  }
-}
+/*
+  <div class="input>
+    <label for="demo" class="input__label">Lorem Ipsum...</label>
+    <textarea id="demo" name="demo" class="input__field"></textarea>
+    <span class="input__hint">There is no character limit.</span>
+  </div>
+*/
 
-@mixin input($size: 0.85em) {
-  display: inline-block;
-  border: 0 solid;
-  border-bottom: 1px solid transparent;
-  border-radius: 6px;
-  padding: 0.5em;
-  font-family: "Open Sans";
-  font-size: $size;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  font-optical-sizing: auto;
-  text-decoration: none;
-  text-transform: none;
-  text-shadow: none;
-  letter-spacing: 0;
-  line-height: 1.5;
-  cursor: text;
-}
-
-.input {
+.input{
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 0.25em;
+  background-color: var(--surface);
+  color: var(--on-surface);
+  font-size: 1em;
 
-  &:focus-within {
-    label {
-      color: var(--accentColor);
-    }
-
-    input,
-    textarea {
-      outline: 1px solid var(--accentColor);
-    }
-  }
-
-  label {
+  .input__label {
     text-align: left;
     text-transform: capitalize;
     font-size: 0.75em;
+    font-family: "Open Sans";
+    font-weight: normal;
+    cursor: default;
   }
 
-  input,
-  textarea {
-    @include input();
-    background-color: var(--materialColor300);
-    color: var(--fontColor10);
+  .input__field {
+    border: 0 solid;
+    padding: 0.5em;
+    background-color: var(--surface-input);
+    color: var(--on-surface--alt);
+    font-size: 1em;
+    font-family: "Roboto";
+    font-weight: normal;
+    cursor: text;
   }
-}
 
-.inputButton {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto;
-  align-items: stretch;
-  border-radius: 6px;
+  input.input__field {
+    border-radius: 0.5em 0.5em 0 0;
+    border-bottom: minmax(2px, 0.125em);
+  }
+
+  textarea.input__field {
+    border-radius: 0 0.5em 0.5em 0;
+    border-left: minmax(2px, 0.125em);
+  }
+
+  .input__hint {
+    color: var(--surface-input-underline);
+    font-size: 0.75em;
+    font-family: "Roboto Condensed";
+    font-weight: normal;
+    cursor: default;
+    ::before{
+      @include icon;
+      content: "info";
+      margin-right: 1ch;
+    }
+  }
 
   &:focus-within {
-    outline: 1px solid var(--accentColor);
-  }
+    .input__label {
+      color: var(--surface-input-underline--focus);
+    }
+    input.input__field{
+      border-bottom: var(--surface-input-underline--focus);
+    }
+    textarea.input__field{
+      border-left: var(--surface-input-underline--focus);
+    }
+  } 
 
-  input {
-    @include input();
-    border-radius: 6px 0px 0px 6px;
-    background-color: var(--materialColor300);
-    color: var(--fontColor10);
-
-    &:focus-visible {
-      outline: 0px;
+  &--valid {
+    input.input__field{
+      border-bottom: var(--success);
+    }
+    textarea.input__field{
+      border-left: var(--success);
+    }
+    .input__hint {
+      color: var(--success);
     }
   }
 
-  button {
-    @include button(0.85em);
-    border-radius: 0px 6px 6px 0px;
-    background-color: var(--materialColor500);
-    color: var(--fontColor10);
-
-    &:focus-visible {
-      outline: 0px;
+  &--invalid {
+    input.input__field{
+      border-bottom: var(--error);
+    }
+    textarea.input__field{
+      border-left: var(--error);
+    }
+    .input__hint {
+      color: var(--error);
     }
   }
 }
+
+/*
+
+  <fieldset class="fieldset">
+    <legend class="fieldset__legend">Lorem ipsum...</legend>
+    <div class="fieldset__option">
+      <label for="demo1">
+      <input id="demo1" type="radio" name="demo" value="one">
+    </div>
+    <div class="fieldset__option">
+      <label for="demo2">
+      <input id="demo2" type="radio" name="demo" value="two">
+    </div>
+  </fieldset>
+
+*/
 
 .fieldset {
   display: flex;
@@ -308,170 +628,153 @@ details {
   align-items: stretch;
   padding: 0.5em;
   gap: 0.25em;
-  @include input();
-  background-color: var(--materialColor300);
-  color: var(--fontColor10);
+  background-color: var(--surface);
+  color: var(--on-surface);
 
-  legend {
+  .fieldset__legend {
+    text-align: left;
     text-transform: capitalize;
+    font-size: 0.75em;
+    font-family: var(--body-text);
+    font-weight: 100;
+    cursor: default;
   }
 
-  div {
+  .fieldset__option {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 0.25em;
     gap: 0.25em;
-    border: 1px solid transparent;
-    border-radius: 6px;
+    border-radius: 0.5em;
 
     &:hover {
-      background-color: var(--materialColor200);
+      background-color: var(--input);
+    }
+
+    &--checked {
+      input[type=radio],
+      input[type=checkbox]{
+        accent-color: var(--accent);
+      }
     }
 
     label {
       flex: 1;
       padding: 0.25em 0.5em;
-      background-color: inherit;
-      color: inherit;
+      background-color: transparent;
+      color: var(--on-surface);
       font-size: 1em;
       cursor: pointer;
     }
 
-    input[type="radio"],
-    input[type="checkbox"] {
-      width: 1.25em;
-      height: 1.25em;
-      accent-color: var(--accentColor);
+    input[type=radio],
+    input[type=checkbox] {
+      order: -1;
+      width: 1lh;
+      height: 1lh;
+      accent-color: var(--on-surface);
       cursor: pointer;
-    }
-
-    input[type="number"] {
-      width: 10ch;
-      @include input(1em);
-      border: 0 solid;
-      border-bottom: 1px solid var(--materialColor500);
-      color: inherit;
-
-      &:focus-visible {
-        border-radius: 6px;
-        border-bottom: 1px solid transparent;
-        outline: 1px solid var(--accentColor);
-      }
-    }
-
-    &:has(:checked) {
-      background-color: var(--materialColor200);
     }
   }
 }
 
-.tabs {
+// NAVIGATION
 
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 2lh 1fr;
-  padding: 0.25em;
+/*
 
-  ul[role="tablist"] {
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
+  <header class="menubar">
+    <div class="menubar__icon">menu</div>
+    <span class="menubar__title">Title<span>
+    <nav class="menubar__actions">
+      <ul>
+        <li><a href="/pricing">Pricing</a></li>
+        <li><a href="/features">Features</a></li>
+      </ul>
+    </nav>
+  </header>
+
+*/
+
+$menubar-height: 2lh !default;
+$menubar-background: var(--primary);
+$menubar-color: var(--on-primary);
+
+.menubar{
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: $menubar-height;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.25lh 1ch;
+  gap: 1ch;
+  @extend .elevation--8px;
+  background-color: $menubar-background;
+  color: $menubar-color;
+
+  .menubar__icon{
+    @include icon(2em);
+    background-color: transparent;
+    border: 0;
+    color: $menubar-color;
+    cursor: pointer;
+    &:hover {
+      color: var(--focus);
+    }
+  }
+  .menubar__title{
+    flex: 1;
+    font-size: 1.5em;
+    font-family: var(--title-text);
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.1ch;
+    a{
+      text-decoration: none;
+      color: $menubar-color !important;
+      cursor: pointer;
+    }
+  }
+  .menubar__actions,
+  .menubar__actions ul {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    padding-top: 0.25em;
-    gap: 0.25em;
-    background-color: var(--materialColor100);
-    color: var(--fontColor10);
-
-    li[role="tab"] {
-
-      tabindex: 0;
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      border-right: 1px solid var(--materialColor500);
-      border-radius: 0px;
-      font-size: 0.85em;
-      text-transform: capitalize;
+    align-items: center;
+    justify-items: flex-end;
+    gap: 1ch;
+    list-style: none;
+    font-family: var(--body-text);
+    font-weight: 300;
+    li,
+    li a{
+      font-size: 1em;
+      text-decoration: none;
+      color: $menubar-color !important;
       cursor: pointer;
-
-      &:hover {
-        color: var(--accentColor);
-      }
-
-      &:focus-visible {
-        color: var(--accentColor);
-        border-radius: 6px;
-        border-right: transparent;
-        outline: solid 1px var(--accentColor);
-        outline-offset: -2px;
-      }
-
-      * {
-        tabindex: -1;
-      }
-
-      &.selected {
-        margin: 0;
-        border-radius: 6px 6px 0px 0px;
-        border-right: transparent;
-        background-color: var(--materialColor200);
-      }
-
-      :first-child {
-        margin-right: auto;
-      }
     }
   }
-
-  [role="tabpanel"] {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-    padding: 1em;
-    background-color: var(--materialColor200);
-    color: var(--fontColor10);
-  }
 }
 
-dialog {
-  z-index: 20;
-  position: absolute;
-  inset: 20% auto auto 50%;
-  width: 300px;
-  max-width: 95svw;
-  min-height: 100px;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0.5em;
-  gap: 0.5em;
-  border-radius: 6px;
-  background-color: var(--materialColor100);
-  color: var(--fontColor10);
-
-  .head {
-    font-size: 1.15em;
-  }
-
-  .body {
-    font-size: 0.9em;
-  }
-
-  .actions {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 0.5em;
-  }
-}
-
-::backdrop {
-  z-index: 10;
-  display: block;
+.after-menubar {
   position: fixed;
-  inset: 0;
-  background-color: rgb(0 0 0 / 0.2);
-  cursor: not-allowed;
+  inset: $menubar-height 0 0 0;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.tabs{
+  &--top{
+
+  }
+  &--right {
+    
+  }
+  &--bottom{
+
+  }
+  &--left {
+    
+  } 
 }
