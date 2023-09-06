@@ -2,29 +2,56 @@ extends _boilerplate
 
 block body
 
-    nav.drawer(aria-label="primary navigation"): ul
-        li: details
-            ul
-                li: a(href="") Records
-                li: a(href="") Appointments
-                li: a(href="") Communication
-                li: a(href="") Billing
-            summary Features
-        li: details
-            li: details
-            ul
-                li: a(href="") Records
-                li: a(href="") Appointments
-                li: a(href="") Communication
-                li: a(href="") Billing
-            summary Pricing
-    
     header.menubar
         button.menubar__icon(aria-label="open navigation menu") menu
-        span.menubar__title: a(href="/") Praktiki
+        span.menubar__title: a(href="" aria-label="brand name") Praktiki
         div.menubar__actions(aria-label="menubar actions"): ul
-            li: button.icon--24px.btn dark_mode
+            li: button.icon--24px.btn(aria-label="") dark_mode
             li: button.btn--primary sign in
+
+    nav.drawer(aria-label="primary navigation"): ul
+        li.drawer__item: details
+            ul
+                li: a(href="") Records
+                li: a(href="") Appointments
+                li: a(href="") Communication
+                li: a(href="") Billing
+                li: a(href="") Security
+            summary
+                div Features
+                div.icon(aria-label="icon for features") interests
+        li.drawer__item: a(href="") 
+            div Pricing
+            div.icon(aria-label="icon for pricing") sell
+        li.drawer__item: details
+            ul
+                li: a(href="") Requirements
+                li: a(href="") Provider Setup
+            summary
+                div Getting Started
+                div.icon(aria-label="icon for getting started") school
+        li.drawer__item: a(href="")
+            div Compatibility
+            div.icon(aria-label="icon for compatibility") devices
+        li.drawer__item: details
+            ul
+                li: a(href="") Digital Assets
+                li: a(href="") Marketing Tools
+            summary
+                div Resources
+                div.icon(aria-label="icon for resources") construction
+        li.drawer__item: details
+            ul
+                li: a(href="") Privacy Practices
+                li: a(href="") Business Associate Agreement
+                li: a(href="") Provider Responsibility
+            summary
+                div Policy
+                div.icon(aria-label="icon for help") policy
+        li.drawer__item: a(href="")
+            div Help
+            div.icon(aria-label="icon for help") help
+
 
     article#product.after-menubar
         section#banner(aria-label="banner")

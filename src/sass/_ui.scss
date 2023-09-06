@@ -701,6 +701,7 @@ $menubar-background: var(--primary);
 $menubar-color: var(--on-primary);
 
 .menubar{
+  z-index: 8;
   position: fixed;
   inset: 0 0 auto 0;
   height: $menubar-height;
@@ -756,12 +757,65 @@ $menubar-color: var(--on-primary);
   }
 }
 
+$drawer-width: 30ch !default;
+
 .after-menubar {
+  z-index: 0;
   position: fixed;
-  inset: $menubar-height 0 0 0;
-  scroll-behavior: smooth;
+  inset: $menubar-height 0 0 $drawer-width;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.drawer {
+  z-index: 4;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: $drawer-width;
+  padding: calc($menubar-height + 1lh) 1ch 1lh 0;
+  background-color: var(--surface);
+  @extend .elevation--4px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &__item {
+    > a,
+    summary {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 0.5lh 1ch;
+      gap: 1ch;
+      text-decoration: none;
+      color: var(--on-surface);
+      cursor: pointer;
+      .icon{
+        font-size: 1.25em;
+        order: -1;
+      }
+    }
+
+    details{
+      ul {
+        margin: 0.25lh 10%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        list-style: none;
+        li{
+          padding: 0.125lh 1ch;
+          color: var(--on-surface);
+          a{
+            color: inherit;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .tabs{

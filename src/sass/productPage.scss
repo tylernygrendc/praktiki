@@ -21,7 +21,7 @@
         &__title {
             font-size: 1.25em;
             font-family: var(--title-text);
-            font-weight: 100;
+            font-weight: 300;
             text-transform: uppercase;
             letter-spacing: 0.2ch;
         }
@@ -71,7 +71,7 @@
 
 #features {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     .section-title {
         font-size: 1.5em;
@@ -84,20 +84,16 @@
         flex-direction: row;
         align-items: stretch;
         flex-wrap: wrap;
+        margin: auto;
+        > div{
+            width: 40%;
+            min-width: 30ch;
+        }
         
-        &__title{
-            font-size: 1.25em;
-            font-weight: 100;
-            font-family: var(--title-text);
-            text-align: center;
+        &__summary{
+            
         }
-        &__subtitle{
-
-        }
-        &__body{
-
-        }
-        &__promotion{
+        &__details{
 
         }
     }
