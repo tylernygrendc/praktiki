@@ -73,11 +73,11 @@
 }
 
 .use-light-theme {
-  --background: hsl(0, 0%, 95%);
+  --background: hsl(0deg, 0%, 95%);
   --surface: #f4f4f4;
   --surface-button: whitesmoke;
   --surface-button--raised: #f6f6f6;
-  --primary: hsl(205, 60%, 40%);
+  --primary: hsl(205deg, 60%, 40%);
   --primary-alt: #102d41;
   --primary-button: #2f81bc;
   --primary-button--raised: #398fcd;
@@ -90,7 +90,7 @@
   --focus: yellow;
   --accent: #a32970;
   --selected: #a32970;
-  --scrollbar: hsl(0, 0%, 95%);
+  --scrollbar: hsl(0deg, 0%, 95%);
   --scrollbar-thumb: #797979;
   --input: #dddddd;
   --input-underline: #000;
@@ -133,11 +133,11 @@
 }
 
 :root {
-  --background: hsl(0, 0%, 95%);
+  --background: hsl(0deg, 0%, 95%);
   --surface: #f4f4f4;
   --surface-button: whitesmoke;
   --surface-button--raised: #f6f6f6;
-  --primary: hsl(205, 60%, 40%);
+  --primary: hsl(205deg, 60%, 40%);
   --primary-alt: #102d41;
   --primary-button: #2f81bc;
   --primary-button--raised: #398fcd;
@@ -150,7 +150,7 @@
   --focus: yellow;
   --accent: #a32970;
   --selected: #a32970;
-  --scrollbar: hsl(0, 0%, 95%);
+  --scrollbar: hsl(0deg, 0%, 95%);
   --scrollbar-thumb: #797979;
   --input: #dddddd;
   --input-underline: #000;
@@ -276,7 +276,7 @@ details[open] summary::after {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.24);
 }
 
-.elevation--4px, .btn--surface:hover, .btn--secondary:hover, .btn--primary:hover {
+.elevation--4px, .drawer, .btn--surface:hover, .btn--secondary:hover, .btn--primary:hover {
   transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.24);
 }
@@ -597,6 +597,7 @@ details[open] summary::after {
 
 */
 .menubar {
+  z-index: 8;
   position: fixed;
   inset: 0 0 auto 0;
   height: 3lh;
@@ -664,11 +665,59 @@ details[open] summary::after {
 }
 
 .after-menubar {
+  z-index: 0;
   position: fixed;
-  inset: 3lh 0 0 0;
-  scroll-behavior: smooth;
+  inset: 3lh 0 0 30ch;
   overflow-y: scroll;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.drawer {
+  z-index: 4;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 30ch;
+  padding: 4lh 1ch 1lh 0;
+  background-color: var(--surface);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.drawer__item > a,
+.drawer__item summary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0.5lh 1ch;
+  gap: 1ch;
+  text-decoration: none;
+  color: var(--on-surface);
+  cursor: pointer;
+}
+.drawer__item > a .icon, .drawer__item > a .icon--16px, .drawer__item > a .icon--24px, .drawer__item > a .icon--32px,
+.drawer__item summary .icon,
+.drawer__item summary .icon--16px,
+.drawer__item summary .icon--24px,
+.drawer__item summary .icon--32px {
+  font-size: 1.25em;
+  order: -1;
+}
+.drawer__item details ul {
+  margin: 0.25lh 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  list-style: none;
+}
+.drawer__item details ul li {
+  padding: 0.125lh 1ch;
+  color: var(--on-surface);
+}
+.drawer__item details ul li a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
 #banner {
@@ -691,7 +740,7 @@ details[open] summary::after {
 #banner .overlay__title {
   font-size: 1.25em;
   font-family: var(--title-text);
-  font-weight: 100;
+  font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.2ch;
 }
@@ -747,7 +796,7 @@ details[open] summary::after {
 
 #features {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 #features .section-title {
@@ -761,12 +810,11 @@ details[open] summary::after {
   flex-direction: row;
   align-items: stretch;
   flex-wrap: wrap;
+  margin: auto;
 }
-#features .feature__title {
-  font-size: 1.25em;
-  font-weight: 100;
-  font-family: var(--title-text);
-  text-align: center;
+#features .feature > div {
+  width: 40%;
+  min-width: 30ch;
 }
 
 /*# sourceMappingURL=productPage.css.map */

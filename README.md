@@ -1,6 +1,6 @@
 # Project Overview
 
-Chiropractic is a licensed healthcare profession specializing in the treatment of musculoskeletal disorders. The chiropractic profession includes more than 70,000 physicians, with an estimated 2,500 new practitioners entering the workforce annually.[[1](https://www.acatoday.org/news-publications/newsroom/key-facts/)] Thirty-one percent of chiropractors are self-employed. The US Bureau of Labor Statistics estimates 10% market growth between 2021 and 2031.[[2](https://www.bls.gov/ooh/healthcare/chiropractors.htm#tab-3)] Practice management software solutions such as ChiroTouch[[3](https://www.chirotouch.com/plans-and-features/)] and JaneApp[[4](https://jane.app/features)] are popular among the profession, usually including these features:
+Chiropractic is a licensed healthcare profession specializing in the treatment of musculoskeletal disorders. The chiropractic profession includes more than 70,000 physicians, with an estimated 2,500 new practitioners entering the workforce annually.[[1](https://www.acatoday.org/news-publications/newsroom/key-facts/)] Thirty-one percent of chiropractors are self-employed. The US Bureau of Labor Statistics estimates 10% market growth between 2021 and 2031.[[2](https://www.bls.gov/ooh/healthcare/chiropractors.htm#tab-3)] Practice management software solutions such as ChiroTouch[[3](https://www.chirotouch.com/plans-and-features/)] and JaneApp[[4](https://jane.app/features)] are popular among members of the profession, usually including these features:
 
 1. Electronic health record management
 2. Appointment and scheduling
@@ -54,7 +54,7 @@ In addition, all imaging, reports, and the like must be included in the patient'
 
 Chiropractic is founded on the principle that segmental dysfunction may have profound effects of the body's overall function. As a result, chiropractic therapies are often used for the purpose of health maintenance. In these cases, the same documentation system described previously is appropriate, except that an annual "well visit" should be used in lieu of reassessment (since no goals are tracked). Chiropractic therapies for the purpose of health maintenance may be performed as often as twice per month or as rarely as once per quarter, with the frequency being largely determined by patient preference.
 
-### E. Common Chiropractic Therapies
+### E. Common Chiropractic Treatments
 
 |CPT|Procedure|
 |---|---|
@@ -135,76 +135,6 @@ Receipts must be available in both 8.500 and 3.125 inch widths for printing. Com
 * Insurance Verification
 * Insurance Claims Submission and Tracking
 * Insurer Payments Estimation and Verification
-
-
-# Approach
-
-Praktiki is a dynamic, multi-page application. It will be built with javascript and bundled with webpack. Styles will be implemented with scss, utilizing the @import rule for modular construction. Pages will be generated dynamically with pug and express running on Cloud Functions. Authentication will be managed with Firebase. Data will be managed with Firestore and Cloud Storage.
-
-## 1. Task List
-
-* Create forms listed under [common documentation practices](#c-common-documentation-practices)
-  * Define form styles and behavior
-    * Input[type=text] and input[type=number]
-    * Textfield 
-    * Input[type=checkbox], input[type=radio], and fieldset
-    * Input[type=date] and input[type=time]
-    * Input[type=file]
-    * Select
-    * Range
-    * Button
-  * Allow for addition/deletion of form fields
-    * Recommend form fields for next logical visceral, orthopedic, and neurologic testing and medical decision-making
-    * Autofill common options
-* Create form editor that includes:
-  * Summary of important notes and alerts
-  * History of previous notes
-  * One-click access to previous notes, including initial visit and last reassessment (if applicable)
-* Create note viewer that gives access to all patient notes
-  * Create method for searching notes and patients
-  * Option to create new note
-* Create dashboard that summarizes same-day appointments, day stats, and shows check-in status
-* Connect forms to firestore and set security rules
-* Set-up Cloud Storage for document (.pdf) and image (.jpg and .png) files
-* Create scheduling system that includes
-  * Portal for patient self-scheduling
-    * Allow only scheduling of pre-approved or entry-level services
-    * Allow for rescheduling or cancellation
-    * Update patient file with modifications to schedule
-    * Option for staff approval
-    * Notification of changes/confirmation
-  * Tools for adding and modifying appointments by office staff
-    * Automatic addition based on care plan
-    * Allow for addition/removal of services
-    * Allow for cancellation and rescheduling
-    * Update patient file with modifications to schedule
-    * Notification of changes/confirmation
-  * Full day and week view of the current schedule
-  * System for check-in and checkout
-* Integrate Stripe payment processing
-  * Create methods for pos, cash, check, online invoice, on-file payments, manual entry...
-
-## 2. Timeline
-
-An early version including only core product features may be completed as soon as June 2023, although the rule of π is likely to extend this development period into 2024. The addition of claims processing features adds considerable complexity to the project and will delay subsequent releases by several months. The second major release will target the third quarter of 2024.
-
-|Month|Task|Status|
-|:---|:---|:---:|
-|Dec 2022|Form Templates||
-|Jan 2023|Form Editor & Viewer||
-|Feb 2023|Scheduling System||
-|Mar 2023|Point-of-Sale System||
-|Apr 2023|Patient Management||
-|May 2023|Refinement||
-|Jun 2023|Product Sales and Marketing||
-|Jul 2023|Claims Processing and Billing||
-|Aug 2023|Claims Processing and Billing||
-|Sep 2023|Claims Processing and Billing||
-|Oct 2023|Refinement|
-|Nov 2023|Marketing Features||
-|Dec 2023|Practice Resources||
-
-___
 
 ## References
 
