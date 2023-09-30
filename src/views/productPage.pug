@@ -19,35 +19,33 @@ block body
                 li: a(href="") Security
             summary
                 div Features
-                div.icon(aria-label="icon for features") interests
-        li.drawer__item: a(href="") 
-            div Pricing
-            div.icon(aria-label="icon for pricing") sell
-        li.drawer__item: details
-            ul
-                li: a(href="") Requirements
-                li: a(href="") Provider Setup
-            summary
-                div Getting Started
-                div.icon(aria-label="icon for getting started") school
+                div.icon(aria-label="icon for features") inventory
         li.drawer__item: a(href="")
             div Compatibility
             div.icon(aria-label="icon for compatibility") devices
+        li.drawer__item: a(href="") 
+            div Pricing
+            div.icon(aria-label="icon for pricing") sell
+        li.drawer__item: a(href="")
+                div Getting Started
+                div.icon(aria-label="icon for getting started") lightbulb
         li.drawer__item: details
             ul
                 li: a(href="") Digital Assets
-                li: a(href="") Marketing Tools
+                li: a(href="") Health Education
+                li: a(href="") Patient Resources
+                li: a(href="") Marketing Templates
             summary
                 div Resources
                 div.icon(aria-label="icon for resources") construction
         li.drawer__item: details
             ul
-                li: a(href="") Privacy Practices
-                li: a(href="") Business Associate Agreement
-                li: a(href="") Provider Responsibility
+                li: a(href="") Privacy
+                li: a(href="") Agreement
+                li: a(href="") Terms of Use
             summary
                 div Policy
-                div.icon(aria-label="icon for help") policy
+                div.icon(aria-label="icon for help") gavel
         li.drawer__item: a(href="")
             div Help
             div.icon(aria-label="icon for help") help
@@ -62,85 +60,112 @@ block body
                     p Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, it's the all-in-one solution for any chiropractic practice.
                 div.overlay__actions
                     button.btn--secondary try it for free
-                    a(href="").btn--underline view features
+                    a(href="").btn view features
         section#features
             h2.section-title Features
             div.feature
                 div.feature__summary
-                    h3.title Health Records
-                    span.subtitle Effortless Electronic Health Records
-                    p.body Praktiki leverages the power of Cloud Firestore to create and maintain hassle-free health records. Its suite of intelligent tools and industry leading features that will cut down busywork and let you focus on what's important: patient care.
-                div.feature__details
-                    ul.feature__promotion
-                        li Intuitive Online and In-Person Forms
-                        li Customizable SOAP Note Autocomplete
-                        li Intelligent Note-Taking Assistant
-                        li Standardized Outcome Assessment Tools
-                        li HIPAA Compliant Storage and Retrieval
-                        li Easy-Access Online Patient Portal
-                        li Integrated Patient Education Resources
-                        li Natural Care Plan Tracking and Modification
-                        li Multi-Doctor and Multi-Office Co-Management
+                    h3.title EHR
+                    span.subtitle Effortless Records
+                    p.body Praktiki leverages the power of Cloud Firestore to create and maintain hassle-free health records. Use its smart assistant feature to cut down on busywork and let you focus on what's most important: patient care.
+                div.feature__details: ul
+                        li Smart Assistant
+                        li Online Patient Portal
+                        li Multi-Provider Support
+                        li Care Plan Tracking
+                        li Patient Resources
             div: picture
                 source(media="(max-width: 700px)" srcset="")
                 source(media="(min-width: 700px)" srcset="")
                 source(media="(min-width: 1400px)" srcset="")
                 img(alt="" src="")
 
-            div
-                h3 Appointments
-                span Seamless Online and In-Person Scheduling
-                p Praktiki simplifies scheduling with an easy-to-use online portal. Ensure that patients are scheduled correctly the first time with Praktiki's smart scheduling tools, and minimize no-shows with automatic reminders, digital check-in, and customized cancellation fees.
-                ul
-                    li Easy Online Self-Scheduling
-                    li Add-To-Calendar For All Devices
-                    li Integrated Care Plan Monitoring
-                    li Intuitive Schedule Management
-                    li Automatic Adaptive Schedule
-                    li Hassle-Free Digital Check-In
-                    li Automatic Appointment Reminders 
-                    li Customized Cancellation Fees
+            div.feature
+                div.feature__summary
+                    h3.title Appointments
+                    span.subtitle Seamless Scheduling
+                    p.body Praktiki simplifies scheduling with an easy-to-use online portal. Its adaptive schedule feature ensures no time is wasted. Minimize no-shows with automatic text message reminders and digital check-in.
+                div.feature__details: ul
+                    li Self-Scheduling
+                    li Schedule Management
+                    li Adaptive Schedule
+                    li Digital Check-In
+                    li Text Reminders
             div: picture
                 source(media="(max-width: 700px)" srcset="")
                 source(media="(min-width: 700px)" srcset="")
                 source(media="(min-width: 1400px)" srcset="")
                 img(alt="" src="")
 
-            div
-                h3 Communication
-                span Supercharged Education and Outreach
-                p Praktiki maximizes impact with advanced text and email education and outreach. Elevate your small business marketing with easy and accessible communication at every stage of patient care.
-                ul
-                    li Automatic Appointment Reminders
-                    li Accessible Online Symptom Checker
-                    li Targeted Email Marketing Resources
-                    li Customizable Text Message Touchpoints
-                    li Secure Patient-Doctor Communication
-                    li Royalty-Free Digital Marketing Assets
+            div.feature
+                div.feature__summary
+                    h3.title Communication
+                    span.subtitle Meaningful Outreach
+                    p.body Praktiki maximizes impact with advanced education and outreach. Improve outcomes and increase engagement with easy and accessible communication at every stage of patient care.
+                div.feature__details: ul
+                    li Text Messaging
+                    li Email Marketing
+                    li 100+ Patient Resources
+                    li 500+ Promotional Assets
             div: picture
                 source(media="(max-width: 700px)" srcset="")
                 source(media="(min-width: 700px)" srcset="")
                 source(media="(min-width: 1400px)" srcset="")
                 img(alt="" src="")
 
-            div
-                h3 Billing
-                span Integrated Billing and Claim Submission
-                p Praktiki automatically builds invoices and claims based on the treatment you provide. Its 
-                ul
-                    li Automatic Invoice Generation
+            div.feature
+                div.feature__summary
+                    h3.title Billing
+                    span.subtitle Reliable Payments
+                    p.body Praktiki automatically builds invoices and claims based on the treatment you provide. Convenient pre-pay, pay-later, and subscription options are easy and reliable with simple and secure payment processing.
+                div.feature__details: ul
+                    li Payment Processing
+                    li Eligibility Checks
+                    li Claim Submission
                     li Automatic Recurring Billing
-                    li Payment Processing with Stripe
-                    li Reliable Payment Plans with Afterpay
-                    li Eligibility Checks with Availity
-                    li Instant Claim Submission and Monitoring
-                    li Support for Prepaid and Family Plans
-                    li Simple Inventory Management
+                    li Support for Group Plans
+                    li Support for Installments
             div: picture
                 source(media="(max-width: 700px)" srcset="")
                 source(media="(min-width: 700px)" srcset="")
                 source(media="(min-width: 1400px)" srcset="")
                 img(alt="" src="")
+            div.feature
+                div.feature__summary
+                    h3.title Security
+                    span.subtitle Advanced Protection
+                    p.body Praktiki stores and serves data with the Google Cloud Platform. This cloud infrastructure is compliant with the privacy and security standards established by federal law.
+                div.feature__details: ul
+                    li Encryption
+                    li Malware Prevention
+                    li Hardware Tracking
+                    li Security Monitoring
+                    li Incident Management
+            div: picture
+                source(media="(max-width: 700px)" srcset="")
+                source(media="(min-width: 700px)" srcset="")
+                source(media="(min-width: 1400px)" srcset="")
+                img(alt="" src="")
+
+        section#compatibility
+
+        section#pricing
+            h2.section-title Pricing
+            div.tabs
+                div.tabs__tablist(role="tablist")
+                    button(role="tab") Free
+                    button(role="tab") Premium
+                div.tabs__tabpanel(role="tabpanel")
+                    h3 Free Plan
+                    div
+                        span Free
+                        span For Recent Grads!
+                    p The free plan is ideal for recent graduates and small practices seeing fewer than 100 monthly patients. Get access to all of Praktiki's features and resources at no cost.
+                div.tabs__tabpanel(role="tabpanel")
+                    h3 Premium Plan
+                        span Everything,
+                        span Just $39.
+                    p The unlimited plan is great for small practices seeing more than 100 monthly patients. Enjoy full-fledged eHR with advanced practice management resources, now less than half the cost of our leading competitor.
 
         section#resources
             h2 Resources
@@ -180,24 +205,6 @@ block body
             a(href="" download) 
                 .icon download
                 span Download Free Resources
-
-        section#pricing
-            h2 Pricing
-            div.tabs
-                div(role="tablist")
-                    button(role="tab") Free
-                    button(role="tab") Premium
-                div(role="tabpanel")
-                    h3 Free Plan
-                    div
-                        span Free
-                        span For Recent Grads!
-                    p The free plan is ideal for recent graduates and small practices seeing fewer than 100 monthly patients. Get access to all of Praktiki's features and resources at no cost.
-                div(role="tabpanel")
-                    h3 Premium Plan
-                        span Everything,
-                        span Just $39.
-                    p The unlimited plan is great for small practices seeing more than 100 monthly patients. Enjoy full-fedged eHR with advanced practice management resources, now less than half the cost of our leading competitor.
 
 
             

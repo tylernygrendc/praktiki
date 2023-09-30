@@ -3,10 +3,15 @@
 @use "sass:math";
 
 // BREAKPOINTS
-// designed "mobile first"
 
 $tablet-viewport: "700px";
 $laptop-viewport: "1400px";
+
+@mixin forPhoneViewport {
+  @media (max-width: #{$tablet-viewport}) {
+    @content;
+  }
+}
 
 @mixin forTabletViewport {
   @media (min-width: #{$tablet-viewport}) and (max-width: #{laptop-viewport}) {
@@ -64,7 +69,7 @@ $laptop-viewport: "1400px";
   src: url(/font/RobotoCondensed.ttf);
 }
 
-:root{
+:root {
   // fonts
   --title-text: "Open Sans", sans-serif;
   --body-text: "Roboto", sans-serif;
@@ -101,12 +106,12 @@ $laptop-viewport: "1400px";
     font-size: 1em !important;
     font-variation-settings: "wght" 300 !important;
   }
-  &--24px{
+  &--24px {
     @extend .icon;
     font-size: 1.5em !important;
     font-variation-settings: "wght" 200 !important;
   }
-  &--32px{
+  &--32px {
     @extend .icon;
     font-size: 2em !important;
     font-variation-settings: "wght" 100 !important;
@@ -156,14 +161,12 @@ $scrollbar--dark: $background--dark;
 $scrollbar-thumb--dark: color.scale($background--dark, $lightness: 50%);
 $input--dark: color.scale($background--dark, $blackness: 10%);
 
-
 // "on" colors
-@function onColor($color){
+@function onColor($color) {
   @if color.lightness($color) > 50 {
     @return #000;
-  }
-  @else { 
-    @return #FFF;
+  } @else {
+    @return #fff;
   }
 }
 $on-background: onColor($background);
@@ -182,7 +185,6 @@ $on-error--dark: onColor($error--dark);
 $on-success--dark: onColor($success--dark);
 
 @mixin lightTheme() {
-
   // theme
   --background: #{$background};
   --surface: #{$surface};
@@ -222,49 +224,49 @@ $on-success--dark: onColor($success--dark);
 }
 
 @mixin darkTheme() {
-    // theme
-    --background: #{$background--dark};
-    --surface: #{$surface--dark};
-    --surface-button: #{$surface-button--dark};
-    $raised: color.scale($surface-button--dark, $lightness: 5%);
-    --surface-button--raised: #{$raised};
-    --primary: #{$primary--dark};
-    --primary-alt: #{$primary-alt--dark};
-    --primary-button: #{$primary-button--dark};
-    $raised: color.scale($primary-button--dark, $lightness: 5%);
-    --primary-button--raised: #{$raised};
-    --secondary: #{$secondary--dark};
-    --secondary-alt: #{$secondary-alt--dark};
-    --secondary-button: #{$secondary-button--dark};
-    $raised: color.scale($secondary-button--dark, $lightness: 5%);
-    --secondary-button--raised: #{$raised};
-    --error: #{$error--dark};
-    --success: #{$success--dark};
-  
-    // special ui item colors
-    --focus: #{$focus--dark};
-    --accent: #{$accent--dark};
-    --selected: #{$selected--dark};
-    --scrollbar: #{$scrollbar--dark};
-    --scrollbar-thumb: #{$scrollbar-thumb--dark};
-    --input: #{$input--dark};
-    $underline: onColor($input--dark);
-    --input-underline: #{$underline};
-  
-    // "on" colors
-    --on-background: #{$on-background--dark};
-    --on-surface: #{$on-surface--dark};
-    --on-primary: #{$on-primary--dark};
-    --on-secondary: #{$on-secondary--dark};
-    --on-error: #{$on-error--dark};
-    --on-success: #{$on-success--dark};
+  // theme
+  --background: #{$background--dark};
+  --surface: #{$surface--dark};
+  --surface-button: #{$surface-button--dark};
+  $raised: color.scale($surface-button--dark, $lightness: 5%);
+  --surface-button--raised: #{$raised};
+  --primary: #{$primary--dark};
+  --primary-alt: #{$primary-alt--dark};
+  --primary-button: #{$primary-button--dark};
+  $raised: color.scale($primary-button--dark, $lightness: 5%);
+  --primary-button--raised: #{$raised};
+  --secondary: #{$secondary--dark};
+  --secondary-alt: #{$secondary-alt--dark};
+  --secondary-button: #{$secondary-button--dark};
+  $raised: color.scale($secondary-button--dark, $lightness: 5%);
+  --secondary-button--raised: #{$raised};
+  --error: #{$error--dark};
+  --success: #{$success--dark};
+
+  // special ui item colors
+  --focus: #{$focus--dark};
+  --accent: #{$accent--dark};
+  --selected: #{$selected--dark};
+  --scrollbar: #{$scrollbar--dark};
+  --scrollbar-thumb: #{$scrollbar-thumb--dark};
+  --input: #{$input--dark};
+  $underline: onColor($input--dark);
+  --input-underline: #{$underline};
+
+  // "on" colors
+  --on-background: #{$on-background--dark};
+  --on-surface: #{$on-surface--dark};
+  --on-primary: #{$on-primary--dark};
+  --on-secondary: #{$on-secondary--dark};
+  --on-error: #{$on-error--dark};
+  --on-success: #{$on-success--dark};
 }
 
 .use-light-theme {
   @include lightTheme;
 }
 
-.use-dark-theme{
+.use-dark-theme {
   @include darkTheme;
 }
 
@@ -289,7 +291,7 @@ $on-success--dark: onColor($success--dark);
   height: 0.5rem;
 
   &-track {
-    background-color: #FFFFFF00;
+    background-color: #ffffff00;
   }
 
   &-thumb {
@@ -301,7 +303,7 @@ $on-success--dark: onColor($success--dark);
   }
 
   &-corner {
-    background-color: #FFFFFF00;
+    background-color: #ffffff00;
   }
 }
 
@@ -358,10 +360,10 @@ details {
 // these are imagined as distances from the background, in pixels
 $elevations: 1, 2, 4, 8, 16;
 @each $elevation in $elevations {
-  .elevation--#{$elevation}px{
-    transition: 0.3s cubic-bezier(.25,.8,.25,1);
-    box-shadow: 0 #{$elevation * 1px} #{$elevation * 3px}  rgba(0,0,0,0.12), 
-      0 #{$elevation * 1px} #{$elevation * 1px} rgba(0,0,0,0.24);
+  .elevation--#{$elevation}px {
+    transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 #{$elevation * 1px} #{$elevation * 3px} rgba(0, 0, 0, 0.12),
+      0 #{$elevation * 1px} #{$elevation * 1px} rgba(0, 0, 0, 0.24);
   }
 }
 
@@ -423,7 +425,7 @@ $speed: 250ms;
     <div class="btn__text">Download</div>
   </button>
 
-*/ 
+*/
 
 @mixin raisedButton($color, $background, $hover) {
   padding: 0.5lh 2ch;
@@ -442,12 +444,10 @@ $speed: 250ms;
     background-color: $hover;
     color: $color;
     @extend .elevation--4px;
-
   }
 }
 
-.btn{
-  
+.btn {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -465,7 +465,7 @@ $speed: 250ms;
   letter-spacing: 0.1ch;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     color: var(--focus);
   }
 
@@ -483,14 +483,8 @@ $speed: 250ms;
     }
   }
 
-  a{
-    text-decoration: none;  
-  }
-
-  &--underline {
-    @extend .btn;
-    text-decoration: underline;
-    text-underline-offset: 6px;
+  a {
+    text-decoration: none;
   }
 
   :last-child {
@@ -502,7 +496,11 @@ $speed: 250ms;
   @each $variant in $variants {
     &--#{$variant} {
       @extend .btn;
-      @include raisedButton(var(--on-#{$variant}), var(--#{$variant}-button), var(--#{$variant}-button--raised));
+      @include raisedButton(
+        var(--on-#{$variant}),
+        var(--#{$variant}-button),
+        var(--#{$variant}-button--raised)
+      );
     }
   }
 }
@@ -517,7 +515,7 @@ $speed: 250ms;
   </div>
 */
 
-.input{
+.input {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -562,7 +560,7 @@ $speed: 250ms;
     font-family: "Roboto Condensed";
     font-weight: normal;
     cursor: default;
-    ::before{
+    ::before {
       @include icon;
       content: "info";
       margin-right: 1ch;
@@ -573,19 +571,19 @@ $speed: 250ms;
     .input__label {
       color: var(--surface-input-underline--focus);
     }
-    input.input__field{
+    input.input__field {
       border-bottom: var(--surface-input-underline--focus);
     }
-    textarea.input__field{
+    textarea.input__field {
       border-left: var(--surface-input-underline--focus);
     }
-  } 
+  }
 
   &--valid {
-    input.input__field{
+    input.input__field {
       border-bottom: var(--success);
     }
-    textarea.input__field{
+    textarea.input__field {
       border-left: var(--success);
     }
     .input__hint {
@@ -594,10 +592,10 @@ $speed: 250ms;
   }
 
   &--invalid {
-    input.input__field{
+    input.input__field {
       border-bottom: var(--error);
     }
-    textarea.input__field{
+    textarea.input__field {
       border-left: var(--error);
     }
     .input__hint {
@@ -653,8 +651,8 @@ $speed: 250ms;
     }
 
     &--checked {
-      input[type=radio],
-      input[type=checkbox]{
+      input[type="radio"],
+      input[type="checkbox"] {
         accent-color: var(--accent);
       }
     }
@@ -668,8 +666,8 @@ $speed: 250ms;
       cursor: pointer;
     }
 
-    input[type=radio],
-    input[type=checkbox] {
+    input[type="radio"],
+    input[type="checkbox"] {
       order: -1;
       width: 1lh;
       height: 1lh;
@@ -700,7 +698,7 @@ $menubar-height: 2lh !default;
 $menubar-background: var(--primary);
 $menubar-color: var(--on-primary);
 
-.menubar{
+.menubar {
   z-index: 8;
   position: fixed;
   inset: 0 0 auto 0;
@@ -714,7 +712,7 @@ $menubar-color: var(--on-primary);
   background-color: $menubar-background;
   color: $menubar-color;
 
-  .menubar__icon{
+  .menubar__icon {
     @include icon(2em);
     background-color: transparent;
     border: 0;
@@ -724,14 +722,14 @@ $menubar-color: var(--on-primary);
       color: var(--focus);
     }
   }
-  .menubar__title{
+  .menubar__title {
     flex: 1;
     font-size: 1.5em;
     font-family: var(--title-text);
-    font-weight: 100;
-    text-transform: uppercase;
-    letter-spacing: 0.1ch;
-    a{
+    font-weight: 400;
+    text-transform: capitalize;
+    letter-spacing: 0.2ch;
+    a {
       text-decoration: none;
       color: $menubar-color !important;
       cursor: pointer;
@@ -748,7 +746,7 @@ $menubar-color: var(--on-primary);
     font-family: var(--body-text);
     font-weight: 300;
     li,
-    li a{
+    li a {
       font-size: 1em;
       text-decoration: none;
       color: $menubar-color !important;
@@ -779,6 +777,8 @@ $drawer-width: 30ch !default;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  font-family: var(--title-text);
+  font-weight: 400;
 
   &__item {
     > a,
@@ -788,29 +788,43 @@ $drawer-width: 30ch !default;
       align-items: center;
       padding: 0.5lh 1ch;
       gap: 1ch;
+      font-size: 1.15em;
       text-decoration: none;
       color: var(--on-surface);
       cursor: pointer;
-      .icon{
-        font-size: 1.25em;
+      .icon {
         order: -1;
+        font-variation-settings: "wght" 200;
+        font-size: 1.35em;
+      }
+      &:hover {
+        color: var(--focus);
       }
     }
 
-    details{
+    details {
       ul {
-        margin: 0.25lh 10%;
+        margin: 0.25lh 5%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.25lh;
         list-style: none;
-        li{
+        li {
+          font-size: 0.9em;
           padding: 0.125lh 1ch;
           color: var(--on-surface);
-          a{
+          &::before {
+            margin-right: 0.25ch;
+            @include icon;
+            content: "subdirectory_arrow_right";
+          }
+          a {
             color: inherit;
-            text-decoration: underline;
-            text-underline-offset: 6px;
+            text-decoration: none;
+          }
+          &:hover {
+            color: var(--focus);
           }
         }
       }
@@ -818,17 +832,31 @@ $drawer-width: 30ch !default;
   }
 }
 
-.tabs{
-  &--top{
+$tabs-height: 2lh;
+.tabs {
 
-  }
-  &--right {
-    
-  }
-  &--bottom{
+  position: relative;
+  height: 100%;
+  width: 100%;
 
+  .tablist {
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: $tabs-height;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .tab {
+      @extend .btn;
+    }
+    :first-child {
+      margin-left: auto;
+    }
+    :last-child {
+      margin-right: auto;
+    }
   }
-  &--left {
-    
-  } 
+  .tabpanel {
+    margin-top: $tabs-height;
+  }
 }
