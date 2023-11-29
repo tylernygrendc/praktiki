@@ -18,5 +18,4 @@ html(lang="en")
         block scripts
             - const scriptsPath = "../../js"
             script(defer, src=`${scriptsPath}/${page}.js`)  
-    body
-        block body
+    body: block body

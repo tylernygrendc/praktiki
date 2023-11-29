@@ -1,0 +1,25 @@
+section#notes.layout
+    form.layout__focus-pane
+        ul.tabs(aria-role="tablist")
+            li: button.tab--active(role="tab")
+                .tab__icon note_stack_add
+                .tab__text Subjective
+                .tab__indicator
+            li: button.tab(role="tab")
+                .tab__icon troubleshoot
+                .tab__text Objective
+                .tab__indicator
+            li: button.tab(role="tab")
+                .tab__icon stylus_note
+                .tab__text Assessment
+                .tab__indicator
+            li: button.tab(role="tab")
+                .tab__icon flowsheet
+                .tab__text Plan
+                .tab__indicator
+        .tabpanel(role="tabpanel")
+            .freeform.text-field
+                label.text-field__label(for="#freeform__textarea") Freeform
+                textarea#freeform__textarea.text-field__input(name="freeform")
+                .text-field__hint Subjective findings should only include patient reported information.
+    .layout__support-pane

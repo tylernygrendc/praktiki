@@ -1,0 +1,30 @@
+extends _boilerplate
+
+append styles
+
+append scripts
+
+prepend body
+    nav.navigation
+        button.navigation-item
+            .navigation-item__icon search
+            .navigation-item__text Search
+        button.navigation-item
+            .navigation-item__icon calendar_today
+            .navigation-item__text Schedule
+        button.navigation-item--active
+            .navigation-item__icon assignment
+            .navigation-item__text Notes
+        button.navigation-item
+            .navigation-item__icon chat
+            .navigation-item__text Chat
+        button.navigation-item
+            .navigation-item__icon storefront
+            .navigation-item__text Store
+    main
+        //- include _search
+        //- include _schedule
+        include _notes
+        //- include _chat
+        //- include _storefront    
+
