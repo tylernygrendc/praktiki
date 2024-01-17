@@ -26,7 +26,7 @@
 }
 
 @mixin titleFont($size: 1.15rem, $wght: 300, $wdth: 100) {
-  font-family: "Open Sans";
+  font-family: "Open Sans", system-ui, sans-serif;
   font-size: $size;
   font-variation-settings: "wght" $wght; // bold = 800, normal = 400, light = 300
   font-variation-settings: "wdth" $wdth; // condensed = 75, expanded = 125
@@ -34,7 +34,7 @@
 }
 
 @mixin bodyFont($size: 1rem, $wght: 300, $wdth: 100, $slnt: 0){
-  font-family: "Roboto";
+  font-family: "Roboto", system-ui, sans-serif;
   font-size: $size;
   font-variation-settings: "wght" $wght; // bold = 800, normal = 400, light = 300, thin = 100
   font-variation-settings: "wdth" $wdth; // condensed = 75, expanded = 125
@@ -42,13 +42,11 @@
   font-optical-sizing: auto !important;
 }
 
-@mixin icon($size: 1.5rem, $wght: 400, $FILL: 0, $GRAD: 0) {
+@mixin icon($size: 1.5rem, $wght: 400) {
   display: inline-block !important;
   font-family: "Material Symbols" !important;
   font-size: $size;
   font-variation-settings: "wght" $wght; // bold = 700, normal = 400, light = 300, thin = 100
-  font-variation-settings: "FILL" $FILL; // no fill = 0, fill = 1
-  font-variation-settings: "GRAD" $GRAD; // low = -25, high = 400
   font-style: normal !important;
   font-stretch: normal !important;
   font-optical-sizing: auto !important;
@@ -61,19 +59,11 @@
 
 // THEME
 
-@function onColor($key, $color: false) {
-  @if ($color) {
-    @if color.lightness($key) < 50 {
-      @return color.scale($key, $saturation: 80%, $lightness: 90%);
-    } @else {
-      @return color.scale($key, $saturation: 80%, $lightness: -90%);
-    }
+@function onColor($key) {
+  @if color.lightness($key) < 50 {
+    @return color.scale($key, $lightness: 80%);
   } @else {
-    @if color.lightness($key) < 50 {
-      @return #ffffff;
-    } @else {
-      @return #000000;
-    }
+    @return color.scale($key, $lightness: -95%);
   }
 }
 
@@ -96,80 +86,42 @@
     $surfaceContainer--high: hsl(0, 0%, 30%);
     $surfaceContainer--mid: hsl(0, 0%, 25%);
     $surfaceContainer--low: hsl(0, 0%, 20%);
-    $primary: hsl(200, 80%, 60%);
+    $primary: hsl(200, 80%, 70%);
     $secondary: hsl(175, 50%, 60%);
     $tertiary: hsl(225, 50%, 70%);
     $error: hsl(0, 50%, 70%);
     $success: hsl(135, 40%, 60%);
   }
 
-  $primaryContainer: color.scale(
-    $primary,
-    $saturation: -10%,
-    $lightness: 50%
-  );
-  $secondaryContainer: color.scale(
-    $secondary,
-    $saturation: -10%,
-    $lightness: 50%
-  );
-  $tertiaryContainer: color.scale(
-    $tertiary,
-    $saturation: -10%,
-    $lightness: 50%
-  );
-  $errorContainer: color.scale(
-    $error,
-    $saturation: -10%,
-    $lightness: 50%
-  );
-  $successContainer: color.scale(
-    $success,
-    $saturation: -10%,
-    $lightness: 50%
-  );
-
   $onSurface: onColor($surface);
-  $onSurface--alt: color.scale($onSurface, $lightness: -25%);
-  $onPrimary: onColor($primary, $color: true);
-  $onPrimaryContainer: onColor($primaryContainer, $color: true);
-  $onSecondary: onColor($secondary, $color: true);
-  $onSecondaryContainer: onColor($secondaryContainer, $color: true);
-  $onTertiary: onColor($tertiary, $color: true);
-  $onTertiaryContainer: onColor($tertiary, $color: true);
-  $onError: onColor($error, $color: true);
-  $onErrorContainer: onColor($errorContainer, $color: true);
-  $onSuccess: onColor($error, $color: true);
-  $onSuccessContainer: onColor($errorContainer, $color: true);
+  $onSurface--hover: color.scale($onSurface, $lightness: -100%);
+  @if ($dark) {
+    $onSurface--hover: color.scale($onSurface, $lightness: 100%);
+  }
+  $onPrimary: onColor($primary);
+  $onSecondary: onColor($secondary);
+  $onTertiary: onColor($tertiary);
+  $onError: onColor($error);
+  $onSuccess: onColor($error);
 
   // CSS Variables
   --background: #{$background};
   --surface: #{$surface};
   --on-surface: #{$onSurface};
-  --on-surface--alt: #{$onSurface--alt};
+  --on-surface--hover: #{$onSurface--hover};
   --surface-container--high: #{$surfaceContainer--high};
   --surface-container--mid: #{$surfaceContainer--mid};
   --surface-container--low: #{$surfaceContainer--low};
   --primary: #{$primary};
-  --primary-container: #{$primaryContainer};
   --on-primary: #{$onPrimary};
-  --on-primary-container: #{$onPrimaryContainer};
   --secondary: #{$secondary};
-  --secondary-container: #{$secondaryContainer};
   --on-secondary: #{$onSecondary};
-  --on-secondary-container: #{$onSecondaryContainer};
   --tertiary: #{$tertiary};
-  --tertiary-container: #{$tertiaryContainer};
   --on-tertiary: #{$onTertiary};
-  --on-tertiary-container: #{$onTertiaryContainer};
   --error: #{$error};
-  --error-container: #{$errorContainer};
   --on-error: #{$onError};
-  --on-error-container: #{$onErrorContainer};
   --success: #{$success};
-  --success-container: #{$successContainer};
   --on-success: #{$onSuccess};
-  --on-success-container: #{$onSuccessContainer};
 }
 
 :root {
@@ -221,14 +173,15 @@ video {
 }
 
 details {
+  position: relative;
   summary {
     display: flex;
     flex-direction: row;
     align-items: center;
-    position: relative;
+    padding-right: 1.25rem;
 
     &::after {
-      @include icon;
+      @include icon(1rem);
       content: "keyboard_arrow_down";
       position: absolute;
       inset: 50% 0 auto auto;
@@ -308,17 +261,17 @@ $speed: 250ms;
 // SCROLLBAR
 
 ::-webkit-scrollbar {
-  width: minmax(8px, 0.5rem);
-  height: minmax(8px, 0.5rem);
+  width: 1rem;
+  height: 1rem;
   &-thumb {
-    border: minmax(2px, 0.125rem) solid hsl(0 0% 0% / 0);
+    border: 0.125rem solid hsl(0 0% 0% / 0);
     border-radius: 100vw;
-    background-color: var(--on-secondary-container);
+    background-color: var(--on-primary);
   }
   &-track {
     margin-block: 0.25rem;
     border-radius: 100vw;
-    background-color: (--secondary-container);
+    background-color: (--primary);
   }
   &-button,
   &-corner,
@@ -330,7 +283,7 @@ $speed: 250ms;
 @supports (scrollbar-width: auto) {
   * {
     scrollbar-width: thin;
-    scrollbar-color: var(--on-secondary-container) var(--secondary-container);
+    scrollbar-color: var(--on-secondary) var(--secondary);
   }
 }
 
@@ -363,6 +316,7 @@ Usage:
   justify-content: center;
   padding: 0.625rem 1.5rem;
   gap: 0.5rem;
+  border: none;
   border-radius: 20px;
   overflow: hidden;
   font-size: 1rem;
@@ -392,7 +346,7 @@ Usage:
     cursor: not-allowed;
   }
 
-  &:hover &__state {
+  &:hover .btn__state {
       transition: 250ms;
       opacity: 8%;
   }
@@ -403,15 +357,15 @@ Usage:
   }
 
   &--elevated {
-    background-color: var(--primary-container);
-    color: var(--on-primary-container);
+    background-color: var(--primary);
+    color: var(--on-primary);
     @include elevation;
     &:focus-visible {
       transition: 250ms;
       @include elevation($focused: true);
     }
     .btn__state {
-      background-color: var(--on-primary-container);
+      background-color: var(--on-primary);
     }
   }
 
@@ -420,14 +374,6 @@ Usage:
     color: var(--on-primary);
     .btn__state {
       background-color: var(--on-primary);
-    }
-  }
-
-  &--tonal {
-    background-color: var(--primary-container);
-    color: var(--on-primary-container);
-    .btn__state {
-      background-color: var(--on-primary-container);
     }
   }
 
@@ -541,35 +487,44 @@ dialog {
 .layout{
   position: fixed;
   inset: 0 0 0 var(--navigation-width);
-  display: grid;
+  display: none;
   grid-template-columns: repeat(6, 1fr);
   padding: 1rem 1rem 1rem 2rem;
   gap: 1rem;
   background-color: var(--background);
+
+  &--active{
+    display: grid;
+  }
+
   // for list-detail layout
   &__list-pane{
+    position: relative;
     background-color: var(--surface);
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
   }
   &__detail-pane{
+    position: relative;
     background-color: var(--surface);
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
   }
 
   //for supporting pane layout
   &__focus-pane{
+    position: relative;
     grid-column: 1/5;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--surface);
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
   }
   &__support-pane{
+    position: relative;
     grid-column: 5/7;
     padding: 1rem;
     border-radius: 0.5rem;
     background-color: var(--surface);
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
   }
 
   //for feed layout
@@ -684,7 +639,7 @@ dialog {
   padding: 1rem 0;
   gap: 0.75rem;
   background-color: var(--surface);
-  color: var(--on-surface--alt);
+  color: var(--on-surface);
 
   @include compactViewport(){
     inset: auto 0 0 0;
@@ -725,29 +680,32 @@ dialog {
     &:hover{
       .navigation-item__icon{
         background-color: var(--surface-container--high);
-        color: var(--on-surface);
+        color: var(--on-surface--hover);
       }
       .navigation-item__text{
-        color: var(--on-surface);
+        color: var(--on-surface--hover);
       }
     }
-
-    &--active{
-      @extend .navigation-item;
+    
+    &--active {
       .navigation-item__icon{
-        background-color: var(--primary-container) !important;
-        color: var(--on-primary-container) !important;
+        background-color: var(--primary) !important;
+        color: var(--on-primary) !important;
         font-variation-settings: "FILL" 1;
       }
       .navigation-item__text{
         font-variation-settings: "wght" 700;  
-        color: var(--on-surface);
+        color: var(--on-surface--hover);
       }
     }
   }  
 }
 
 .tabs{
+  background-color: inherit;
+}
+
+.tablist{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -773,7 +731,7 @@ dialog {
       cursor: pointer;
 
       &__icon{
-        @include icon();
+        @include icon;
       }
       &__text{
         @include bodyFont(0.9rem);
@@ -788,24 +746,22 @@ dialog {
 
       &:hover{
         .tab__icon{
-          color: var(--on-surface);
+          color: var(--on-surface--hover);
         }
         .tab__text{
-          color: var(--on-surface);
+          color: var(--on-surface--hover);
         }
       }
 
       &--active{
-        @extend .tab;
         .tab__icon{
           color: var(--secondary) !important;
           font-variation-settings: "FILL" 1;
         }
         .tab__text{
           color: var(--secondary) !important;
-          font-variation-settings: "wght" 700;  
         }
-        .tab__indicator{
+        .tab__indicator{  
           background-color: var(--secondary) !important;
         }
       }
@@ -816,6 +772,9 @@ dialog {
 .tabpanel{
   width: 100%;
   background-color: inherit;
+  &--inactive{
+    display: none !important;
+  }
 }
 
 .text-field{
@@ -827,7 +786,7 @@ dialog {
   align-items: center;
   padding: 1rem;
   gap: 1rem;
-  border: 0.125rem solid var(--on-surface--alt);
+  border: 0.125rem solid var(--on-surface);
   border-radius: 0.25rem;
   background-color: inherit;
   @include bodyFont;
@@ -852,7 +811,7 @@ dialog {
     padding: 0.25rem;
     font-size: 0.8rem;
     background-color: inherit;
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
   }
   &__icon{
     @include icon;
@@ -884,14 +843,14 @@ dialog {
     inset: calc(100% + 0.5rem) 0 auto 0;
     height: 1rem;
     overflow: hidden;
-    color: var(--on-surface--alt);
+    color: var(--on-surface);
     font-size: 0.75rem;
   }
   &:hover{
     outline: 0.175rem solid var(--on-surface);
     outline-offset: -0.175rem;
     .text-field__label{
-      color: var(--on-surface);
+      color: var(--on-surface--hover);
     }
   }
   &:focus-within{

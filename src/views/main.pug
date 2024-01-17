@@ -12,7 +12,7 @@ prepend body
         button.navigation-item
             .navigation-item__icon calendar_today
             .navigation-item__text Schedule
-        button.navigation-item--active
+        button.navigation-item.navigation-item--active
             .navigation-item__icon assignment
             .navigation-item__text Notes
         button.navigation-item
@@ -22,9 +22,9 @@ prepend body
             .navigation-item__icon storefront
             .navigation-item__text Store
     main
-        //- include _search
-        //- include _schedule
+        include _search
+        include _schedule
         include _notes
-        //- include _chat
-        //- include _storefront    
+        include _chat
+        include _storefront    
 

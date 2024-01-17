@@ -1,0 +1,42 @@
+section#schedule.layout
+    .layout__focus-pane
+        .agenda
+            .agenda__head
+                each day in ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+                    button.column
+                        .column__day #{ day }
+                        .column__date 00
+                        .column__event
+                .agenda__body
+                    - for (let i = 0; i < 7; ++i)
+    .layout__support-pane
+        .tabs
+            ul.tablist(aria-role="tablist")
+                    li: button.tab.tab--active(role="tab")
+                        .tab__icon calendar_month
+                        .tab__text Calendar
+                        .tab__indicator
+                    li: button.tab(role="tab")
+                        .tab__icon task_alt
+                        .tab__text Tasks
+                        .tab__indicator
+                    li: button.tab(role="tab")
+                        .tab__icon event_upcoming
+                        .tab__text Upcoming
+                        .tab__indicator
+            .calendar.tabpanel(role="tabpanel")
+                .calendar__controls
+                    button.controls__month December 2023
+                    button.controls__previous keyboard_arrow_left
+                    button.controls__next keyboard_arrow_right
+                each day in ["S", "M", "T", "W", "T", "F", "S"]
+                    .calendar__day 
+                        .day__text #{ day }
+                        .day__state
+                - for(let i = 0; i < 42; ++i)
+                    .calendar__date
+                        .date__text #{ i }
+                        .date__state
+                button.calendar__reset.btn Go to Today
+            .tabpanel.tabpanel--inactive
+            .tabpanel.tabpanel--inactive

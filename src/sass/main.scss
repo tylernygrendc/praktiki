@@ -1,7 +1,3 @@
 @use "_ui.scss";
-
-#notes{
-    .freeform{
-        height: 30svh;
-    }
-}
+@use "_schedule.scss";
+@use "_notes.scss";

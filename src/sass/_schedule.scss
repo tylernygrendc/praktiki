@@ -1,0 +1,167 @@
+@use "_ui.scss";
+
+.agenda{
+
+    position: absolute;
+    inset: 1rem;
+
+    &__head{
+        position: absolute;
+        inset: 0 0 auto 0;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        padding-bottom: 0.5rem;
+        padding-right: 1rem;
+        border-bottom: 1px solid var(--on-surface);
+        background-color: inherit;
+
+        .column{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid transparent;
+            box-shadow: none;
+            background-color: inherit;
+            &--today{
+                .column__day{
+                    color: var(--on-surface--hover);
+                    font-variation-settings: "wght" 300;
+                }
+                .column__date{
+                    color: var(--on-surface--hover);
+                    font-variation-settings: "wght" 300;
+                }
+            }
+            &--selected{
+                .column__day{
+                    color: var(--tertiary);
+                    font-variation-settings: "wght" 700;
+                }
+                .column__date{
+                    color: var(--tertiary);
+                    font-variation-settings: "wght" 700;
+                }
+            }
+            &__day{
+                @include ui.titleFont(0.9rem, 100);
+                color: var(--on-surface);
+                text-transform: capitalize;
+            }
+            &__date{
+                color: var(--on-surface);
+                text-align: center;
+                @include ui.titleFont(1.5rem, 100);
+            }
+            &__event{
+
+            }
+        }
+    }
+
+    &__body{
+        position: absolute;
+        inset: 0 0 0 0;
+        padding-top: 5rem;
+        overflow-y: scroll;
+        .body__grid{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); 
+        }
+    }
+}
+
+.calendar{
+    width: 100%;
+    aspect-ratio: 7 / 9;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    padding-left: 0.5rem;
+    &__controls{
+        grid-row: 1 / 2;
+        grid-column: 1 / 8;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        
+        .controls{
+            border: none;
+            box-shadow: none;
+            background-color: inherit;
+            color: inherit;
+
+            &__month{
+                @extend .controls;
+                @include ui.bodyFont(1rem, 300);
+                position: relative;
+                margin-right: auto;
+                padding-right: 1.25rem;
+                color: var(--on-surface--hover);
+                &::after{
+                    position: absolute;
+                    inset: 50% 0 auto auto;
+                    translate: 0 -50%;
+                    @include ui.icon(1rem, 400);
+                    content: "keyboard_arrow_down";
+                }
+            }
+            &__previous{
+                @extend .controls;
+                @include ui.icon(1rem, 400);
+                aspect-ratio: 1 / 1; 
+            }
+            &__next{
+                @extend .controls;
+                @include ui.icon(1rem, 400);
+                aspect-ratio: 1 / 1; 
+            }
+        }
+    }
+    &__day{
+        position: relative;
+        .day{
+            &__text{
+                position: absolute;
+                inset: 50% auto auto 50%;
+                translate: -50% -50%;
+                @include ui.bodyFont(0.9rem, 300);
+                color: var(--on-surface);
+            }
+            &__state{
+                position: absolute;
+                inset: 50% auto auto 50%;
+                translate: -50% -50%;
+                width: 1.625rem;
+                height: 1.625rem;
+                border-radius: 50%;
+                color: var(--on-surface);
+            }
+        }
+
+    }
+    &__date{
+        position: relative;
+        .date__text{
+            position: absolute;
+            inset: 50% auto auto 50%;
+            translate: -50% -50%;
+            @include ui.bodyFont(0.9rem, 300);
+            color: var(--on-surface);
+        }
+        .__state{
+            position: absolute;
+            inset: 50% auto auto 50%;
+            translate: -50% -50%;
+            width: 1.625rem;
+            height: 1.625rem;
+            border-radius: 50%;
+            color: var(--on-surface);
+        }
+    }
+    &__reset{
+        @extend .btn;
+        @extend .btn--text;
+        grid-column: 1 / 8;
+        grid-row: 9 / 10;
+    }
+}

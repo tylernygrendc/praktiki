@@ -1,25 +1,89 @@
-section#notes.layout
+section#notes.layout.layout--active
     form.layout__focus-pane
-        ul.tabs(aria-role="tablist")
-            li: button.tab--active(role="tab")
-                .tab__icon note_stack_add
-                .tab__text Subjective
-                .tab__indicator
-            li: button.tab(role="tab")
-                .tab__icon troubleshoot
-                .tab__text Objective
-                .tab__indicator
-            li: button.tab(role="tab")
-                .tab__icon stylus_note
-                .tab__text Assessment
-                .tab__indicator
-            li: button.tab(role="tab")
-                .tab__icon flowsheet
-                .tab__text Plan
-                .tab__indicator
-        .tabpanel(role="tabpanel")
-            .freeform.text-field
-                label.text-field__label(for="#freeform__textarea") Freeform
-                textarea#freeform__textarea.text-field__input(name="freeform")
-                .text-field__hint Subjective findings should only include patient reported information.
+        .tabs
+            ul.tablist(aria-role="tablist")
+                li: button.tab.tab--active(role="tab")
+                    .tab__icon note_stack_add
+                    .tab__text Subjective
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon troubleshoot
+                    .tab__text Objective
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon stylus_note
+                    .tab__text Assessment
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon flowsheet
+                    .tab__text Plan
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon sticky_note_2
+                    .tab__text Addendum
+                    .tab__indicator
+            #subjective.tabpanel(role="tabpanel")
+                #subjective__freeform.text-field
+                    label.text-field__label(for="subjective__textarea") Freeform
+                    textarea#subjective__textarea.text-field__input(name="subjective__freeform")
+                    .text-field__hint Subjective findings should only include patient reported information.
+            #objective.tabpanel.tabpanel--inactive(role="tabpanel")
+                #objective__freeform.text-field
+                    label.text-field__label(for="objective__textarea") Freeform
+                    textarea#objective__textarea.text-field__input(name="objective__freeform")
+                    .text-field__hint Objective findings should only include 
+            #assessment.tabpanel.tabpanel--inactive(role="tabpanel")
+                #assessment__freeform.text-field
+                    label.text-field__label(for="assessment__textarea") Freeform
+                    textarea#assessment__textarea.text-field__input(name="assessment__freeform")
+                    .text-field__hint The assessment should represent
+            #plan.tabpanel.tabpanel--inactive(role="tabpanel")
+                #plan__freeform.text-field
+                    label.text-field__label(for="plan__textarea") Freeform
+                    textarea#plan__textarea.text-field__input(name="plan__freeform")
+                    .text-field__hint The plan should include
+            #addendum.tabpanel.tabpanel--inactive(role="tabpanel")
+                #plan__freeform.text-field
+                    label.text-field__label(for="addendum__textarea") Freeform
+                    textarea#addendum__textarea.text-field__input(name="plan__freeform")
+                    .text-field__hint An addendum can include
+
     .layout__support-pane
+        .tabs
+            ul.tablist(aria-role="tablist")
+                li: button.tab.tab--active(role="tab")
+                    .tab__icon recent_patient
+                    .tab__text Summary
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon account_tree
+                    .tab__text Records
+                    .tab__indicator
+                li: button.tab(role="tab")
+                    .tab__icon pending_actions
+                    .tab__text Pending
+                    .tab__indicator
+            #summary.tabpanel(role="tabpanel")
+                .summary__card 
+                    .card__image
+                    .card__glance
+                        .name John Doe
+                        ul.details
+                            li.details__birthday 01-01-1950 (age 20)
+                            li.details__occupation Driver (logistics)
+                            li.details__family Wife (Jane)
+                            li.details__interests Golf
+                    .card__text This 20 year old male is undergoing chiropractic treatment for chronic low back pain. They are in the relief phase of care, visit three of four. They have been progressing slower than expected. At-home stretching was recommended at a previous visit.
+
+            #records.tabpanel.tabpanel--inactive(role='tabpanel')
+                ul.file-tree
+                    li.file-tree__folder: details
+                        summary Evaluation
+                        ul.folder__contents
+                            li.file Note
+            #pending.tabpanel.tabpanel--inactive(role='tabpanel')
+                ul
+
+        
+
+                
