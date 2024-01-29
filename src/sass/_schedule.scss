@@ -11,7 +11,6 @@
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         padding-bottom: 0.5rem;
-        padding-right: 1rem;
         border-bottom: 1px solid var(--on-surface);
         background-color: inherit;
 
@@ -61,10 +60,11 @@
     &__body{
         position: absolute;
         inset: 0 0 0 0;
-        padding-top: 5rem;
         overflow-y: scroll;
         .body__grid{
             display: grid;
+            height: 288rem;
+            width: 100%;
             grid-template-columns: repeat(7, 1fr); 
         }
     }

@@ -7,8 +7,10 @@ section#schedule.layout
                         .column__day #{ day }
                         .column__date 00
                         .column__event
-                .agenda__body
-                    - for (let i = 0; i < 7; ++i)
+            .agenda__body: .body__grid
+                each day in ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+                    .column
+
     .layout__support-pane
         .tabs
             ul.tablist(aria-role="tablist")

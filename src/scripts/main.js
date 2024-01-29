@@ -1,7 +1,9 @@
 import { autoResizeTextArea, enableNavigation, enableTabs } from "../script_modules/_ui.mjs";
+import { setAgendaTop } from "../script_modules/_schedule.mjs"
 
-window.addEventListener("load", () => {
+window.onload = () => {
     autoResizeTextArea();
     enableNavigation();
     enableTabs();
-})
+    setAgendaTop();
+}

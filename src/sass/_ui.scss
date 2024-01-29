@@ -261,17 +261,16 @@ $speed: 250ms;
 // SCROLLBAR
 
 ::-webkit-scrollbar {
-  width: 1rem;
-  height: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
   &-thumb {
-    border: 0.125rem solid hsl(0 0% 0% / 0);
     border-radius: 100vw;
-    background-color: var(--on-primary);
+    background-color: var(--primary);
   }
   &-track {
     margin-block: 0.25rem;
     border-radius: 100vw;
-    background-color: (--primary);
+    background-color: (--secondary);
   }
   &-button,
   &-corner,
@@ -820,7 +819,7 @@ dialog {
     border-width: 0;
     border-radius: 0;
     background-color: transparent;
-    caret-color: var(--secondary);
+    caret-color: var(--primary);
     color: var(--on-surface);
     font-size: 1rem;
     resize: none;
@@ -854,10 +853,10 @@ dialog {
     }
   }
   &:focus-within{
-    outline: 0.175rem solid var(--secondary);
+    outline: 0.175rem solid var(--primary);
     outline-offset: -0.175rem;
     .text-field__label{
-      color: var(--secondary);
+      color: var(--primary);
     }
   }
 }
