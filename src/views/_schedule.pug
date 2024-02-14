@@ -1,6 +1,22 @@
 section#schedule.layout
     .layout__focus-pane
         .agenda
+            nav.agenda__controls
+            ul.controls__list
+                li: button.btn.btn--text
+                    .btn__icon keyboard_arrow_left
+                    .btn__state
+                li: button.btn.btn--text
+                    .btn__icon keyboard_arrow_right
+                    .btn__state
+                li: button.chip
+                    .chip__label January
+                    .chip__icon keyboard_arrow_down
+                    .chip__state
+                li: button.chip
+                    .chip__label 2024
+                    .chip__icon keyboard_arrow_down
+                    .chip__state
             .agenda__head
                 each day in ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
                     button.column
@@ -15,10 +31,6 @@ section#schedule.layout
         .tabs
             ul.tablist(aria-role="tablist")
                     li: button.tab.tab--active(role="tab")
-                        .tab__icon calendar_month
-                        .tab__text Calendar
-                        .tab__indicator
-                    li: button.tab(role="tab")
                         .tab__icon task_alt
                         .tab__text Tasks
                         .tab__indicator
@@ -26,19 +38,5 @@ section#schedule.layout
                         .tab__icon event_upcoming
                         .tab__text Upcoming
                         .tab__indicator
-            .calendar.tabpanel(role="tabpanel")
-                .calendar__controls
-                    button.controls__month December 2023
-                    button.controls__previous keyboard_arrow_left
-                    button.controls__next keyboard_arrow_right
-                each day in ["S", "M", "T", "W", "T", "F", "S"]
-                    .calendar__day 
-                        .day__text #{ day }
-                        .day__state
-                - for(let i = 0; i < 42; ++i)
-                    .calendar__date
-                        .date__text #{ i }
-                        .date__state
-                button.calendar__reset.btn Go to Today
-            .tabpanel.tabpanel--inactive
+            .tabpanel
             .tabpanel.tabpanel--inactive

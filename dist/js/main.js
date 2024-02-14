@@ -10,16 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./script_modules/_schedule.mjs":
-/*!**************************************!*\
-  !*** ./script_modules/_schedule.mjs ***!
-  \**************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   setAgendaTop: () => (/* binding */ setAgendaTop)\n/* harmony export */ });\nfunction setAgendaTop(){\n    let head = document.querySelector(\".agenda__head\");\n    let body = document.querySelector(\".agenda__body\");\n    console.log(head.scrollHeight);\n    body.style.top = head.clientHeight;\n}\n\n//# sourceURL=webpack://functions/./script_modules/_schedule.mjs?");
-
-/***/ }),
-
 /***/ "./script_modules/_ui.mjs":
 /*!********************************!*\
   !*** ./script_modules/_ui.mjs ***!
@@ -36,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../script_modules/_ui.mjs */ \"./script_modules/_ui.mjs\");\n/* harmony import */ var _script_modules_schedule_mjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../script_modules/_schedule.mjs */ \"./script_modules/_schedule.mjs\");\n\n\n\nwindow.onload = () => {\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.autoResizeTextArea)();\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.enableNavigation)();\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.enableTabs)();\n    (0,_script_modules_schedule_mjs__WEBPACK_IMPORTED_MODULE_1__.setAgendaTop)();\n}\n\n//# sourceURL=webpack://functions/./scripts/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../script_modules/_ui.mjs */ \"./script_modules/_ui.mjs\");\n\n\nwindow.onload = () => {\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.autoResizeTextArea)();\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.enableNavigation)();\n    (0,_script_modules_ui_mjs__WEBPACK_IMPORTED_MODULE_0__.enableTabs)();\n}\n\n//# sourceURL=webpack://functions/./scripts/main.js?");
 
 /***/ })
 
