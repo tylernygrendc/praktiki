@@ -16,7 +16,7 @@ section#notes.layout.layout--active
                 li: button.btn.btn--text 
                     .btn__icon close
                     .btn__state
-        form.tabs
+        form#soap.navigation--horizontal
             ul.tablist(aria-role="tablist")
                 li: button.tab.tab--active(role="tab")
                     .tab__icon note_stack_add
@@ -33,10 +33,6 @@ section#notes.layout.layout--active
                 li: button.tab(role="tab")
                     .tab__icon flowsheet
                     .tab__text Plan
-                    .tab__indicator
-                li: button.tab(role="tab")
-                    .tab__icon sticky_note_2
-                    .tab__text Addendum
                     .tab__indicator
             #subjective.tabpanel(role="tabpanel")
                 #subjective__freeform.text-field
@@ -58,11 +54,6 @@ section#notes.layout.layout--active
                     label.text-field__label(for="plan__textarea") Freeform
                     textarea#plan__textarea.text-field__input(name="plan__freeform")
                     .text-field__hint The plan should include
-            #addendum.tabpanel.tabpanel--inactive(role="tabpanel")
-                #plan__freeform.text-field
-                    label.text-field__label(for="addendum__textarea") Freeform
-                    textarea#addendum__textarea.text-field__input(name="plan__freeform")
-                    .text-field__hint An addendum can include
 
     .layout__support-pane
         .tabs

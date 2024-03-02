@@ -1,5 +1,12 @@
 @use "_ui.scss";
 
+#soap{
+    .tablist{
+        position: absolute;
+        inset: auto 0 0 0;
+    }
+}
+
 .summary__card{
     display: grid;
     grid-template-columns: 5rem 1fr;
