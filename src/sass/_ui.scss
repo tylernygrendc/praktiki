@@ -74,9 +74,7 @@
   $surfaceContainer--high: hsl(0, 0%, 70%);
   $surfaceContainer--mid: hsl(0, 0%, 75%);
   $surfaceContainer--low: hsl(0, 0%, 80%);
-  $primary: hsl(200, 80%, 20%);
-  $secondary: hsl(175, 80%, 20%);
-  $tertiary: hsl(225, 80%, 30%);
+  $primary: hsl(175, 80%, 20%);
   $error: hsl(0, 80%, 30%);
   $success: hsl(135, 70%, 20%);
 
@@ -86,9 +84,7 @@
     $surfaceContainer--high: hsl(0, 0%, 30%);
     $surfaceContainer--mid: hsl(0, 0%, 25%);
     $surfaceContainer--low: hsl(0, 0%, 20%);
-    $primary: hsl(200, 80%, 70%);
-    $secondary: hsl(175, 50%, 60%);
-    $tertiary: hsl(225, 50%, 70%);
+    $primary: hsl(175, 50%, 60%);
     $error: hsl(0, 50%, 70%);
     $success: hsl(135, 40%, 60%);
   }
@@ -99,8 +95,6 @@
     $onSurface--hover: color.scale($onSurface, $lightness: 100%);
   }
   $onPrimary: onColor($primary);
-  $onSecondary: onColor($secondary);
-  $onTertiary: onColor($tertiary);
   $onError: onColor($error);
   $onSuccess: onColor($error);
 
@@ -114,10 +108,6 @@
   --surface-container--low: #{$surfaceContainer--low};
   --primary: #{$primary};
   --on-primary: #{$onPrimary};
-  --secondary: #{$secondary};
-  --on-secondary: #{$onSecondary};
-  --tertiary: #{$tertiary};
-  --on-tertiary: #{$onTertiary};
   --error: #{$error};
   --on-error: #{$onError};
   --success: #{$success};
@@ -191,6 +181,14 @@ details {
   }
   &[open] summary::after {
     transform: rotate(180deg);
+  }
+}
+
+.flex-grow{
+  flex-grow: 1;
+  &--margin{
+    @extend .flex-grow;
+    margin: auto 10%;
   }
 }
 
@@ -601,19 +599,21 @@ dialog {
 
 .controls {
   &__list{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 0.5rem;
-      list-style: none;
-      &--hidden{
-          display: none;
-      }
-      .list__label{
-          margin-right: auto;
-          @include titleFont;
-      }
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    list-style: none;
+    &--hidden{
+        display: none;
+    }
+    .list__label{
+        margin-left: 0.5rem;
+        white-space: nowrap;
+        @include titleFont;
+    }
   }
 }
 
@@ -699,64 +699,65 @@ dialog {
 }
 
 .tablist{
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   list-style: none;
-  margin-bottom: 1rem;
 
-  li {
-    flex-grow: 1;
+  li{
+    display: flex;
+    flex: 1;
+  }
 
-    .tab{
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-items: center;
-      padding-top: 0.25rem;
-      gap: 0.5rem;
-      border-width: 0;
-      box-shadow: none;
-      background-color: inherit;
-      color: inherit;
-      cursor: pointer;
+  .tab{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding-top: 0.25rem;
+    gap: 0.5rem;
+    border-width: 0;
+    box-shadow: none;
+    background-color: inherit;
+    color: inherit;
+    cursor: pointer;
 
-      &__icon{
-        @include icon;
+    &__icon{
+      @include icon;
+    }
+    &__text{
+      @include bodyFont(0.9rem);
+    }
+    &__indicator{
+      width: 90%;
+      height: 0.1875rem;
+      margin-top: 0.125rem;
+      border-radius: 0.1875rem 0.1875rem 0 0;
+      background-color: transparent;
+    }
+
+    &:hover{
+      .tab__icon{
+        color: var(--on-surface--hover);
       }
-      &__text{
-        @include bodyFont(0.9rem);
+      .tab__text{
+        color: var(--on-surface--hover);
       }
-      &__indicator{
-        width: 90%;
-        height: 0.1875rem;
-        margin-top: 0.125rem;
-        border-radius: 0.1875rem 0.1875rem 0 0;
-        background-color: transparent;
-      }
+    }
 
-      &:hover{
-        .tab__icon{
-          color: var(--on-surface--hover);
-        }
-        .tab__text{
-          color: var(--on-surface--hover);
-        }
+    &--active{
+      .tab__icon{
+        color: var(--primary) !important;
+        font-variation-settings: "FILL" 1;
       }
-
-      &--active{
-        .tab__icon{
-          color: var(--secondary) !important;
-          font-variation-settings: "FILL" 1;
-        }
-        .tab__text{
-          color: var(--secondary) !important;
-        }
-        .tab__indicator{  
-          background-color: var(--secondary) !important;
-        }
+      .tab__text{
+        color: var(--primary) !important;
+      }
+      .tab__indicator{  
+        background-color: var(--primary) !important;
       }
     }
   }
