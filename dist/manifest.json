@@ -1,109 +1,112 @@
 {
     "name": "Praktiki",
-    "description":"Praktiki is a cloud-based practice management system designed specifically for chiropractors. With tools for record keeping, scheduling, billing, marketing, inventory, and communication, Praktiki is the all-in-one solution for any chiropractic practice. It is free to use for practices with fewer than 100 monthly patient visits, and paid plans start at just $29 per month.",
-    "start_url": "./auth/",
+    "short_name": "Praktiki",
+    "description":"Praktiki is the cloud-based eHR designed for chiropractors.",
+    "start_url": "/",
     "display": "standalone",
+    "color_theme": "#222222",
+    "background_color": "#222222",
     "icons": 
     [
         {
             "src": "./assets/apple-icon/icon-1024.png",
-            "size": "1024x1024",
+            "sizes": "1024x1024",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/maskable-icon/icon-512.png",
-            "size": "512x512",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
             "src": "./assets/monochrome-icon/icon-512.png",
-            "size": "512x512",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "monochrome"
         },
         {
             "src": "./assets/apple-icon/icon-512.png",
-            "size": "512x512",
+            "sizes": "512x512",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/monochrome-icon/icon-256.png",
-            "size": "256x256",
+            "sizes": "256x256",
             "type": "image/png",
             "purpose": "monochrome"
         },
         {
             "src": "./assets/apple-icon/icon-256.png",
-            "size": "256x256",
+            "sizes": "256x256",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/maskable-icon/icon-192.png",
-            "size": "192x192",
+            "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
             "src": "./assets/monochrome-icon/icon-192.png",
-            "size": "192x192",
+            "sizes": "192x192",
             "type": "image/png",
             "purpose": "monochrome"
         },
         {
             "src": "./assets/apple-icon/icon-192.png",
-            "size": "192x192",
+            "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/apple-icon/icon-180.png",
-            "size": "180x180",
+            "sizes": "180x180",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/apple-icon/icon-167.png",
-            "size": "167x167",
+            "sizes": "167x167",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/apple-icon/icon-152.png",
-            "size": "152x152",
+            "sizes": "152x152",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/apple-icon/icon-120.png",
-            "size": "120x120",
+            "sizes": "120x120",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/monochrome-icon/icon-96.png",
-            "size": "96x96",
+            "sizes": "96x96",
             "type": "image/png",
             "purpose": "monochrome"
         },
         {
             "src": "./assets/app-icon/icon-96.png",
-            "size": "96x96",
+            "sizes": "96x96",
             "type": "image/png",
             "purpose": "any"
         },
         {
             "src": "./assets/monochrome-icon/icon-48.png",
-            "size": "48x48",
+            "sizes": "48x48",
             "type": "image/png",
             "purpose": "monochrome"
         },
         {
             "src": "./assets/app-icon/icon-48.png",
-            "size": "48x48",
+            "sizes": "48x48",
             "type": "image/png",
             "purpose": "any"
         }
