@@ -7,6 +7,14 @@ router.set('view engine', 'pug');
 
 router.get('/', (req, res) => {
     res.status(200)
+        .render("landing", {
+            title: "Praktiki",
+            page: "landing"
+        });
+});
+
+router.get('/app', (req, res) => {
+    res.status(200)
         .render("main", {
             title: "Praktiki",
             page: "main"

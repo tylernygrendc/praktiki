@@ -8,7 +8,84 @@ prepend body
 
 prepend body
     nav.navigation
-        button.navigation-item
+        button.navigation-item.navigation-item--active
             .navigation-item__icon home
             .navigation-item__text Home
+        button.navigation-item
+            .navigation-item__icon feature_search
+            .navigation-item__text Features
+        button.navigation-item
+            .navigation-item__icon sell
+            .navigation-item__text Pricing
+        button.navigation-item
+            .navigation-item__icon help
+            .navigation-item__text Help
+        
     main
+        #home.layout.layout--active
+            .layout__focus-pane
+                .hero
+                    .hero__text
+                        span Praktiki
+                        h1 The Cloud eHR<br>Solution for Chiropractors
+                        button.btn.btn--filled
+                            .btn__icon download
+                            .btn__label Download
+                            .btn__state
+                    picture
+                        img.hero__image
+            .layout__support-pane
+                .tabs
+                    ul.tablist(aria-role="tablist")
+                            li: button.tab.tab--active(role="tab")
+                                .tab__text Patient Login
+                                .tab__indicator
+                            li: button.tab(role="tab")
+                                .tab__text Provider Login
+                                .tab__indicator
+                    form#patientLogin.tabpanel
+                        .text-field
+                            label.text-field__label(for="patientLogin__email") Email
+                            input#patientLogin__email.text-field__input(type="email" autocomplete="email")
+                        .text-field
+                            label.text-field__label(for="patientLogin__password") Password
+                            input#patientLogin__password.text-field__input(type="password" autocomplete="current-password")
+                        ul.btn-list--reverse
+                            li: button.btn
+                                .btn__icon login
+                                .btn__label Login 
+                                .btn__state
+                            li: button.btn
+                                .btn__label Create Account 
+                                .btn__state
+                    form#providerLogin.tabpanel.tabpanel--inactive
+                        .text-field
+                            label.text-field__label(for="providerLogin__email") Email
+                            input#providerLogin__email.text-field__input(type="email" autocomplete="email")
+                        .text-field
+                            label.text-field__label(for="providerLogin__password") Password
+                            input#providerLogin__password.text-field__input(type="password" autocomplete="current-password")
+                        ul.btn-list--reverse
+                            li: button.btn
+                                .btn__icon login
+                                .btn__label Login 
+                                .btn__state
+                            li: button.btn
+                                .btn__label Create Account 
+                                .btn__state
+        #features.layout
+            .layout__feed
+        #pricing.layout
+            .layout__focus-pane
+            .layout__support-pane
+        #pricing.layout
+            .layout__focus-pane
+            .layout__support-pane
+
+        dialog
+            .dialog__title Create a New Account
+            form
+                
+
+        
+

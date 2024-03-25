@@ -7,18 +7,22 @@ html(lang="en")
         title #{title}
         meta(name="description", content=`${description}`)
 
-        link(rel="icon", href="favicon.ico", sizes="any")
-        link(rel="icon", href="favicon.svg", type="image/xml+svg")
-        link(rel="apple-touch-icon", href="./assets/apple-icon/icon-180.png")
-        link(rel="manifest", href="manifest.json", crossorigin="use-credentials")
+        - const rootDirectory = "../../..";
 
-        meta(name="color_theme" media="(prefers-color-scheme: light)" content="#BBBBBB")
-        meta(name="color_theme" media="(prefers-color-scheme: dark)" content="#222222")
+        link(rel="icon", href=`${rootDirectory}/favicon.ico`, sizes="any")
+        link(rel="icon", href=`${rootDirectory}/favicon.svg`, type="image/xml+svg")
+        link(rel="apple-touch-icon", href=`${rootDirectory}/assets/apple-icon/icon-180.png`)
+        link(rel="manifest", href=`${rootDirectory}/manifest.json`, crossorigin="use-credentials")
+
+        meta(name="theme_color" media="(prefers-color-scheme: light)" content="#f2f2f2")
+        meta(name="background_color" media="(prefers-color-scheme: light)" content="#f2f2f2")
+        meta(name="theme_color" media="(prefers-color-scheme: dark)" content="#121212")
+        meta(name="background_color" media="(prefers-color-scheme: dark)" content="#121212")
 
         block styles
-            - const stylesPath = "./css";
+            - const stylesPath = `${rootDirectory}/css`;
             link(rel="stylesheet", href=`${stylesPath}/${page}.css`)
         block scripts
-            - const scriptsPath = "./js"
+            - const scriptsPath = `${rootDirectory}/js`;
             script(defer, src=`${scriptsPath}/${page}.js`)  
     body: block body

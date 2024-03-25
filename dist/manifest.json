@@ -4,8 +4,8 @@
     "description":"Praktiki is the cloud-based eHR designed for chiropractors.",
     "start_url": "/",
     "display": "standalone",
-    "color_theme": "#222222",
-    "background_color": "#222222",
+    "theme_color": "#121212",
+    "background_color": "#121212",
     "icons": 
     [
         {
